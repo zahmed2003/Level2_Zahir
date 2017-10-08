@@ -3,9 +3,9 @@ package Game;
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class Player extends GameObject{
+public class RedTile extends GameObject{
 
-	public Player(int x, int y, int width, int height)
+	public RedTile(int x, int y, int width, int height)
 	{
 		super(x, y, width, height);
 		
@@ -22,11 +22,8 @@ public class Player extends GameObject{
 	
 	public void draw(Graphics g)
 	{
-		g.setColor(Color.BLUE);
+		g.setColor(Color.RED);
 		g.fillRect(x, y, width, height);
-
 	}
-	
-	
 	
 }
