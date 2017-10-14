@@ -17,7 +17,7 @@ public class RedTile extends GameObject{
 	
 	public void update()
 	{
-		
+		colBox.setBounds(x, y, width, height);
 	}
 	
 	public void draw(Graphics g)
