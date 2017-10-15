@@ -3,6 +3,9 @@ package Game;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
+import java.awt.Graphics;
+import java.awt.Rectangle;
+
 public class GameObject {
 	protected boolean isAlive;
 	

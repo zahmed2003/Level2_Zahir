@@ -2,11 +2,12 @@ package Game;
 
 import javax.swing.JFrame;
 
+
 public class GameRunner{
 
 	JFrame frame = new JFrame();
-	final static int width = 800;
-	final static int height = 500;
+	final static int width = 500;
+	final static int height = 270;
 	GamePanel gamepanel = new GamePanel();
 
 
@@ -26,13 +27,13 @@ public class GameRunner{
 	}
 
 	public void setup() {
+		frame.setTitle("Game");
 		frame.add(gamepanel);
 		frame.setSize(width, height);
 		frame.setVisible(true);
 		frame.addKeyListener(gamepanel);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		gamepanel.startGame();
-
 	}
 	 
 	

@@ -2,9 +2,8 @@ package Game;
 
 import java.awt.Graphics;
 
-public class RedTile extends GameObject{
-
-	public RedTile(int x, int y, int width, int height)
+public class NextLevelTile extends GameObject{
+	public NextLevelTile(int x, int y, int width, int height)
 	{
 		super(x, y, width, height);
 		
@@ -16,12 +15,10 @@ public class RedTile extends GameObject{
 	
 	public void update()
 	{
-		colBox.setBounds(x, y, width, height);
 	}
 	
 	public void draw(Graphics g)
 	{
-		g.drawImage(GamePanel.RTImg, x, y, width, height, null);
+		g.drawImage(GamePanel.wtImg, x, y, width, height, null);
 	}
-	
 }

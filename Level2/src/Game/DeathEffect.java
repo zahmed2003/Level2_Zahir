@@ -2,9 +2,8 @@ package Game;
 
 import java.awt.Graphics;
 
-public class RedTile extends GameObject{
-
-	public RedTile(int x, int y, int width, int height)
+public class DeathEffect extends GameObject{
+	public DeathEffect(int x, int y, int width, int height)
 	{
 		super(x, y, width, height);
 		
@@ -16,12 +15,11 @@ public class RedTile extends GameObject{
 	
 	public void update()
 	{
-		colBox.setBounds(x, y, width, height);
+		y += 10;
 	}
 	
 	public void draw(Graphics g)
 	{
-		g.drawImage(GamePanel.RTImg, x, y, width, height, null);
+		g.drawImage(GamePanel.deathImg, x, y, width, height, null);
 	}
-	
 }

@@ -24,16 +24,29 @@ public class GridPlayer extends GameObject implements KeyListener{
 	
 	public void draw(Graphics g)
 	{
-		g.setColor(Color.YELLOW);
-		g.fillRect(x, y, width, height);
+		g.drawImage(GamePanel.GPImg, x, y, width, height, null);
 
 	}
 	
+	
 	public void keyHandler()
 	{
-		if(InputManager.right_key == true)
+		if(x < 0)
 		{
-			x +=50;
+			x=0;
+		}
+		if(x > 500 - width)
+		{
+			x=500 - width;
+		}
+		
+		if(y < 0)
+		{
+			y=0;
+		}
+		if(y > 250 - width)
+		{
+			y=250 - width;
 		}
 	}
 
@@ -45,13 +58,6 @@ public class GridPlayer extends GameObject implements KeyListener{
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		
-		int key = e.getKeyCode();
-		
-		if(key == KeyEvent.VK_RIGHT)
-		{
-			InputManager.right_key = true;
-		}
 		
 	}
 

@@ -6,7 +6,6 @@ import java.awt.Rectangle;
 
 public class Player extends GameObject{
 	
-	CollisionSetter setter;
 
 	public Player(int x, int y, int width, int height)
 	{
@@ -22,19 +21,16 @@ public class Player extends GameObject{
 	
 	public void update()
 	{
-		setter.checkCollision();
 		if(isColliding && collisionObject instanceof RedTile)
 		{
 			isAlive = false;
 		}
 		colBox.setBounds(x, y, width, height);
-		
 	}
 	
 	public void draw(Graphics g)
 	{
-		g.setColor(Color.BLUE);
-		g.fillRect(x, y, width, height);
+		g.drawImage(GamePanel.PlayerImg, x, y, width, height, null);
 
 	}
 	

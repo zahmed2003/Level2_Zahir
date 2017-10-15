@@ -3,6 +3,8 @@ package Game;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import javax.imageio.ImageIO;
+
 public class SafeTile extends GameObject{
 
 	public SafeTile(int x, int y, int width, int height)
@@ -22,8 +24,7 @@ public class SafeTile extends GameObject{
 	
 	public void draw(Graphics g)
 	{
-		g.setColor(Color.WHITE);
-		g.fillRect(x, y, width, height);
+		g.drawImage(GamePanel.NTImg, x, y, width, height, null);
 	}
 	
 }
