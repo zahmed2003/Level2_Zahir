@@ -20,7 +20,12 @@ public class GameObject {
 	
 	protected GameObject collisionObject;
 
+	public int state;
+
 	public GameObject(int x, int y, int w, int h){
+		
+		state = 1;
+		this.state = state;
 		isAlive = true;
 		isColliding = false;
 		

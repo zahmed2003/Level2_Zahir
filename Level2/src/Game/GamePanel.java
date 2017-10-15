@@ -36,8 +36,8 @@ SafeTile stile13 = new SafeTile(250,100, 50, 50);
 SafeTile stile14 = new SafeTile(300,100, 50, 50);
 
 NextLevelTile wtile = new NextLevelTile(350,100, 50, 50);
+ElectricTile et = new ElectricTile(400, 100, 50, 50);
 
-SafeTile stile16 = new SafeTile(400,100, 50, 50);
 SafeTile stile17 = new SafeTile(50,150, 50, 50);
 SafeTile stile18 = new SafeTile(100,150, 50, 50);
 SafeTile stile19 = new SafeTile(150,150, 50, 50);
@@ -76,13 +76,15 @@ RedTile rtile26 = new RedTile(50,0,50,50);
 
 
 
-
 public static BufferedImage PlayerImg;
 public static BufferedImage NTImg;
 public static BufferedImage RTImg;
 public static BufferedImage GPImg;
 public static BufferedImage deathImg;
 public static BufferedImage wtImg;
+public static BufferedImage ONETImg;
+public static BufferedImage OFFETImg;
+
 
 
 public GamePanel()
@@ -100,6 +102,8 @@ public GamePanel()
 		GPImg = ImageIO.read(this.getClass().getResourceAsStream("GP.png"));
 		deathImg = ImageIO.read(this.getClass().getResourceAsStream("death.png"));
 		wtImg = ImageIO.read(this.getClass().getResourceAsStream("wt.png"));
+		ONETImg = ImageIO.read(this.getClass().getResourceAsStream("ONET.png"));
+		OFFETImg = ImageIO.read(this.getClass().getResourceAsStream("OFFET.png"));
 		
 		
 	} 
@@ -149,6 +153,7 @@ public void updateLevel1State() {
 	checkCollision(rtile24);
 	checkCollision(rtile25);
 	checkCollision(rtile26);
+	checkCollision(et);
 	
 	
 	if(player.isAlive == false)
@@ -212,8 +217,8 @@ public void drawLevel1State(Graphics g) {
 	stile14.draw(g);
 	
 	wtile.draw(g);
+	et.draw(g);
 
-	stile16.draw(g);
 	stile17.draw(g);
 	stile18.draw(g);
 	stile19.draw(g);
@@ -222,7 +227,6 @@ public void drawLevel1State(Graphics g) {
 	stile22.draw(g);
 	stile23.draw(g);
 	stile24.draw(g);
-	
 	
 	gp.draw(g);
 	player.draw(g);
@@ -233,7 +237,7 @@ public void drawLevel1State(Graphics g) {
 
 public void checkCollision(GameObject o)
 {
-	if(player.colBox.intersects(o.colBox) == true && o instanceof RedTile)
+	if(player.colBox.intersects(o.colBox) == true && (o instanceof RedTile || (o instanceof ElectricTile && o.state == 1)))
 	{
 		player.isAlive = false;
 	}
@@ -292,10 +296,18 @@ public void keyPressed(KeyEvent e) {
 		player.y = gp.y;
 		InputManager.horizontal = false;
 		InputManager.vertical = false;
+		et.state = -et.state;
 	}
 	}
 	
-	if(InputManager.horizontal == true)
+	else if(gp.x == player.x && gp.y == player.y)
+	{
+		InputManager.horizontal = false;
+		InputManager.vertical = false;
+	}
+	
+	
+	else if(InputManager.horizontal == true)
 	{
 		if(key == KeyEvent.VK_RIGHT)
 		{
@@ -313,10 +325,11 @@ public void keyPressed(KeyEvent e) {
 			player.y = gp.y;
 			InputManager.horizontal = false;
 			InputManager.vertical = false;
+			et.state = -et.state;
 		}
 	}
 	
-	if(InputManager.vertical == true)
+	else if(InputManager.vertical == true)
 	{
 		if(key == KeyEvent.VK_UP)
 		{
@@ -332,14 +345,10 @@ public void keyPressed(KeyEvent e) {
 		{
 			player.x = gp.x;
 			player.y = gp.y;
+			et.state = -et.state;
 			InputManager.horizontal = false;
 			InputManager.vertical = false;
 		}
-	}
-	if(gp.x == player.x && gp.y == player.y)
-	{
-		InputManager.horizontal = false;
-		InputManager.vertical = false;
 	}
 	
 }
