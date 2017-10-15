@@ -24,7 +24,7 @@ public class SafeTile extends GameObject{
 	
 	public void draw(Graphics g)
 	{
-		g.drawImage(GamePanel.NTImg, x, y, width, height, null);
+		g.drawImage(Level1State.NTImg, x, y, width, height, null);
 	}
 	
 }

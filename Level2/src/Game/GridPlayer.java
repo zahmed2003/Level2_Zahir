@@ -28,7 +28,7 @@ public class GridPlayer extends GameObject implements KeyListener{
 	
 	public void draw(Graphics g)
 	{
-		g.drawImage(GamePanel.GPImg, x, y, width, height, null);
+		g.drawImage(Level1State.GPImg, x, y, width, height, null);
 
 	}
 	

@@ -30,7 +30,7 @@ public class Player extends GameObject{
 	
 	public void draw(Graphics g)
 	{
-		g.drawImage(GamePanel.PlayerImg, x, y, width, height, null);
+		g.drawImage(Level1State.PlayerImg, x, y, width, height, null);
 
 	}
 	
