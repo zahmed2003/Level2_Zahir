@@ -2,6 +2,7 @@ package Game;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -15,11 +16,14 @@ public class GridPlayer extends GameObject implements KeyListener{
 		this.y = y;
 		this.height = height;
 		this.width = width;
+		
+		colBox = new Rectangle(x - (width/2), y - (height/2), width, height);
 	}
 	
 	public void update()
 	{
 		keyHandler();
+		colBox.setBounds(x, y, width, height);
 	}
 	
 	public void draw(Graphics g)

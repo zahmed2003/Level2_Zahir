@@ -33,8 +33,8 @@ SafeTile stile10 = new SafeTile(100,100, 50, 50);
 SafeTile stile11 = new SafeTile(150,100, 50, 50);
 SafeTile stile12 = new SafeTile(200,100, 50, 50);
 SafeTile stile13 = new SafeTile(250,100, 50, 50);
-SafeTile stile14 = new SafeTile(300,100, 50, 50);
 
+SolidTile bt = new SolidTile(300, 100, 50, 50);
 NextLevelTile wtile = new NextLevelTile(350,100, 50, 50);
 ElectricTile et = new ElectricTile(400, 100, 50, 50);
 
@@ -84,6 +84,7 @@ public static BufferedImage deathImg;
 public static BufferedImage wtImg;
 public static BufferedImage ONETImg;
 public static BufferedImage OFFETImg;
+public static BufferedImage BTImg;
 
 
 
@@ -104,6 +105,7 @@ public GamePanel()
 		wtImg = ImageIO.read(this.getClass().getResourceAsStream("wt.png"));
 		ONETImg = ImageIO.read(this.getClass().getResourceAsStream("ONET.png"));
 		OFFETImg = ImageIO.read(this.getClass().getResourceAsStream("OFFET.png"));
+		BTImg = ImageIO.read(this.getClass().getResourceAsStream("BT.png"));
 		
 		
 	} 
@@ -153,7 +155,9 @@ public void updateLevel1State() {
 	checkCollision(rtile24);
 	checkCollision(rtile25);
 	checkCollision(rtile26);
+	
 	checkCollision(et);
+	checkCollision(bt);
 	
 	
 	if(player.isAlive == false)
@@ -214,8 +218,8 @@ public void drawLevel1State(Graphics g) {
 	stile11.draw(g);
 	stile12.draw(g);
 	stile13.draw(g);
-	stile14.draw(g);
-	
+
+	bt.draw(g);
 	wtile.draw(g);
 	et.draw(g);
 
@@ -241,7 +245,32 @@ public void checkCollision(GameObject o)
 	{
 		player.isAlive = false;
 	}
+	
+	if (gp.colBox.intersects(o.colBox) == true && o instanceof SolidTile)
+	{
+		
+	if (player.y < o.y && player.x == o.x)
+	{
+		gp.y -= 50;
+	}
+	if (player.y > o.y && player.x == o.x)
+	{
+		gp.y += 50;
+	}
+	if (player.y == o.y && player.x < o.x)
+	{
+		gp.x -= 50;
+	}
+	if (player.y == o.y && player.x > o.x)
+	{
+		gp.x += 50;
+	}
+	
+	}
+	
 }
+
+
 
 
 
