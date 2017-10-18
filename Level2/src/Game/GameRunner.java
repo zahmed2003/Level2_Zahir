@@ -45,8 +45,10 @@ public class GameRunner{
 		GameRunner.frame.add(GameRunner.m);
 		GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
 		GameRunner.frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GameRunner.frame.addKeyListener(GameRunner.m);
 		GameRunner.m.startGame();
+
 			
 			
 	}

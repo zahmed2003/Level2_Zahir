@@ -39,8 +39,8 @@ public class MenuState extends JPanel implements KeyListener, ActionListener{
 				// load select
 				try {
 					p = ImageIO.read(
-						getClass().getResourceAsStream("Player.png")
-					).getSubimage(0, 120, 12, 11);
+						getClass().getResourceAsStream("GP.png")
+					).getSubimage(110, 130, 120, 110);
 				} catch (IOException e) {
 					
 					e.printStackTrace();
@@ -48,9 +48,9 @@ public class MenuState extends JPanel implements KeyListener, ActionListener{
 				
 				// titles and fonts
 				titleColor = Color.WHITE;
-				titleFont = new Font("Times New Roman", Font.PLAIN, 28);
-				font = new Font("Arial", Font.PLAIN, 14);
-				font2 = new Font("Arial", Font.PLAIN, 10);
+				titleFont = new Font("Times New Roman", Font.PLAIN, 280);
+				font = new Font("Arial", Font.PLAIN, 140);
+				font2 = new Font("Arial", Font.PLAIN, 50);
 			
 		}
 		
@@ -64,21 +64,21 @@ public class MenuState extends JPanel implements KeyListener, ActionListener{
 			// draw title
 			g.setColor(titleColor);
 			g.setFont(titleFont);
-			g.drawString("G A M E", 70, 90);
+			g.drawString("G A M E", 200, 200);
 			
 			// draw menu options
 			g.setFont(font);
 			g.setColor(Color.WHITE);
-			g.drawString("Start", 145, 165);
-			g.drawString("Quit", 145, 185);
+			g.drawString("Start", 600, 400);
+			g.drawString("Quit", 600, 600);
 			
 			// draw floating rook
-			if(currentChoice == 0) g.drawImage(p, 125, 154, null);
-			else if(currentChoice == 1) g.drawImage(p, 125, 174, null);
+			if(currentChoice == 0) g.drawImage(p, 450, 300, null);
+			else if(currentChoice == 1) g.drawImage(p, 450, 500, null);
 			
 			// other
 			g.setFont(font2);
-			g.drawString("2017 Zahir A.", 10, 232);
+			g.drawString("2017 Zahir A.", 10, 725);
 			
 		}
 		
