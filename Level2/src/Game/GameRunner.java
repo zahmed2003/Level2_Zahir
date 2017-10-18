@@ -1,19 +1,18 @@
 package Game;
 
-import java.awt.event.ActionEvent;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 
 public class GameRunner{
 
-	JFrame frame = new JFrame();
-	final static int width = 1000;
-	final static int height = 1000;
+	static JFrame frame = new JFrame();
+	final static int width = 1500;
+	final static int height = 750;
 	
-	Level1State lv1 = new Level1State();
-	Level2State lv2 = new Level2State();
+	static GamePanel lv1 = new GamePanel();
+	static Level2State lv2 = new Level2State();
+	static Level3State lv3 = new Level3State();
 
 
 	public static void main(String[] args) {
@@ -23,22 +22,23 @@ public class GameRunner{
 	}
 
 	public GameRunner() {
-		Level1State lv1 = new Level1State();
+		GamePanel lv1 = new GamePanel();
 		Level2State lv2 = new Level2State();
+		Level3State lv3 = new Level3State();
 		
 		JFrame frame = new JFrame();
 
-		this.frame = frame;
+		GameRunner.frame = frame;
 		
-		this.lv1 = lv1;
-		this.lv2 = lv2;
+		GameRunner.lv1 = lv1;
+		GameRunner.lv2 = lv2;
+		GameRunner.lv3 = lv3;
 		setup();
 	}
 
 	public void setup() {
 		
-		 if(GameStateManager.CURRENT_STATE == 1)
-			{
+		
 			frame.setTitle("Game");
 			frame.add(lv1);
 			frame.setSize(width, height);
@@ -46,17 +46,7 @@ public class GameRunner{
 			frame.addKeyListener(lv1);
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			lv1.startGame();
-			}
-			if(GameStateManager.CURRENT_STATE == 2)
-			{
-				frame.remove(lv1);
-				frame.add(lv2);
-				frame.setSize(width, height);
-				frame.setVisible(true);
-				frame.addKeyListener(lv2);
-				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				lv2.startGame();
-			}
+			
 	}
 	
 	

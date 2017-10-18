@@ -1,6 +1,5 @@
 package Game;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
@@ -30,7 +29,7 @@ public class Player extends GameObject{
 	
 	public void draw(Graphics g)
 	{
-		g.drawImage(Level1State.PlayerImg, x, y, width, height, null);
+		g.drawImage(GamePanel.PlayerImg, x, y, width, height, null);
 
 	}
 	

@@ -22,37 +22,17 @@ public class GridPlayer extends GameObject implements KeyListener{
 	
 	public void update()
 	{
-		keyHandler();
 		colBox.setBounds(x, y, width, height);
 	}
 	
 	public void draw(Graphics g)
 	{
-		g.drawImage(Level1State.GPImg, x, y, width, height, null);
+		g.drawImage(GamePanel.GPImg, x, y, width, height, null);
 
 	}
 	
 	
-	public void keyHandler()
-	{
-		if(x < 0)
-		{
-			x=0;
-		}
-		if(x > 500 - width)
-		{
-			x=500 - width;
-		}
-		
-		if(y < 0)
-		{
-			y=0;
-		}
-		if(y > 250 - width)
-		{
-			y=250 - width;
-		}
-	}
+	
 
 	@Override
 	public void keyTyped(KeyEvent e) {

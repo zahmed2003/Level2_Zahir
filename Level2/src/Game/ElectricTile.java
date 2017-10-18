@@ -5,6 +5,7 @@ import java.awt.Graphics;
 public class ElectricTile extends GameObject{
 	public static final int on = 1;
 	public static final int off = -1;
+	public static int state;
 	
 	public ElectricTile(int x, int y, int width, int height, int state)
 	{
@@ -14,7 +15,7 @@ public class ElectricTile extends GameObject{
 		this.y = y;
 		this.width = width;
 		this.height = height;
-		this.state = state;
+		ElectricTile.state = state;
 	}
 	
 	public void update()
@@ -26,11 +27,11 @@ public class ElectricTile extends GameObject{
 	{
 		if(state == 1)
 		{
-		g.drawImage(Level1State.ONETImg, x, y, width, height, null);
+		g.drawImage(GamePanel.ONETImg, x, y, width, height, null);
 		}
 		if(state == -1)
 		{
-			g.drawImage(Level1State.OFFETImg, x, y, width, height, null);
+			g.drawImage(GamePanel.OFFETImg, x, y, width, height, null);
 		}
 	}
 	

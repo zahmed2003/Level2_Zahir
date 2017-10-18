@@ -20,6 +20,6 @@ public class DeathEffect extends GameObject{
 	
 	public void draw(Graphics g)
 	{
-		g.drawImage(Level1State.deathImg, x, y, width, height, null);
+		g.drawImage(GamePanel.deathImg, x, y, width, height, null);
 	}
 }

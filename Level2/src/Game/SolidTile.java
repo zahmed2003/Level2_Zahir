@@ -21,7 +21,7 @@ public class SolidTile extends GameObject{
 	
 	public void draw(Graphics g)
 	{
-		g.drawImage(Level1State.BTImg, x, y, width, height, null);
+		g.drawImage(GamePanel.BTImg, x, y, width, height, null);
 	}
 	
 }

@@ -19,6 +19,6 @@ public class NextLevelTile extends GameObject{
 	
 	public void draw(Graphics g)
 	{
-		g.drawImage(Level1State.wtImg, x, y, width, height, null);
+		g.drawImage(GamePanel.wtImg, x, y, width, height, null);
 	}
 }

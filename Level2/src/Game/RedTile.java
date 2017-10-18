@@ -21,7 +21,7 @@ public class RedTile extends GameObject{
 	
 	public void draw(Graphics g)
 	{
-		g.drawImage(Level1State.RTImg, x, y, width, height, null);
+		g.drawImage(GamePanel.RTImg, x, y, width, height, null);
 	}
 	
 }
