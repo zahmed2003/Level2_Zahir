@@ -55,7 +55,10 @@ public class ObjectManager {
 					o2.setColliding(true);
 					o2.setCollisionObject(o1);
 					
-					//insert death checker
+					if(o1 instanceof RedTile && o2 instanceof Player)
+					{
+						p.isAlive = false;
+					}
 					
 					if(o1 instanceof SolidTile && o2 instanceof GridPlayer)
 					{

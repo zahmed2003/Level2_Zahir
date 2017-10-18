@@ -1,5 +1,7 @@
 package Game;
 
+import java.awt.Color;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -10,6 +12,7 @@ public class GameRunner{
 	final static int width = 1500;
 	final static int height = 750;
 	
+	static MenuState m = new MenuState();
 	static GamePanel lv1 = new GamePanel();
 	static Level2State lv2 = new Level2State();
 	static Level3State lv3 = new Level3State();
@@ -22,6 +25,8 @@ public class GameRunner{
 	}
 
 	public GameRunner() {
+		
+		MenuState m = new MenuState();
 		GamePanel lv1 = new GamePanel();
 		Level2State lv2 = new Level2State();
 		Level3State lv3 = new Level3State();
@@ -37,15 +42,12 @@ public class GameRunner{
 	}
 
 	public void setup() {
-		
-		
-			frame.setTitle("Game");
-			frame.add(lv1);
-			frame.setSize(width, height);
-			frame.setVisible(true);
-			frame.addKeyListener(lv1);
-			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			lv1.startGame();
+		GameRunner.frame.add(GameRunner.m);
+		GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
+		GameRunner.frame.setVisible(true);
+		GameRunner.frame.addKeyListener(GameRunner.m);
+		GameRunner.m.startGame();
+			
 			
 	}
 	

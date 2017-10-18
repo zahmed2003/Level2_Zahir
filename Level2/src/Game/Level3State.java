@@ -22,64 +22,64 @@ public class Level3State  extends JPanel implements ActionListener, KeyListener{
 	
 Timer timer;
 ObjectManager manager = new ObjectManager();
-Player player = new Player(tw*5, th*5, tw,th);
-GridPlayer gp = new GridPlayer(tw*5,th*5, tw,th);
+Player player = new Player(tw*5 + GameRunner.width/4, th*5, tw,th);
+GridPlayer gp = new GridPlayer(tw*5 + GameRunner.width/4,th*5, tw,th);
 
-SafeTile t1 = new SafeTile(0, 0, tw, th);
-SafeTile t2 = new SafeTile(tw, 0, tw, th);
-SafeTile t3 = new SafeTile(2*tw, 0, tw, th);
-SolidTile t4 = new SolidTile(3*tw, 0, tw, th);
-RedTile t5 = new RedTile(4*tw, 0, tw, th);
-RedTile t6 = new RedTile(5*tw, 0, tw, th);
-RedTile t7 = new RedTile(6*tw, 0, tw, th);
+SafeTile t1 = new SafeTile(0+ GameRunner.width/4, 0, tw, th);
+SafeTile t2 = new SafeTile(tw+ GameRunner.width/4, 0, tw, th);
+SafeTile t3 = new SafeTile(2*tw+ GameRunner.width/4, 0, tw, th);
+SolidTile t4 = new SolidTile(3*tw+ GameRunner.width/4, 0, tw, th);
+RedTile t5 = new RedTile(4*tw+ GameRunner.width/4, 0, tw, th);
+RedTile t6 = new RedTile(5*tw+ GameRunner.width/4, 0, tw, th);
+RedTile t7 = new RedTile(6*tw+ GameRunner.width/4, 0, tw, th);
 
-SafeTile t8 = new SafeTile(0, th, tw, th);
-NextLevelTile t9 = new NextLevelTile(tw, th, tw, th);
-SafeTile t10 = new SafeTile(2*tw, th, tw, th);
-SolidTile t11 = new SolidTile(3*tw, th, tw, th);
-SafeTile t12 = new SafeTile(4*tw, th, tw, th);
-SafeTile t13 = new SafeTile(5*tw, th, tw, th);
-RedTile t14 = new RedTile(6*tw, th, tw, th);
+SafeTile t8 = new SafeTile(0+ GameRunner.width/4, th, tw, th);
+NextLevelTile t9 = new NextLevelTile(tw+ GameRunner.width/4, th, tw, th);
+SafeTile t10 = new SafeTile(2*tw+ GameRunner.width/4, th, tw, th);
+SolidTile t11 = new SolidTile(3*tw+ GameRunner.width/4, th, tw, th);
+SafeTile t12 = new SafeTile(4*tw+ GameRunner.width/4, th, tw, th);
+SafeTile t13 = new SafeTile(5*tw+ GameRunner.width/4, th, tw, th);
+RedTile t14 = new RedTile(6*tw+ GameRunner.width/4, th, tw, th);
 
-SafeTile t15 = new SafeTile(0, 2*th, tw, th);
-SafeTile t16 = new SafeTile(tw, 2*th, tw, th);
-SafeTile t17 = new SafeTile(2*tw, 2*th, tw, th);
-SafeTile t18 = new SafeTile(3*tw, 2*th, tw, th);
-SafeTile t19 = new SafeTile(4*tw, 2*th, tw, th);
-SafeTile t20 = new SafeTile(5*tw, 2*th, tw, th);
-RedTile t21 = new RedTile(6*tw, 2*th, tw, th);
+SafeTile t15 = new SafeTile(0+ GameRunner.width/4, 2*th, tw, th);
+SafeTile t16 = new SafeTile(tw+ GameRunner.width/4, 2*th, tw, th);
+SafeTile t17 = new SafeTile(2*tw+ GameRunner.width/4, 2*th, tw, th);
+SafeTile t18 = new SafeTile(3*tw+ GameRunner.width/4, 2*th, tw, th);
+SafeTile t19 = new SafeTile(4*tw+ GameRunner.width/4, 2*th, tw, th);
+SafeTile t20 = new SafeTile(5*tw+ GameRunner.width/4, 2*th, tw, th);
+RedTile t21 = new RedTile(6*tw + GameRunner.width/4, 2*th, tw, th);
 
-SolidTile t22 = new SolidTile(0, 3*th, tw, th);
-SolidTile t23 = new SolidTile(tw, 3*th, tw, th);
-SafeTile t24 = new SafeTile(2*tw, 3*th, tw, th);
-RedTile t25 = new RedTile(3*tw, 3*th, tw, th);
-SafeTile t26 = new SafeTile(4*tw, 3*th, tw, th);
-SolidTile t27 = new SolidTile(5*tw, 3*th, tw, th);
-SolidTile t28 = new SolidTile(6*tw, 3*th, tw, th);
+SolidTile t22 = new SolidTile(0 + GameRunner.width/4, 3*th, tw, th);
+SolidTile t23 = new SolidTile(tw + GameRunner.width/4, 3*th, tw, th);
+SafeTile t24 = new SafeTile(2*tw + GameRunner.width/4, 3*th, tw, th);
+RedTile t25 = new RedTile(3*tw + GameRunner.width/4, 3*th, tw, th);
+SafeTile t26 = new SafeTile(4*tw + GameRunner.width/4, 3*th, tw, th);
+SolidTile t27 = new SolidTile(5*tw + GameRunner.width/4, 3*th, tw, th);
+SolidTile t28 = new SolidTile(6*tw + GameRunner.width/4, 3*th, tw, th);
 
-RedTile t29 = new RedTile(0, 4*th, tw, th);
-SafeTile t30 = new SafeTile(tw, 4*th, tw, th);
-SafeTile t31 = new SafeTile(2*tw, 4*th, tw, th);
-SafeTile t32 = new SafeTile(3*tw, 4*th, tw, th);
-SafeTile t33 = new SafeTile(4*tw, 4*th, tw, th);
-SafeTile t34 = new SafeTile(5*tw, 4*th, tw, th);
-SafeTile t35 = new SafeTile(6*tw, 4*th, tw, th);
+RedTile t29 = new RedTile(0 + GameRunner.width/4, 4*th, tw, th);
+SafeTile t30 = new SafeTile(tw + GameRunner.width/4, 4*th, tw, th);
+SafeTile t31 = new SafeTile(2*tw + GameRunner.width/4, 4*th, tw, th);
+SafeTile t32 = new SafeTile(3*tw + GameRunner.width/4, 4*th, tw, th);
+SafeTile t33 = new SafeTile(4*tw + GameRunner.width/4, 4*th, tw, th);
+SafeTile t34 = new SafeTile(5*tw + GameRunner.width/4, 4*th, tw, th);
+SafeTile t35 = new SafeTile(6*tw + GameRunner.width/4, 4*th, tw, th);
 
-RedTile t36 = new RedTile(0, 5*th, tw, th);
-SafeTile t37 = new SafeTile(tw, 5*th, tw, th);
-SafeTile t38 = new SafeTile(2*tw, 5*th, tw, th);
-SolidTile t39 = new SolidTile(3*tw, 5*th, tw, th);
-SafeTile t40 = new SafeTile(4*tw, 5*th, tw, th);
-SafeTile t41 = new SafeTile(5*tw, 5*th, tw, th);
-SafeTile t42 = new SafeTile(6*tw, 5*th, tw, th);
+RedTile t36 = new RedTile(0 + GameRunner.width/4, 5*th, tw, th);
+SafeTile t37 = new SafeTile(tw + GameRunner.width/4, 5*th, tw, th);
+SafeTile t38 = new SafeTile(2*tw + GameRunner.width/4, 5*th, tw, th);
+SolidTile t39 = new SolidTile(3*tw + GameRunner.width/4, 5*th, tw, th);
+SafeTile t40 = new SafeTile(4*tw + GameRunner.width/4, 5*th, tw, th);
+SafeTile t41 = new SafeTile(5*tw + GameRunner.width/4, 5*th, tw, th);
+SafeTile t42 = new SafeTile(6*tw + GameRunner.width/4, 5*th, tw, th);
 
-RedTile t43 = new RedTile(0, 6*th, tw, th);
-RedTile t44 = new RedTile(tw, 6*th, tw, th);
-RedTile t45 = new RedTile(2*tw, 6*th, tw, th);
-SolidTile t46 = new SolidTile(3*tw, 6*th, tw, th);
-SafeTile t47 = new SafeTile(4*tw, 6*th, tw, th);
-SafeTile t48 = new SafeTile(5*tw, 6*th, tw, th);
-SafeTile t49 = new SafeTile(6*tw, 6*th, tw, th);
+RedTile t43 = new RedTile(0 + GameRunner.width/4, 6*th , tw, th);
+RedTile t44 = new RedTile(tw + GameRunner.width/4, 6*th, tw, th);
+RedTile t45 = new RedTile(2*tw + GameRunner.width/4, 6*th, tw, th);
+SolidTile t46 = new SolidTile(3*tw + GameRunner.width/4, 6*th, tw, th);
+SafeTile t47 = new SafeTile(4*tw + GameRunner.width/4, 6*th, tw, th);
+SafeTile t48 = new SafeTile(5*tw + GameRunner.width/4, 6*th, tw, th);
+SafeTile t49 = new SafeTile(6*tw + GameRunner.width/4, 6*th, tw, th);
 
 
 public static BufferedImage PlayerImg;
@@ -187,9 +187,12 @@ public void updateLevel3State() {
 	
 	if(player.isAlive == false)
 	{
+		gp.x = tw*5 + GameRunner.width/4;
+		gp.y = th*5;
 		
-		
-	
+		player.x = tw*5 + GameRunner.width/4;
+		player.y = th*5;
+		player.isAlive = true;
 		
 	}
 
@@ -198,8 +201,8 @@ public void updateLevel3State() {
 
 public void boundChecker()
 {
-	if(gp.x < 0) {gp.x =0;}
-	if(gp.x >tw*7 - gp.width) {gp.x = tw*7 - gp.width;}
+	if(gp.x < GameRunner.width/4) {gp.x = GameRunner.width/4;}
+	if(gp.x >tw*7 - gp.width + GameRunner.width/4) {gp.x = tw*7 - gp.width+ GameRunner.width/4;}
 	if(gp.y < 0) {gp.y = 0;}
 	if(gp.y > th*7 - gp.height) {gp.y = th*7 - gp.height;}
 
