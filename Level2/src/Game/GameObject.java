@@ -15,17 +15,17 @@ public class GameObject {
 	protected int height;
 	protected int speed;
 	protected boolean isColliding;
+	public boolean colliding;
 	
 	protected Rectangle colBox; 
 	
 	protected GameObject collisionObject;
 
 	public int state;
+	public int direction;
 
 	public GameObject(int x, int y, int w, int h){
 		
-		state = 1;
-		this.state = state;
 		isAlive = true;
 		isColliding = false;
 		

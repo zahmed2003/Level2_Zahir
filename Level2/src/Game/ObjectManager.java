@@ -48,6 +48,7 @@ public class ObjectManager {
 				GameObject o1 = objects.get(i);
 				GameObject o2 = objects.get(j);
 				
+				
 				if(o1.colBox.intersects(o2.colBox)){
 					o1.setColliding(true);
 					o1.setCollisionObject(o2);
@@ -55,10 +56,15 @@ public class ObjectManager {
 					o2.setColliding(true);
 					o2.setCollisionObject(o1);
 					
-					if(o1 instanceof RedTile && o2 instanceof Player)
+					if((o1 instanceof RedTile || o1 instanceof RMTile) && o2 instanceof Player)
 					{
 						p.isAlive = false;
 					}
+					
+					if(o1 instanceof RMTile && o2 instanceof SolidTile) {
+						o1.colliding = true;
+					}
+				
 					
 					if(o1 instanceof SolidTile && o2 instanceof GridPlayer)
 					{
@@ -83,6 +89,38 @@ public class ObjectManager {
 			}
 		}
 	}
+	
+	public void moveTile(int tw) {
+		for (int i = 0; i < objects.size(); i++) {
+				GameObject o = objects.get(i);
+				if(o instanceof RMTile)
+				{
+					
+					if(o.direction == -1 && (o.colliding == true || o.y >= GameRunner.height - o.height))
+					{
+						o.direction = 1;
+						o.y -= tw;
+						o.colliding = false;
+					}
+					
+					else if(o.direction == 1 && (o.colliding == true || o.y <= 0))
+					{
+						o.direction = -1;
+						o.y+=tw;
+						o.colliding = false;
+					}
+					else if(o.direction == 1 && o.colliding == false)
+					{
+						o.y -= tw;
+					}
+					else if(o.direction == -1 && o.colliding == false)
+					{
+						o.y+=tw;
+					}
+				}
+		}
+	}
+	
 	
 	public void reset(){
 		objects.clear();

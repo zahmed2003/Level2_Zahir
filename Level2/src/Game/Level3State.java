@@ -210,7 +210,17 @@ public void boundChecker()
 
 public void winChecker()
 {
-	
+	if(player.x == t9.x && player.y == t9.y)
+	{
+		manager.reset();
+		timer.stop();
+		GameRunner.frame.remove(GameRunner.lv4);
+		GameRunner.frame.add(GameRunner.lv4);
+		GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
+		GameRunner.frame.setVisible(true);
+		GameRunner.frame.addKeyListener(GameRunner.lv4);
+		GameRunner.lv4.startGame();
+	}
 }
 
 public void drawLevel3State(Graphics g) {
