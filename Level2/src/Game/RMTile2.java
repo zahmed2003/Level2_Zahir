@@ -3,11 +3,11 @@ package Game;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-public class RMTile extends GameObject{
-	public static final int up = 1;
-	public static final int down = -1;
+public class RMTile2 extends GameObject{
+	public static final int right = 1;
+	public static final int left = -1;
 	
-	public RMTile(int x, int y, int width, int height, int direction)
+	public RMTile2(int x, int y, int width, int height, int direction)
 	{
 		super(x, y, width, height);
 		
@@ -29,13 +29,12 @@ public class RMTile extends GameObject{
 	{
 		if(direction == 1)
 		{
-		g.drawImage(GamePanel.RMUpImg, x, y, width, height, null);
+		g.drawImage(GamePanel.RMRImg, x, y, width, height, null);
 		}
 		if(direction == -1)
 		{
-			g.drawImage(GamePanel.RMDownImg, x, y, width, height, null);
+			g.drawImage(GamePanel.RMLImg, x, y, width, height, null);
 		}
 	}
 	
 }
-

@@ -97,6 +97,8 @@ public static BufferedImage OFFETImg;
 public static BufferedImage BTImg;
 public static BufferedImage RMUpImg;
 public static BufferedImage RMDownImg;
+public static BufferedImage RMRImg;
+public static BufferedImage RMLImg;
 
 
 public GamePanel()
@@ -128,7 +130,7 @@ public GamePanel()
 	manager.addObject(t23);
 	manager.addObject(t24);
 	manager.addObject(t25);
-	manager.addObject(t26);
+	
 	manager.addObject(t27);
 	manager.addObject(t28);
 	manager.addObject(t29);
@@ -154,6 +156,8 @@ public GamePanel()
 	manager.addObject(t49);
 	manager.addObject(t50);
 	
+	manager.addObject(t26);
+	
 	manager.addObject(gp);
 	manager.addObject(player);
 	
@@ -172,6 +176,8 @@ public GamePanel()
 		
 		RMUpImg = ImageIO.read(this.getClass().getResourceAsStream("RMUp.png"));
 		RMDownImg = ImageIO.read(this.getClass().getResourceAsStream("RMDown.png"));
+		RMRImg = ImageIO.read(this.getClass().getResourceAsStream("RMR.png"));
+		RMLImg = ImageIO.read(this.getClass().getResourceAsStream("RML.png"));
 		
 		
 		
@@ -197,6 +203,7 @@ public void updateLevel1State() {
 	manager.checkCollision(player, tw);
 	winChecker();
 	boundChecker();
+	
 	
 	
 	if(player.isAlive == false)
@@ -335,18 +342,18 @@ public void keyPressed(KeyEvent e) {
 	
 	if(key == KeyEvent.VK_ENTER)
 	{
+		manager.moveTile(tw, twn, thn);
 		player.x = gp.x;
 		player.y = gp.y;
 		InputManager.horizontal = false;
 		InputManager.vertical = false;
-		manager.moveTile(tw);
+		
 	}
 	
 }
 
 @Override
 public void keyReleased(KeyEvent e) {
-
 	
 }
 

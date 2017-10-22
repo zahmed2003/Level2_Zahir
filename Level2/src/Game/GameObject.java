@@ -15,7 +15,6 @@ public class GameObject {
 	protected int height;
 	protected int speed;
 	protected boolean isColliding;
-	public boolean colliding;
 	
 	protected Rectangle colBox; 
 	
