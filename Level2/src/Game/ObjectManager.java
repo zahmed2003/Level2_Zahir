@@ -56,7 +56,7 @@ public class ObjectManager {
 					o2.setColliding(true);
 					o2.setCollisionObject(o1);
 					
-					if((o1 instanceof RedTile || o1 instanceof RMTile || o1 instanceof RMTile2) && o2 instanceof Player)
+					if((o1 instanceof RedTile || o1 instanceof RMTile || o1 instanceof RMTile2 || (o1 instanceof ElectricTile && o1.state == 1)) && o2 instanceof Player)
 					{
 						p.isAlive = false;
 					}
@@ -139,6 +139,19 @@ public class ObjectManager {
 					}
 				}
 			}
+		}
+	}
+	
+	public void switchState()
+	{
+		for (int i = 0; i < objects.size(); i++) {
+			GameObject o = objects.get(i);
+			if(o instanceof ElectricTile)
+			{
+				o.state = -o.state;
+				
+			}
+			
 		}
 	}
 	

@@ -339,17 +339,17 @@ public void boundChecker()
 
 public void winChecker()
 {
-	//if(player.x == t58.x && player.y == t58.y)
-	//{
-	//	manager.reset();
-	//	timer.stop();
-	//	GameRunner.frame.remove(GameRunner.lv7);
-	//	GameRunner.frame.add(GameRunner.lv8);
-	//	GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
-	//	GameRunner.frame.setVisible(true);
-		//GameRunner.frame.addKeyListener(GameRunner.lv8);
-	//	GameRunner.lv8.startGame();
-	//}
+	if(player.x == t58.x && player.y == t58.y)
+	{
+		manager.reset();
+		timer.stop();
+		GameRunner.frame.remove(GameRunner.lv7);
+		GameRunner.frame.add(GameRunner.lv8);
+		GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
+		GameRunner.frame.setVisible(true);
+		GameRunner.frame.addKeyListener(GameRunner.lv8);
+		GameRunner.lv8.startGame();
+	}
 }
 
 public void drawLevel7State(Graphics g) {
