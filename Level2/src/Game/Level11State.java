@@ -223,14 +223,14 @@ public void winChecker()
 {
 	if(player.x == t39.x && player.y == t39.y)
 	{
-	//	manager.reset();
-		//timer.stop();
-		//GameRunner.frame.remove(GameRunner.lv11);
-		//GameRunner.frame.add(GameRunner.lv12);
-		//GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
-		//GameRunner.frame.setVisible(true);
-		//GameRunner.frame.addKeyListener(GameRunner.lv12);
-		//GameRunner.lv12.startGame();
+		manager.reset();
+		timer.stop();
+		GameRunner.frame.remove(GameRunner.lv11);
+		GameRunner.frame.add(GameRunner.lv12);
+		GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
+		GameRunner.frame.setVisible(true);
+		GameRunner.frame.addKeyListener(GameRunner.lv12);
+		GameRunner.lv12.startGame();
 	}
 }
 

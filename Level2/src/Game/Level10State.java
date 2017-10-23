@@ -156,7 +156,7 @@ public void updateLevel10State() {
 public void boundChecker()
 {
 	if(gp.x < 0) {gp.x = 0;}
-	if(gp.x >tw*16 - gp.width) {gp.x = tw*5 - gp.width;}
+	if(gp.x >tw*5 - gp.width) {gp.x = tw*5 - gp.width;}
 	if(gp.y < 0) {gp.y = 0;}
 	if(gp.y > th*5 - gp.height) {gp.y = th*5 - gp.height;}
 
