@@ -15,6 +15,7 @@ public class GameObject {
 	protected int height;
 	protected int speed;
 	protected boolean isColliding;
+	protected boolean isSolidColliding;
 	
 	protected Rectangle colBox; 
 	
@@ -28,6 +29,7 @@ public class GameObject {
 		
 		isAlive = true;
 		isColliding = false;
+		isSolidColliding = false;
 		superstate = 1;
 		
 		this.x = x;
@@ -51,9 +53,17 @@ public class GameObject {
 	public boolean isColliding() {
 		return isColliding;
 	}
+	
+	public boolean isSolidColliding() {
+		return isSolidColliding;
+	}
 
 	public void setColliding(boolean isColliding) {
 		this.isColliding = isColliding;
+	}
+	
+	public void setSolidColliding(boolean isSolidColliding) {
+		this.isSolidColliding = isSolidColliding;
 	}
 
 	public boolean isAlive() {
