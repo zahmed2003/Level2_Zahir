@@ -155,6 +155,64 @@ public class ObjectManager {
 		}
 	}
 	
+	public void resetElectric()
+	{
+		for (int i = 0; i < objects.size(); i++) {
+			GameObject o = objects.get(i);
+			if(o instanceof ElectricTile)
+			{
+				o.state = -o.state;
+			}
+		}
+	}
+	
+	public void movePawn(int tw, int width, int height, Player p)
+	{
+		for (int i = 0; i < objects.size(); i++) {
+			GameObject o = objects.get(i);
+			if(o instanceof Pawn)
+			{
+			if(p.x < o.x && p.y < o.y)
+			{
+				o.x -= tw;
+				o.y -= tw;
+			}
+			else if(p.x == o.x && p.y < o.y)
+			{
+				o.y -= tw;
+			}
+			else if(p.x > o.x && p.y < o.y)
+			{
+				o.x += tw;
+				o.y -= tw;
+			}
+			else if(p.x > o.x && p.y == o.y)
+			{
+				o.x += tw;
+			}
+			else if(p.x > o.x && p.y > o.y)
+			{
+				o.x += tw;
+				o.y += tw;
+			}
+			else if(p.x == o.x && p.y > o.y)
+			{
+				o.y += tw;
+			}
+			else if(p.x < o.x && p.y > o.y)
+			{
+				o.x -= tw;
+				o.y += tw;
+			}
+			else if(p.x < o.x && p.y == o.y)
+			{
+				o.x -= tw;
+			}
+			
+			}
+			}
+	}
+	
 	public void moveTile(int tw, int width, int height) {
 		for (int i = 0; i < objects.size(); i++) {
 				GameObject o = objects.get(i);

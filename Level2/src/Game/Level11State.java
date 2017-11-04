@@ -202,6 +202,7 @@ public void updateLevel11State() {
 		
 		player.x = tw;
 		player.y = th;
+		manager.resetElectric();
 		player.isAlive = true;
 	
 		

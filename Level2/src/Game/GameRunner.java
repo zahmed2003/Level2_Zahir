@@ -25,6 +25,7 @@ public class GameRunner{
 	static Level10State lv10 = new Level10State();
 	static Level11State lv11 = new Level11State();
 	static Level12State lv12 = new Level12State();
+	static Level13State lv13 = new Level13State();
 
 
 	public static void main(String[] args) {
@@ -48,6 +49,7 @@ public class GameRunner{
 		Level10State lv10 = new Level10State();
 		Level11State lv11 = new Level11State();
 		Level12State lv12 = new Level12State();
+		Level13State lv13 = new Level13State();
 		
 		JFrame frame = new JFrame();
 
@@ -65,17 +67,18 @@ public class GameRunner{
 		GameRunner.lv10 = lv10;
 		GameRunner.lv11 = lv11;
 		GameRunner.lv12 = lv12;
+		GameRunner.lv13 = lv13;
 		
 		setup();
 	}
 
 	public void setup() {
-		GameRunner.frame.add(GameRunner.lv12);
+		GameRunner.frame.add(GameRunner.lv13);
 		GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
 		GameRunner.frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		GameRunner.frame.addKeyListener(GameRunner.lv12);
-		GameRunner.lv12.startGame();
+		GameRunner.frame.addKeyListener(GameRunner.lv13);
+		GameRunner.lv13.startGame();
 
 			
 			

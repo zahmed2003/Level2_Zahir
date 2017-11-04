@@ -13,70 +13,80 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-public class Level9State extends JPanel implements ActionListener, KeyListener{
+public class Level13State  extends JPanel implements ActionListener, KeyListener{
 	
-	public static int twn = 16;
-	public static int thn = 3;
-	public static int tw = GameRunner.width/twn;
-	public static int th = tw;
+public static int twn = 10;
+public static int thn = 5;
+public static int tw = GameRunner.width/twn;
+public static int th = GameRunner.height/thn;
 	
 Timer timer;
 ObjectManager manager = new ObjectManager();
-Player player = new Player(tw, th, tw,th);
-GridPlayer gp = new GridPlayer(tw,th, tw,th);
+GridPlayer gp = new GridPlayer(2 * tw, 2 * th, tw,th);
+Player player = new Player(2 * tw, 2 * th, tw,th);
 
-SolidTile t1 = new SolidTile(0, 0, tw, th);
-SolidTile t2 = new SolidTile(tw, 0, tw, th);
-SolidTile t3 = new SolidTile(2*tw, 0, tw, th);
-SolidTile t4 = new SolidTile(3*tw, 0, tw, th);
-ElectricTile t5 = new ElectricTile(4*tw, 0, tw, th, -1);
-ElectricTile t6 = new ElectricTile(5*tw, 0, tw, th, -1);
-ElectricTile t7 = new ElectricTile(6*tw, 0, tw, th, -1);
-ElectricTile t8 = new ElectricTile(7*tw, 0, tw, th, 1);
-SolidTile t9 = new SolidTile(8*tw, 0, tw, th);
-ElectricTile t10 = new ElectricTile(9*tw, 0, tw, th, -1);
-ElectricTile t11 = new ElectricTile(10*tw, 0, tw, th, 1);
-ElectricTile t12 = new ElectricTile(11*tw, 0, tw, th, -1);
-SafeTile t13 = new SafeTile(12*tw, 0, tw, th);
-SafeTile t14 = new SafeTile(13*tw, 0, tw, th);
-SolidTile t15 = new SolidTile(14*tw, 0, tw, th);
-SolidTile t16 = new SolidTile(15*tw, 0, tw, th);
 
-SolidTile t17 = new SolidTile(0, th, tw, th);
-SafeTile t18 = new SafeTile(tw, th, tw, th);
-SafeTile t19 = new SafeTile(2*tw, th, tw, th);
-SafeTile t20 = new SafeTile(3*tw, th, tw, th);
-ElectricTile t21 = new ElectricTile(4*tw, th, tw, th, 1);
-SolidTile t22 = new SolidTile(5*tw, th, tw, th);
-ElectricTile t23 = new ElectricTile(6*tw, th, tw, th, 1);
-ElectricTile t24 = new ElectricTile(7*tw, th, tw, th, -1);
-ElectricTile t25 = new ElectricTile(8*tw, th, tw, th, -1);
-ElectricTile t26 = new ElectricTile(9*tw, th, tw, th, -1);
-ElectricTile t27 = new ElectricTile(10*tw, th, tw, th, -1);
-ElectricTile t28 = new ElectricTile(11*tw, th, tw, th, -1);
-SolidTile t29 = new SolidTile(12*tw, th, tw, th);
-NextLevelTile t30 = new NextLevelTile(13*tw, th, tw, th);
-SolidTile t31 = new SolidTile(14*tw, th, tw, th);
-SolidTile t32 = new SolidTile(15*tw, th, tw, th);
+SafeTile t1 = new SafeTile(0,0,tw,th);
+SafeTile t2 = new SafeTile(tw,0,tw,th);
+SafeTile t3 = new SafeTile(tw * 2,0,tw,th);
+SafeTile t4 = new SafeTile(tw * 3,0,tw,th);
+SafeTile t5 = new SafeTile(tw * 4,0,tw,th);
+SolidTile t6 = new SolidTile(tw * 5,0,tw,th);
+SolidTile t7 = new SolidTile(tw * 6,0,tw,th);
+SolidTile t8 = new SolidTile(tw * 7,0,tw,th);
+SolidTile t9 = new SolidTile(tw * 8,0,tw,th);
+SolidTile t10 = new SolidTile(tw * 9,0,tw,th);
 
-SolidTile t33 = new SolidTile(0, 2*th, tw, th);
-SolidTile t34 = new SolidTile(tw, 2*th, tw, th);
-SolidTile t35 = new SolidTile(2*tw, 2*th, tw, th);
-SolidTile t36 = new SolidTile(3*tw, 2*th, tw, th);
-ElectricTile t37 = new ElectricTile(4*tw, 2*th, tw, th, -1);
-ElectricTile t38 = new ElectricTile(5*tw, 2*th, tw, th, -1);
-ElectricTile t39 = new ElectricTile(6*tw, 2*th, tw, th, -1);
-ElectricTile t40 = new ElectricTile(7*tw, 2*th, tw, th, 1);
-SolidTile t41 = new SolidTile(8*tw, 2*th, tw, th);
-ElectricTile t42 = new ElectricTile(9*tw, 2*th, tw, th, -1);
-ElectricTile t43 = new ElectricTile(10*tw, 2*th, tw, th, 1);
-ElectricTile t44 = new ElectricTile(11*tw, 2*th, tw, th, -1);
-SafeTile t45 = new SafeTile(12*tw, 2*th, tw, th);
-SafeTile t46 = new SafeTile(13*tw, 2*th, tw, th);
-SolidTile t47 = new SolidTile(14*tw, 2*th, tw, th);
-SolidTile t48 = new SolidTile(15*tw, 2*th, tw, th);
+SafeTile t11 = new SafeTile(0,th,tw,th);
+SafeTile t12 = new SafeTile(tw,th,tw,th);
+SafeTile t13 = new SafeTile(tw * 2,th,tw,th);
+SafeTile t14 = new SafeTile(tw * 3,th,tw,th);
+SafeTile t15 = new SafeTile(tw * 4,th,tw,th);
+SolidTile t16 = new SolidTile(tw * 5,th,tw,th);
+SafeTile t17 = new SafeTile(tw * 6,th,tw,th);
+SafeTile t18 = new SafeTile(tw * 7,th,tw,th);
+SafeTile t19 = new SafeTile(tw * 8,th,tw,th);
+SolidTile t20 = new SolidTile(tw * 9,th,tw,th);
+
+SafeTile t21 = new SafeTile(0,2*th,tw,th);
+SafeTile t22 = new SafeTile(tw,2*th,tw,th);
+SafeTile t23 = new SafeTile(tw * 2,2*th,tw,th);
+SafeTile t24 = new SafeTile(tw * 3,2*th,tw,th);
+SafeTile t25 = new SafeTile(tw * 4,2*th,tw,th);
+SafeTile t26 = new SafeTile(tw * 5,2*th,tw,th);
+SafeTile t27 = new SafeTile(tw * 6,2*th,tw,th);
+NextLevelTile t28 = new NextLevelTile(tw * 7,2*th,tw,th);
+SafeTile t29 = new SafeTile(tw * 8,2*th,tw,th);
+SolidTile t30 = new SolidTile(tw * 9,2*th,tw,th);
+
+SafeTile t31 = new SafeTile(0,3*th,tw,th);
+SafeTile t32 = new SafeTile(tw,3*th,tw,th);
+SafeTile t33 = new SafeTile(tw * 2,3*th,tw,th);
+SafeTile t34 = new SafeTile(tw * 3,3*th,tw,th);
+SafeTile t35 = new SafeTile(tw * 4,3*th,tw,th);
+SolidTile t36 = new SolidTile(tw * 5,3*th,tw,th);
+SafeTile t37 = new SafeTile(tw * 6,3*th,tw,th);
+SafeTile t38 = new SafeTile(tw * 7,3*th,tw,th);
+SafeTile t39 = new SafeTile(tw * 8,3*th,tw,th);
+SolidTile t40 = new SolidTile(tw * 9,3*th,tw,th);
+
+SafeTile t41 = new SafeTile(0,4*th,tw,th);
+SafeTile t42 = new SafeTile(tw,4*th,tw,th);
+SafeTile t43 = new SafeTile(tw * 2,4*th,tw,th);
+SafeTile t44 = new SafeTile(tw * 3,4*th,tw,th);
+SafeTile t45 = new SafeTile(tw * 4,4*th,tw,th);
+SolidTile t46 = new SolidTile(tw * 5,4*th,tw,th);
+SolidTile t47 = new SolidTile(tw * 6,4*th,tw,th);
+SolidTile t48 = new SolidTile(tw * 7,4*th,tw,th);
+SolidTile t49 = new SolidTile(tw * 8,4*th,tw,th);
+SolidTile t50 = new SolidTile(tw * 9,4*th,tw,th);
+
+Pawn e1 = new Pawn(tw * 5, th * 2, tw, th);
+
+
 
 public static BufferedImage PlayerImg;
+public static BufferedImage PawnImg;
 public static BufferedImage NTImg;
 public static BufferedImage RTImg;
 public static BufferedImage GPImg;
@@ -85,9 +95,13 @@ public static BufferedImage wtImg;
 public static BufferedImage ONETImg;
 public static BufferedImage OFFETImg;
 public static BufferedImage BTImg;
+public static BufferedImage RMUpImg;
+public static BufferedImage RMDownImg;
+public static BufferedImage RMRImg;
+public static BufferedImage RMLImg;
 
 
-public Level9State()
+public Level13State()
 {
 	timer = new Timer(1000/60, this);
 	
@@ -116,7 +130,7 @@ public Level9State()
 	manager.addObject(t23);
 	manager.addObject(t24);
 	manager.addObject(t25);
-	manager.addObject(t26);
+	
 	manager.addObject(t27);
 	manager.addObject(t28);
 	manager.addObject(t29);
@@ -139,10 +153,13 @@ public Level9State()
 	manager.addObject(t46);
 	manager.addObject(t47);
 	manager.addObject(t48);
+	manager.addObject(t49);
+	manager.addObject(t50);
 	
-
-
-
+	manager.addObject(t26);
+	
+	manager.addObject(e1);
+	
 	manager.addObject(gp);
 	manager.addObject(player);
 	
@@ -150,6 +167,7 @@ public Level9State()
 	{
 	
 		PlayerImg = ImageIO.read(this.getClass().getResourceAsStream("Player.png"));
+		PawnImg = ImageIO.read(this.getClass().getResourceAsStream("Pawn.png"));
 		NTImg = ImageIO.read(this.getClass().getResourceAsStream("NT.png"));
 		RTImg = ImageIO.read(this.getClass().getResourceAsStream("RT.png"));
 		GPImg = ImageIO.read(this.getClass().getResourceAsStream("GP.png"));
@@ -158,6 +176,12 @@ public Level9State()
 		ONETImg = ImageIO.read(this.getClass().getResourceAsStream("ONET.png"));
 		OFFETImg = ImageIO.read(this.getClass().getResourceAsStream("OFFET.png"));
 		BTImg = ImageIO.read(this.getClass().getResourceAsStream("BT.png"));
+		
+		RMUpImg = ImageIO.read(this.getClass().getResourceAsStream("RMUp.png"));
+		RMDownImg = ImageIO.read(this.getClass().getResourceAsStream("RMDown.png"));
+		RMRImg = ImageIO.read(this.getClass().getResourceAsStream("RMR.png"));
+		RMLImg = ImageIO.read(this.getClass().getResourceAsStream("RML.png"));
+		
 		
 		
 	} 
@@ -172,7 +196,11 @@ public void startGame()
 	timer.start();
 }
 
-public void updateLevel9State() {
+public void updateMenuState() {
+
+}
+
+public void updateLevel13State() {
 	
 	manager.update();
 	manager.checkCollision(player, tw);
@@ -180,16 +208,16 @@ public void updateLevel9State() {
 	boundChecker();
 	
 	
+	
 	if(player.isAlive == false)
 	{
-		gp.x = tw;
-		gp.y = th;
 		
-		player.x = tw;
-		player.y = th;
-		
-		manager.resetElectric();
+		player.x = 50;
+		player.y = 100;
+		gp.x = 50;
+		gp.y = 100;
 		player.isAlive = true;
+	
 		
 	}
 
@@ -198,29 +226,30 @@ public void updateLevel9State() {
 
 public void boundChecker()
 {
-	if(gp.x < 0) {gp.x = 0;}
-	if(gp.x >tw*16 - gp.width) {gp.x = tw*16 - gp.width;}
+	if(gp.x < 0) {gp.x =0;}
+	if(gp.x > GameRunner.width - gp.width) {gp.x = GameRunner.width - gp.width;}
 	if(gp.y < 0) {gp.y = 0;}
-	if(gp.y > th*3 - gp.height) {gp.y = th*3 - gp.height;}
+	if(gp.y > GameRunner.height - gp.height) {gp.y = GameRunner.height - gp.height;}
 
 }
 
 public void winChecker()
 {
-	if(player.x == t30.x && player.y == t30.y)
+	if(player.x == t28.x && player.y == t28.y)
 	{
-		manager.reset();
-		timer.stop();
-		GameRunner.frame.remove(GameRunner.lv9);
-		GameRunner.frame.add(GameRunner.lv10);
-		GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
-		GameRunner.frame.setVisible(true);
-		GameRunner.frame.addKeyListener(GameRunner.lv10);
-		GameRunner.lv10.startGame();
+		//manager.reset();
+		//timer.stop();
+		//GameRunner.frame.remove(GameRunner.lv13);
+		//GameRunner.frame.add(GameRunner.lv14);
+		//GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
+		//GameRunner.frame.setVisible(true);
+		//GameRunner.frame.addKeyListener(GameRunner.lv14);
+		//GameRunner.lv14.startGame();
+		
 	}
 }
 
-public void drawLevel9State(Graphics g) {
+public void drawLevel13State(Graphics g) {
 	g.setColor(Color.BLACK);
 	g.fillRect(0, 0, GameRunner.width, GameRunner.height);
 	manager.draw(g);
@@ -230,14 +259,14 @@ public void drawLevel9State(Graphics g) {
 
 
 public void paintComponent(Graphics g) {
-	drawLevel9State(g);
+	drawLevel13State(g);
 	
 }
 
 @Override
 public void actionPerformed(ActionEvent e) {
 	repaint();
-	updateLevel9State();
+	updateLevel13State();
 	
 }
 
@@ -273,7 +302,7 @@ public void keyPressed(KeyEvent e) {
 		gp.y += th;
 		InputManager.vertical = true;
 	}
-
+	
 	}
 	
 	
@@ -313,25 +342,25 @@ public void keyPressed(KeyEvent e) {
 		InputManager.horizontal = false;
 		InputManager.vertical = false;
 	}
+	
 	if(key == KeyEvent.VK_ENTER)
 	{
-		manager.moveTile(tw, twn*tw, thn*th);
-		manager.switchState();
+		manager.moveTile(tw, twn, thn);
 		player.x = gp.x;
 		player.y = gp.y;
+		manager.movePawn(tw, twn * tw, thn*th, player);
 		InputManager.horizontal = false;
 		InputManager.vertical = false;
+		
 	}
+	
 }
 
 @Override
 public void keyReleased(KeyEvent e) {
-
 	
 }
 
 
 }
-
-
 

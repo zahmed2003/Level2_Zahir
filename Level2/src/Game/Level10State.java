@@ -144,6 +144,8 @@ public void updateLevel10State() {
 		gp.x = tw;
 		gp.y = th;
 		
+		manager.resetElectric();
+		
 		player.x = tw;
 		player.y = th;
 		player.isAlive = true;

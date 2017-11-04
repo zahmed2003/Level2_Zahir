@@ -256,6 +256,8 @@ public void updateLevel8State() {
 		
 		player.x = tw*2;
 		player.y = th*2;
+		
+		manager.resetElectric();
 		player.isAlive = true;
 		
 	}

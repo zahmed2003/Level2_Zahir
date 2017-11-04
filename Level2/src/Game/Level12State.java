@@ -322,6 +322,8 @@ public void updateLevel12State() {
 		
 		player.x = tw*2;
 		player.y = th*2;
+		
+		manager.resetElectric();
 		player.isAlive = true;
 		
 	}
@@ -342,14 +344,14 @@ public void winChecker()
 {
 	if(player.x == t59.x && player.y == t59.y)
 	{
-		//manager.reset();
-		//timer.stop();
-		//GameRunner.frame.remove(GameRunner.lv12);
-		//GameRunner.frame.add(GameRunner.lv13);
-		//GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
-		//GameRunner.frame.setVisible(true);
-		//GameRunner.frame.addKeyListener(GameRunner.lv13);
-		//GameRunner.lv13.startGame();
+		manager.reset();
+		timer.stop();
+		GameRunner.frame.remove(GameRunner.lv12);
+		GameRunner.frame.add(GameRunner.lv13);
+		GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
+		GameRunner.frame.setVisible(true);
+		GameRunner.frame.addKeyListener(GameRunner.lv13);
+		GameRunner.lv13.startGame();
 	}
 }
 

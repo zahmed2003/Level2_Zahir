@@ -87,6 +87,7 @@ SolidTile t50 = new SolidTile(tw * 9,4*th,tw,th);
 
 
 public static BufferedImage PlayerImg;
+public static BufferedImage PawnImg;
 public static BufferedImage NTImg;
 public static BufferedImage RTImg;
 public static BufferedImage GPImg;
@@ -165,6 +166,7 @@ public GamePanel()
 	{
 	
 		PlayerImg = ImageIO.read(this.getClass().getResourceAsStream("Player.png"));
+		PawnImg = ImageIO.read(this.getClass().getResourceAsStream("Pawn.png"));
 		NTImg = ImageIO.read(this.getClass().getResourceAsStream("NT.png"));
 		RTImg = ImageIO.read(this.getClass().getResourceAsStream("RT.png"));
 		GPImg = ImageIO.read(this.getClass().getResourceAsStream("GP.png"));

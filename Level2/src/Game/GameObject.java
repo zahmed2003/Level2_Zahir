@@ -22,11 +22,13 @@ public class GameObject {
 
 	public int state;
 	public int direction;
+	public int superstate;
 
 	public GameObject(int x, int y, int w, int h){
 		
 		isAlive = true;
 		isColliding = false;
+		superstate = 1;
 		
 		this.x = x;
 		this.y = y;
