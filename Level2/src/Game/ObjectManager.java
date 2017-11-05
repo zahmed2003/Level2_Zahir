@@ -48,7 +48,6 @@ public class ObjectManager {
 				GameObject o1 = objects.get(i);
 				GameObject o2 = objects.get(j);
 				
-				
 				if(o1.colBox.intersects(o2.colBox)){
 					
 					o1.setColliding(true);
@@ -57,11 +56,42 @@ public class ObjectManager {
 					o2.setColliding(true);
 					o2.setCollisionObject(o1);
 					
-					if((o1 instanceof Pawn && o2 instanceof SolidTile) || (o1 instanceof SolidTile && o2 instanceof Pawn))
-					{
-						o1.setSolidColliding(true);
-						o2.setSolidColliding(true);
-					}
+					if(o2 instanceof Pawn && o1 instanceof SolidTile)
+							{
+						//if tile 1
+						
+						//if tile 2
+						
+						//if tile 3
+						
+						if(p.x > o2.x && p.y < o2.y)
+						{
+							o2.y += tw;
+							
+						}
+						
+						//if tile 4
+						
+						if(p.x > o2.x && p.y == o2.y)
+						{
+							o2.y += tw;
+						}
+						
+						//if tile 5
+						if(p.x > o2.x && p.y > o2.y)
+						{
+							o2.y -= tw;
+							
+						}
+						//if tile 6
+						
+						//if tile 7
+						
+						//if tile 8
+						
+						
+							}
+				
 					
 					if((o1 instanceof RedTile || o1 instanceof RMTile || o1 instanceof RMTile2 || (o1 instanceof ElectricTile && o1.state == 1)) && o2 instanceof Player)
 					{
@@ -176,60 +206,52 @@ public class ObjectManager {
 	public void movePawn(int tw, int width, int height, Player p)
 	{
 		for (int i = 0; i < objects.size(); i++) {
-			for (int j = i + 1; j < objects.size(); j++) {
+			
 				GameObject o = objects.get(i);
-				GameObject o2 = objects.get(j);
 				
 				if(o instanceof Pawn)
 				{
 				if(p.x < o.x && p.y < o.y)
 				{
-					o.x -= tw/2;
-					o.y -= tw/2;
+					o.x -= tw;
+					o.y -= tw;
 				}
 				else if(p.x == o.x && p.y < o.y)
 				{
-					o.y -= tw/2;
+					o.y -= tw;
 				}
 				else if(p.x > o.x && p.y < o.y)
 				{
-					o.x += tw/2;
-					o.y -= tw/2;
+					o.x += tw;
+					o.y -= tw;
 					
 				}
 				else if(p.x > o.x && p.y == o.y)
 				{
-					if(o2 instanceof SolidTile)
-					{
-						System.out.println("x");
-					}
-					o.x += tw/2;
-					
+					o.x += tw;
 				}
 					
 				else if(p.x > o.x && p.y > o.y)
 				{
-					o.x += tw/2;
-					o.y += tw/2;
+					o.x += tw;
+					o.y += tw;
 				}
 				else if(p.x == o.x && p.y > o.y)
 				{
-					o.y += tw/2;
+					o.y += tw;
 				}
 				else if(p.x < o.x && p.y > o.y)
 				{
-					o.x -= tw/2;
-					o.y += tw/2;
+					o.x -= tw;
+					o.y += tw;
 				}
 				else if(p.x < o.x && p.y == o.y)
 				{
-					o.x -= tw/2;
+					o.x -= tw;
+				}
 				}
 				
-				}
-
 			}
-		}
 		}
 	
 	public void moveTile(int tw, int width, int height) {
