@@ -48,6 +48,23 @@ public class ObjectManager {
 				GameObject o1 = objects.get(i);
 				GameObject o2 = objects.get(j);
 				
+				if(o2 instanceof Pawn && o1 instanceof SolidTile)
+				{
+					if(o2.x + tw == o1.x && o2.y - tw == o1.y)
+					{
+						o2.setSolidColliding3(true);
+					}
+					if(o2.x + tw == o1.x && o2.y == o1.y)
+					{
+						o2.setSolidColliding4(true);
+					}
+					if(o2.x + tw == o1.x && o2.y + tw == o1.y)
+					{
+						o2.setSolidColliding5(true);
+					}
+					
+				}
+				
 				if(o1.colBox.intersects(o2.colBox)){
 					
 					o1.setColliding(true);
@@ -56,41 +73,6 @@ public class ObjectManager {
 					o2.setColliding(true);
 					o2.setCollisionObject(o1);
 					
-					if(o2 instanceof Pawn && o1 instanceof SolidTile)
-							{
-						//if tile 1
-						
-						//if tile 2
-						
-						//if tile 3
-						
-						if(p.x > o2.x && p.y < o2.y)
-						{
-							o2.y += tw;
-							
-						}
-						
-						//if tile 4
-						
-						if(p.x > o2.x && p.y == o2.y)
-						{
-							o2.y += tw;
-						}
-						
-						//if tile 5
-						if(p.x > o2.x && p.y > o2.y)
-						{
-							o2.y -= tw;
-							
-						}
-						//if tile 6
-						
-						//if tile 7
-						
-						//if tile 8
-						
-						
-							}
 				
 					
 					if((o1 instanceof RedTile || o1 instanceof RMTile || o1 instanceof RMTile2 || (o1 instanceof ElectricTile && o1.state == 1)) && o2 instanceof Player)
@@ -228,7 +210,30 @@ public class ObjectManager {
 				}
 				else if(p.x > o.x && p.y == o.y)
 				{
-					o.x += tw;
+					if(o.isSolidColliding4 == true)
+					{
+						if(o.isSolidColliding5 == true)
+						{
+						o.x += tw;
+						o.y -= tw;
+						}
+						else if(o.isSolidColliding3 == true)
+						{
+						o.x += tw;
+						o.y += tw;
+						}
+						else
+						{
+							o.x += tw;
+							o.y -= tw;
+						}
+						
+					}
+					else
+					{	
+						o.x += tw;
+					}
+					
 				}
 					
 				else if(p.x > o.x && p.y > o.y)

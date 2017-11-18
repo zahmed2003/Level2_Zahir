@@ -15,7 +15,15 @@ public class GameObject {
 	protected int height;
 	protected int speed;
 	protected boolean isColliding;
-	protected boolean isSolidColliding;
+	
+	protected boolean isSolidColliding1;
+	protected boolean isSolidColliding2;
+	protected boolean isSolidColliding3;
+	protected boolean isSolidColliding4;
+	protected boolean isSolidColliding5;
+	protected boolean isSolidColliding6;
+	protected boolean isSolidColliding7;
+	protected boolean isSolidColliding8;
 	
 	protected Rectangle colBox; 
 	
@@ -29,7 +37,14 @@ public class GameObject {
 		
 		isAlive = true;
 		isColliding = false;
-		isSolidColliding = false;
+		isSolidColliding1 = false;
+		isSolidColliding2 = false;
+		isSolidColliding3 = false;
+		isSolidColliding4 = false;
+		isSolidColliding5 = false;
+		isSolidColliding6 = false;
+		isSolidColliding7 = false;
+		isSolidColliding8 = false;
 		superstate = 1;
 		
 		this.x = x;
@@ -54,17 +69,71 @@ public class GameObject {
 		return isColliding;
 	}
 	
-	public boolean isSolidColliding() {
-		return isSolidColliding;
+	
+	
+	public boolean isSolidColliding1() {
+		return isSolidColliding1;
 	}
+	public boolean isSolidColliding2() {
+		return isSolidColliding2;
+	}
+	public boolean isSolidColliding3() {
+		return isSolidColliding3;
+	}
+	public boolean isSolidColliding4() {
+		return isSolidColliding4;
+	}
+	public boolean isSolidColliding5() {
+		return isSolidColliding5;
+	}
+	public boolean isSolidColliding6() {
+		return isSolidColliding6;
+	}
+	public boolean isSolidColliding7() {
+		return isSolidColliding7;
+	}
+	public boolean isSolidColliding8() {
+		return isSolidColliding8;
+	}
+	
+	
 
 	public void setColliding(boolean isColliding) {
 		this.isColliding = isColliding;
 	}
 	
-	public void setSolidColliding(boolean isSolidColliding) {
-		this.isSolidColliding = isSolidColliding;
+	
+	
+	
+	
+	public void setSolidColliding1(boolean isSolidColliding1) {
+		this.isSolidColliding1 = isSolidColliding1;
 	}
+	public void setSolidColliding2(boolean isSolidColliding2) {
+		this.isSolidColliding2 = isSolidColliding2;
+	}
+	public void setSolidColliding3(boolean isSolidColliding3) {
+		this.isSolidColliding3 = isSolidColliding3;
+	}
+	public void setSolidColliding4(boolean isSolidColliding4) {
+		this.isSolidColliding4 = isSolidColliding4;
+	}
+	public void setSolidColliding5(boolean isSolidColliding5) {
+		this.isSolidColliding5 = isSolidColliding5;
+	}
+	public void setSolidColliding6(boolean isSolidColliding6) {
+		this.isSolidColliding6 = isSolidColliding6;
+	}
+	public void setSolidColliding7(boolean isSolidColliding7) {
+		this.isSolidColliding7 = isSolidColliding7;
+	}
+	public void setSolidColliding8(boolean isSolidColliding8) {
+		this.isSolidColliding8 = isSolidColliding8;
+	}
+	
+	
+	
+	
 
 	public boolean isAlive() {
 		return isAlive;

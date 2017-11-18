@@ -345,9 +345,11 @@ public void keyPressed(KeyEvent e) {
 	
 	if(key == KeyEvent.VK_ENTER)
 	{
+		
 		manager.moveTile(tw, twn, thn);
 		player.x = gp.x;
 		player.y = gp.y;
+		manager.checkCollision(player, tw);
 		manager.movePawn(tw, twn * tw, thn*th, player);
 		InputManager.horizontal = false;
 		InputManager.vertical = false;
