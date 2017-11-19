@@ -212,10 +212,12 @@ public void updateLevel13State() {
 	if(player.isAlive == false)
 	{
 		
-		player.x = 50;
-		player.y = 100;
-		gp.x = 50;
-		gp.y = 100;
+		player.x = 2*tw;
+		player.y = 2*tw;
+		
+		gp.x = 2*tw;
+		gp.y = 2*tw;
+		
 		player.isAlive = true;
 	
 		
@@ -237,14 +239,14 @@ public void winChecker()
 {
 	if(player.x == t28.x && player.y == t28.y)
 	{
-		//manager.reset();
-		//timer.stop();
-		//GameRunner.frame.remove(GameRunner.lv13);
-		//GameRunner.frame.add(GameRunner.lv14);
-		//GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
-		//GameRunner.frame.setVisible(true);
-		//GameRunner.frame.addKeyListener(GameRunner.lv14);
-		//GameRunner.lv14.startGame();
+		manager.reset();
+		timer.stop();
+		GameRunner.frame.remove(GameRunner.lv13);
+		GameRunner.frame.add(GameRunner.lv14);
+		GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
+		GameRunner.frame.setVisible(true);
+		GameRunner.frame.addKeyListener(GameRunner.lv14);
+		GameRunner.lv14.startGame();
 		
 	}
 }

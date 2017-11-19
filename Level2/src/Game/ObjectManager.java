@@ -45,22 +45,53 @@ public class ObjectManager {
 	public void checkCollision(Player p, int tw) {
 		for (int i = 0; i < objects.size(); i++) {
 			for (int j = i + 1; j < objects.size(); j++) {
+				
 				GameObject o1 = objects.get(i);
 				GameObject o2 = objects.get(j);
 				
 				if(o2 instanceof Pawn && o1 instanceof SolidTile)
 				{
+					//tile 1
+					if(o2.x - tw == o1.x && o2.y - tw == o1.y)
+					{
+						o2.setSolidColliding1(true);
+					}
+					//tile 2
+					if(o2.x == o1.x && o2.y - tw == o1.y)
+					{
+						o2.setSolidColliding2(true);
+					}
+					//tile 3
 					if(o2.x + tw == o1.x && o2.y - tw == o1.y)
 					{
 						o2.setSolidColliding3(true);
 					}
+					//tile 4
 					if(o2.x + tw == o1.x && o2.y == o1.y)
 					{
 						o2.setSolidColliding4(true);
 					}
+					//tile 5
 					if(o2.x + tw == o1.x && o2.y + tw == o1.y)
 					{
 						o2.setSolidColliding5(true);
+					}
+					//tile 6
+					if(o2.x == o1.x && o2.y + tw == o1.y)
+					{
+						o2.setSolidColliding6(true);
+					}
+					
+					//tile 7
+					if(o2.x - tw == o1.x && o2.y + tw == o1.y)
+					{
+						o2.setSolidColliding7(true);
+					}
+					
+					//tile 8
+					if(o2.x - tw == o1.x && o2.y == o1.y)
+					{
+						o2.setSolidColliding8(true);
 					}
 					
 				}
@@ -75,7 +106,7 @@ public class ObjectManager {
 					
 				
 					
-					if((o1 instanceof RedTile || o1 instanceof RMTile || o1 instanceof RMTile2 || (o1 instanceof ElectricTile && o1.state == 1)) && o2 instanceof Player)
+					if((o1 instanceof RedTile || o1 instanceof RMTile || o1 instanceof RMTile2 || (o1 instanceof ElectricTile && o1.state == 1) || o1 instanceof Pawn) && o2 instanceof Player)
 					{
 						p.isAlive = false;
 					}
@@ -193,31 +224,57 @@ public class ObjectManager {
 				
 				if(o instanceof Pawn)
 				{
+					
+				//tile 1
 				if(p.x < o.x && p.y < o.y)
 				{
 					o.x -= tw;
 					o.y -= tw;
 				}
+				
+				//tile 2
 				else if(p.x == o.x && p.y < o.y)
 				{
 					o.y -= tw;
 				}
+				
+				//tile 3
 				else if(p.x > o.x && p.y < o.y)
 				{
+					if(o.isSolidColliding3 == true)
+					{
+						if(o.isSolidColliding2 == true && o.isSolidColliding5 == false)
+						{
+							o.x += tw;
+						}
+						else if (o.isSolidColliding5 == true && o.isSolidColliding2 == false)
+						{
+							o.y -= tw;
+						}
+						else
+						{
+							o.x += tw;
+						}
+					}
+					else
+					{
 					o.x += tw;
 					o.y -= tw;
+					}
 					
 				}
+				
+				//tile 4
 				else if(p.x > o.x && p.y == o.y)
 				{
 					if(o.isSolidColliding4 == true)
 					{
-						if(o.isSolidColliding5 == true)
+						if(o.isSolidColliding5 == true && o.isSolidColliding3 == false)
 						{
 						o.x += tw;
 						o.y -= tw;
 						}
-						else if(o.isSolidColliding3 == true)
+						else if(o.isSolidColliding3 == true && o.isSolidColliding5 == false)
 						{
 						o.x += tw;
 						o.y += tw;
@@ -225,7 +282,7 @@ public class ObjectManager {
 						else
 						{
 							o.x += tw;
-							o.y -= tw;
+							o.y += tw;
 						}
 						
 					}
@@ -235,25 +292,60 @@ public class ObjectManager {
 					}
 					
 				}
-					
+				
+				//tile 5
 				else if(p.x > o.x && p.y > o.y)
 				{
+					if(o.isSolidColliding5 == true)
+					{
+						if(o.isSolidColliding4 == true && o.isSolidColliding6 == false)
+						{
+							o.y += tw;
+						}
+						else if(o.isSolidColliding6 == true && o.isSolidColliding4 == false)
+						{
+							o.x += tw;
+						}
+						else
+						{
+							o.x += tw;
+						}
+					}
+					else
+					{
 					o.x += tw;
 					o.y += tw;
+					}
 				}
+				
+				//tile 6
 				else if(p.x == o.x && p.y > o.y)
 				{
 					o.y += tw;
 				}
+				
+				//tile 7
 				else if(p.x < o.x && p.y > o.y)
 				{
 					o.x -= tw;
 					o.y += tw;
 				}
+				
+				//tile 8
 				else if(p.x < o.x && p.y == o.y)
 				{
 					o.x -= tw;
 				}
+				
+				o.setSolidColliding1(false);
+				o.setSolidColliding2(false);
+				o.setSolidColliding3(false);
+				o.setSolidColliding4(false);
+				o.setSolidColliding5(false);
+				o.setSolidColliding6(false);
+				o.setSolidColliding7(false);
+				o.setSolidColliding8(false);
+				
 				}
 				
 			}
