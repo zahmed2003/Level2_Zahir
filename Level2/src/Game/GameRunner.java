@@ -76,12 +76,12 @@ public class GameRunner{
 	}
 
 	public void setup() {
-		GameRunner.frame.add(GameRunner.lv14);
+		GameRunner.frame.add(GameRunner.lv13);
 		GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
 		GameRunner.frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		GameRunner.frame.addKeyListener(GameRunner.lv14);
-		GameRunner.lv14.startGame();
+		GameRunner.frame.addKeyListener(GameRunner.lv13);
+		GameRunner.lv13.startGame();
 
 			
 			

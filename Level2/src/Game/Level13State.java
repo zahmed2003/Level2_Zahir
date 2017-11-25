@@ -218,6 +218,9 @@ public void updateLevel13State() {
 		gp.x = 2*tw;
 		gp.y = 2*tw;
 		
+		e1.x = tw * 5;
+		e1.y = th * 2;
+		
 		player.isAlive = true;
 	
 		

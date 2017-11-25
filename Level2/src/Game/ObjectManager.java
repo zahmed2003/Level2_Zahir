@@ -168,7 +168,7 @@ public class ObjectManager {
 					
 				
 					
-					if(o1 instanceof SolidTile && o2 instanceof GridPlayer)
+					if((o1 instanceof SolidTile || o1 instanceof Pawn) && o2 instanceof GridPlayer)
 					{
 						if (p.y < o2.y && p.x == o2.x)
 						{
@@ -228,14 +228,61 @@ public class ObjectManager {
 				//tile 1
 				if(p.x < o.x && p.y < o.y)
 				{
+					if(o.isSolidColliding1 == true)
+					{
+						if(o.isSolidColliding2 == true && o.isSolidColliding8 == false)
+						{
+							o.x -= tw;
+						}
+						else if(o.isSolidColliding8 == true && o.isSolidColliding2 == false)
+						{
+							o.y -= tw;
+						}
+						else if(o.isSolidColliding8 == true && o.isSolidColliding2 == true)
+						{
+							
+						}
+						else
+						{
+							o.y -= tw;
+						}
+					}
+					else
+					{
 					o.x -= tw;
 					o.y -= tw;
+					}
 				}
 				
 				//tile 2
 				else if(p.x == o.x && p.y < o.y)
 				{
+					if(o.isSolidColliding2 == true)
+					{
+						if(o.isSolidColliding1 == true && o.isSolidColliding3 == false)
+						{
+							o.x += tw;
+							o.y -= tw;
+						}
+						else if(o.isSolidColliding3 == true && o.isSolidColliding1 == false)
+						{
+							o.x -= tw;
+							o.y -= tw;
+						}
+						else if(o.isSolidColliding3 == true && o.isSolidColliding1 == true)
+						{
+							
+						}
+						else
+						{
+							o.x += tw;
+							o.y -= tw;
+						}
+					}
+					else
+					{
 					o.y -= tw;
+					}
 				}
 				
 				//tile 3
@@ -243,13 +290,17 @@ public class ObjectManager {
 				{
 					if(o.isSolidColliding3 == true)
 					{
-						if(o.isSolidColliding2 == true && o.isSolidColliding5 == false)
+						if(o.isSolidColliding2 == true && o.isSolidColliding4 == false)
 						{
 							o.x += tw;
 						}
-						else if (o.isSolidColliding5 == true && o.isSolidColliding2 == false)
+						else if (o.isSolidColliding4 == true && o.isSolidColliding2 == false)
 						{
 							o.y -= tw;
+						}
+						else if (o.isSolidColliding2 == true && o.isSolidColliding4 == true)
+						{
+							
 						}
 						else
 						{
@@ -269,21 +320,26 @@ public class ObjectManager {
 				{
 					if(o.isSolidColliding4 == true)
 					{
-						if(o.isSolidColliding5 == true && o.isSolidColliding3 == false)
+						if(o.isSolidColliding3 == true && o.isSolidColliding5 == false)
+						{
+						o.x += tw;
+						o.y += tw;
+						}
+						else if(o.isSolidColliding5 == true && o.isSolidColliding3 == false)
 						{
 						o.x += tw;
 						o.y -= tw;
 						}
-						else if(o.isSolidColliding3 == true && o.isSolidColliding5 == false)
+						else if (o.isSolidColliding3 == true && o.isSolidColliding5 == true)
 						{
-						o.x += tw;
-						o.y += tw;
+							
 						}
 						else
 						{
 							o.x += tw;
 							o.y += tw;
 						}
+						
 						
 					}
 					else
@@ -306,6 +362,10 @@ public class ObjectManager {
 						{
 							o.x += tw;
 						}
+						else if (o.isSolidColliding4 == true && o.isSolidColliding4 == true)
+						{
+							
+						}
 						else
 						{
 							o.x += tw;
@@ -321,20 +381,92 @@ public class ObjectManager {
 				//tile 6
 				else if(p.x == o.x && p.y > o.y)
 				{
+					if(o.isSolidColliding6 == true)
+					{
+						if(o.isSolidColliding5 == true && o.isSolidColliding7 == false)
+						{
+							o.x -= tw;
+							o.y += tw;
+						}
+						else if(o.isSolidColliding7 == true && o.isSolidColliding5 == false)
+						{
+							o.x += tw;
+							o.y += tw;
+						}
+						else if(o.isSolidColliding7 == true && o.isSolidColliding5 == true)
+						{
+							
+						}
+						else
+						{
+							o.x -= tw;
+							o.y += tw;
+						}
+					}
+					else
+					{
 					o.y += tw;
+					}
 				}
 				
 				//tile 7
 				else if(p.x < o.x && p.y > o.y)
 				{
+					if(o.isSolidColliding7 == true)
+					{
+						if(o.isSolidColliding6 == true && o.isSolidColliding8 == false)
+						{
+							o.x -= tw;
+						}
+						else if(o.isSolidColliding8 == true && o.isSolidColliding6 == false)
+						{
+							o.y += tw;
+						}
+						else if(o.isSolidColliding8 == true && o.isSolidColliding6 == true)
+						{
+							
+						}
+						else
+						{
+							o.x -= tw;
+						}
+					}
+					else
+					{
 					o.x -= tw;
 					o.y += tw;
+					}
 				}
 				
 				//tile 8
 				else if(p.x < o.x && p.y == o.y)
 				{
+					if(o.isSolidColliding8 == true)
+					{
+						if(o.isSolidColliding7 == true && o.isSolidColliding1 == false)
+						{
+							o.x -= tw;
+							o.y -= tw;
+						}
+						else if(o.isSolidColliding1 == true && o.isSolidColliding7 == false)
+						{
+							o.x -= tw;
+							o.y += tw;
+						}
+						else if(o.isSolidColliding1 == true && o.isSolidColliding7 == true)
+						{
+							
+						}
+						else
+						{
+							o.x -= tw;
+							o.y -= tw;
+						}
+					}
+					else
+					{
 					o.x -= tw;
+					}
 				}
 				
 				o.setSolidColliding1(false);
