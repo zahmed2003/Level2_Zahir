@@ -28,6 +28,9 @@ public class GameRunner{
 	static Level13State lv13 = new Level13State();
 	static Level14State lv14 = new Level14State();
 	static Level15State lv15 = new Level15State();
+	static Level16State lv16 = new Level16State();
+	
+	static RookTest r = new RookTest();
 
 
 	public static void main(String[] args) {
@@ -54,6 +57,8 @@ public class GameRunner{
 		Level13State lv13 = new Level13State();
 		Level14State lv14 = new Level14State();
 		Level15State lv15 = new Level15State();
+		Level16State lv16 = new Level16State();
+		RookTest r = new RookTest();
 		
 		JFrame frame = new JFrame();
 
@@ -74,17 +79,19 @@ public class GameRunner{
 		GameRunner.lv13 = lv13;
 		GameRunner.lv14 = lv14;
 		GameRunner.lv15 = lv15;
+		GameRunner.lv16 = lv16;
+		GameRunner.r = r;
 		
 		setup();
 	}
 
 	public void setup() {
-		GameRunner.frame.add(GameRunner.lv15);
+		GameRunner.frame.add(GameRunner.r);
 		GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
 		GameRunner.frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		GameRunner.frame.addKeyListener(GameRunner.lv15);
-		GameRunner.lv15.startGame();
+		GameRunner.frame.addKeyListener(GameRunner.r);
+		GameRunner.r.startGame();
 
 			
 			

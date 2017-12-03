@@ -226,6 +226,35 @@ public class ObjectManager {
 		}
 	}
 	
+	public void moveRook(int tw, int width, int height, Player p)
+	{
+		for (int i = 0; i < objects.size(); i++) {
+			
+			GameObject o = objects.get(i);
+			
+			if(o instanceof Rook)
+			{
+				if(p.x == o.x && p.y < o.y)
+				{
+					o.y = p.y;
+				}
+				else if(p.x > o.x && p.y == o.y)
+				{
+					o.x = p.x;
+				}
+				
+				else if(p.x == o.x && p.y > o.y)
+				{
+					o.y = p.y;
+				}
+				else if(p.x < o.x && p.y == o.y)
+				{
+					o.x = p.x;
+				}
+			}
+		}
+	}
+	
 	public void movePawn(int tw, int width, int height, Player p)
 	{
 		for (int i = 0; i < objects.size(); i++) {

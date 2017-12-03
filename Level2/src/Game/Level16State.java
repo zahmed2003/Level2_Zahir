@@ -13,7 +13,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-public class Level15State extends JPanel implements ActionListener, KeyListener{
+public class Level16State extends JPanel implements ActionListener, KeyListener{
 	
 	public static int twn = 9;
 	public static int thn = 13;
@@ -22,108 +22,108 @@ public class Level15State extends JPanel implements ActionListener, KeyListener{
 	
 Timer timer;
 ObjectManager manager = new ObjectManager();
-Player player = new Player(tw*4, th*10, tw,th);
-GridPlayer gp = new GridPlayer(tw*4,th*10, tw,th);
+Player player = new Player(tw*2, th*11, tw,th);
+GridPlayer gp = new GridPlayer(tw*2,th*11, tw,th);
 
-SolidTile t1 = new SolidTile(0, 0, tw, th);
-SolidTile t2 = new SolidTile(tw, 0, tw, th);
-SolidTile t3 = new SolidTile(tw*2, 0, tw, th);
-SolidTile t4 = new SolidTile(tw*3, 0, tw, th);
-SolidTile t5 = new SolidTile(tw*4, 0, tw, th);
-SolidTile t6 = new SolidTile(tw*5, 0, tw, th);
-SolidTile t7 = new SolidTile(tw*6, 0, tw, th);
-SolidTile t8 = new SolidTile(tw*7, 0, tw, th);
-SolidTile t9 = new SolidTile(tw*8, 0, tw, th);
+SafeTile t1 = new SafeTile(0, 0, tw, th);
+SafeTile t2 = new SafeTile(tw, 0, tw, th);
+SafeTile t3 = new SafeTile(tw*2, 0, tw, th);
+SafeTile t4 = new SafeTile(tw*3, 0, tw, th);
+SafeTile t5 = new SafeTile(tw*4, 0, tw, th);
+SafeTile t6 = new SafeTile(tw*5, 0, tw, th);
+ElectricTile t7 = new ElectricTile(tw*6, 0, tw, th, 1);
+ElectricTile t8 = new ElectricTile(tw*7, 0, tw, th, -1);
+ElectricTile t9 = new ElectricTile(tw*8, 0, tw, th, 1);
 
-SolidTile t10 = new SolidTile(0, th, tw, th);
+SafeTile t10 = new SafeTile(0, th, tw, th);
 SafeTile t11 = new SafeTile(tw, th, tw, th);
 SafeTile t12 = new SafeTile(tw*2, th, tw, th);
 SafeTile t13 = new SafeTile(tw*3, th, tw, th);
-NextLevelTile t14 = new NextLevelTile(tw*4, th, tw, th);
-SafeTile t15 = new SafeTile(tw*5, th, tw, th);
-SafeTile t16 = new SafeTile(tw*6, th, tw, th);
-SafeTile t17 = new SafeTile(tw*7, th, tw, th);
-SolidTile t18 = new SolidTile(tw*8, th, tw, th);
+SafeTile t14 = new SafeTile(tw*4, th, tw, th);
+SolidTile t15 = new SolidTile(tw*5, th, tw, th);
+ElectricTile t16 = new ElectricTile(tw*6, th, tw, th, -1);
+ElectricTile t17 = new ElectricTile(tw*7, th, tw, th, 1);
+ElectricTile t18 = new ElectricTile(tw*8, th, tw, th, -1);
 
-SolidTile t19 = new SolidTile(0, th*2, tw, th);
+SafeTile t19 = new SafeTile(0, th*2, tw, th);
 SafeTile t20 = new SafeTile(tw, th*2, tw, th);
-SolidTile t21 = new SolidTile(tw*2,th*2, tw, th);
-SolidTile t22 = new SolidTile(tw*3, th*2, tw, th);
-SolidTile t23 = new SolidTile(4*tw, th*2, tw, th);
-SolidTile t24 = new SolidTile(5*tw, th*2, tw, th);
-SolidTile t25 = new SolidTile(6*tw, th*2, tw, th);
-SafeTile t26 = new SafeTile(7*tw, th*2, tw, th);
-SolidTile t27 = new SolidTile(8*tw, th*2, tw, th);
+SafeTile t21 = new SafeTile(tw*2, th*2, tw, th);
+SafeTile t22 = new SafeTile(tw*3, th*2, tw, th);
+SafeTile t23 = new SafeTile(tw*4, th*2, tw, th);
+SolidTile t24 = new SolidTile(tw*5, th*2, tw, th);
+ElectricTile t25 = new ElectricTile(tw*6, th*2, tw, th, 1);
+ElectricTile t26 = new ElectricTile(tw*7, th*2, tw, th, -1);
+ElectricTile t27 = new ElectricTile(tw*8, th*2, tw, th, 1);
 
-SolidTile t28 = new SolidTile(0, th*3, tw, th);
+SafeTile t28 = new SafeTile(0, th*3, tw, th);
 SafeTile t29 = new SafeTile(tw, th*3, tw, th);
 SafeTile t30 = new SafeTile(tw*2, th*3, tw, th);
 SafeTile t31 = new SafeTile(tw*3, th*3, tw, th);
 SafeTile t32 = new SafeTile(tw*4, th*3, tw, th);
-SafeTile t33 = new SafeTile(tw*5, th*3, tw, th);
-SafeTile t34 = new SafeTile(tw*6, th*3, tw, th);
-SafeTile t35 = new SafeTile(tw*7, th*3, tw, th);
-SolidTile t36 = new SolidTile(tw*8,th*3, tw, th);
+SolidTile t33 = new SolidTile(tw*5, th*3, tw, th);
+ElectricTile t34 = new ElectricTile(tw*6, th*3, tw, th, -1);
+ElectricTile t35 = new ElectricTile(tw*7, th*3, tw, th, 1);
+ElectricTile t36 = new ElectricTile(tw*8, th*3, tw, th, -1);
 
-SolidTile t37 = new SolidTile(0, th*4, tw, th);
-SolidTile t38 = new SolidTile(tw, th*4, tw, th);
+SafeTile t37 = new SafeTile(0, th*4, tw, th);
+SafeTile t38 = new SafeTile(tw, th*4, tw, th);
 SafeTile t39 = new SafeTile(tw*2, th*4, tw, th);
-SolidTile t40 = new SolidTile(tw*3, th*4, tw, th);
+SafeTile t40 = new SafeTile(tw*3, th*4, tw, th);
 SafeTile t41 = new SafeTile(tw*4, th*4, tw, th);
 SolidTile t42 = new SolidTile(tw*5, th*4, tw, th);
-SafeTile t43 = new SafeTile(tw*6, th*4, tw, th);
-SolidTile t44 = new SolidTile(tw*7, th*4, tw, th);
-SolidTile t45 = new SolidTile(tw*8,th*4, tw, th);
+ElectricTile t43 = new ElectricTile(tw*6, th*4, tw, th, 1);
+ElectricTile t44 = new ElectricTile(tw*7, th*4, tw, th, -1);
+ElectricTile t45 = new ElectricTile(tw*8, th*4, tw, th, 1);
 
-SolidTile t46 = new SolidTile(0, th*5, tw, th);
+SafeTile t46 = new SafeTile(0, th*5, tw, th);
 SafeTile t47 = new SafeTile(tw, th*5, tw, th);
 SafeTile t48 = new SafeTile(tw*2, th*5, tw, th);
 SafeTile t49 = new SafeTile(tw*3, th*5, tw, th);
 SafeTile t50 = new SafeTile(tw*4, th*5, tw, th);
-SafeTile t51 = new SafeTile(tw*5, th*5, tw, th);
-SafeTile t52 = new SafeTile(tw*6, th*5, tw, th);
-SafeTile t53 = new SafeTile(tw*7, th*5, tw, th);
-SolidTile t54 = new SolidTile(tw*8,th*5, tw, th);
+SolidTile t51 = new SolidTile(tw*5, th*5, tw, th);
+ElectricTile t52 = new ElectricTile(tw*6, th*5, tw, th, -1);
+ElectricTile t53 = new ElectricTile(tw*7, th*5, tw, th, 1);
+ElectricTile t54 = new ElectricTile(tw*8, th*5, tw, th, -1);
 
-SolidTile t55 = new SolidTile(0, th*6, tw, th);
+SafeTile t55 = new SafeTile(0, th*6, tw, th);
 SafeTile t56 = new SafeTile(tw, th*6, tw, th);
 SafeTile t57 = new SafeTile(tw*2, th*6, tw, th);
 SafeTile t58 = new SafeTile(tw*3, th*6, tw, th);
 SafeTile t59 = new SafeTile(tw*4, th*6, tw, th);
-SafeTile t60 = new SafeTile(tw*5, th*6, tw, th);
-SafeTile t61 = new SafeTile(tw*6, th*6, tw, th);
-SafeTile t62 = new SafeTile(tw*7, th*6, tw, th);
-SolidTile t63 = new SolidTile(tw*8,th*6, tw, th);
+SolidTile t60 = new SolidTile(tw*5, th*6, tw, th);
+ElectricTile t61 = new ElectricTile(tw*6, th*6, tw, th, 1);
+ElectricTile t62 = new ElectricTile(tw*7, th*6, tw, th, -1);
+ElectricTile t63 = new ElectricTile(tw*8, th*6, tw, th, 1);
 
-SolidTile t64 = new SolidTile(0, th*7, tw, th);
+SafeTile t64 = new SafeTile(0, th*7, tw, th);
 SafeTile t65 = new SafeTile(tw, th*7, tw, th);
 SafeTile t66 = new SafeTile(tw*2, th*7, tw, th);
 SafeTile t67 = new SafeTile(tw*3, th*7, tw, th);
 SafeTile t68 = new SafeTile(tw*4, th*7, tw, th);
-SafeTile t69 = new SafeTile(tw*5, th*7, tw, th);
-SafeTile t70 = new SafeTile(tw*6, th*7, tw, th);
-SafeTile t71 = new SafeTile(tw*7, th*7, tw, th);
-SolidTile t72 = new SolidTile(tw*8,th*7, tw, th);
+SolidTile t69 = new SolidTile(tw*5, th*7, tw, th);
+ElectricTile t70 = new ElectricTile(tw*6, th*7, tw, th, -1);
+ElectricTile t71 = new ElectricTile(tw*7, th*7, tw, th, 1);
+ElectricTile t72 = new ElectricTile(tw*8, th*7, tw, th, -1);
 
-SolidTile t73 = new SolidTile(0, th*8, tw, th);
-SafeTile t74 = new SafeTile(tw, th*8,tw, th);
+SafeTile t73 = new SafeTile(0, th*8, tw, th);
+SafeTile t74 = new SafeTile(tw, th*8, tw, th);
 SafeTile t75 = new SafeTile(tw*2, th*8, tw, th);
 SafeTile t76 = new SafeTile(tw*3, th*8, tw, th);
 SafeTile t77 = new SafeTile(tw*4, th*8, tw, th);
-SafeTile t78 = new SafeTile(tw*5, th*8, tw, th);
-SafeTile t79 = new SafeTile(tw*6, th*8, tw, th);
-SafeTile t80 = new SafeTile(tw*7, th*8, tw, th);
-SolidTile t81 = new SolidTile(tw*8,th*8, tw, th);
+SolidTile t78 = new SolidTile(tw*5, th*8, tw, th);
+ElectricTile t79 = new ElectricTile(tw*6, th*8, tw, th, 1);
+ElectricTile t80 = new ElectricTile(tw*7, th*8, tw, th, -1);
+ElectricTile t81 = new ElectricTile(tw*8, th*8, tw, th, 1);
 
 SolidTile t82 = new SolidTile(0, th*9, tw, th);
-SafeTile t83 = new SafeTile(tw, th*9, tw, th);
-SafeTile t84 = new SafeTile(tw*2, th*9, tw, th);
-SafeTile t85 = new SafeTile(tw*3, th*9, tw, th);
-SafeTile t86 = new SafeTile(tw*4, th*9, tw, th);
-SafeTile t87 = new SafeTile(tw*5, th*9, tw, th);
-SafeTile t88 = new SafeTile(tw*6, th*9, tw, th);
-SafeTile t89 = new SafeTile(tw*7, th*9, tw, th);
-SolidTile t90 = new SolidTile(tw*8,th*9, tw, th);
+SolidTile t83 = new SolidTile(tw, th*9, tw, th);
+SolidTile t84 = new SolidTile(tw*2, th*9, tw, th);
+SolidTile t85 = new SolidTile(tw*3, th*9, tw, th);
+SolidTile t86 = new SolidTile(tw*4, th*9, tw, th);
+SolidTile t87 = new SolidTile(tw*5, th*9, tw, th);
+ElectricTile t88 = new ElectricTile(tw*6, th*9, tw, th, -1);
+ElectricTile t89 = new ElectricTile(tw*7, th*9, tw, th, 1);
+ElectricTile t90 = new ElectricTile(tw*8, th*9, tw, th, -1);
 
 SolidTile t91 = new SolidTile(0, th*10, tw, th);
 SafeTile t92 = new SafeTile(tw, th*10, tw, th);
@@ -131,9 +131,9 @@ SafeTile t93 = new SafeTile(tw*2, th*10, tw, th);
 SafeTile t94 = new SafeTile(tw*3, th*10, tw, th);
 SafeTile t95 = new SafeTile(tw*4, th*10, tw, th);
 SafeTile t96 = new SafeTile(tw*5, th*10, tw, th);
-SafeTile t97 = new SafeTile(tw*6, th*10, tw, th);
-SafeTile t98 = new SafeTile(tw*7, th*10, tw, th);
-SolidTile t99 = new SolidTile(tw*8,th*10, tw, th);
+ElectricTile t97 = new ElectricTile(tw*6, th*10, tw, th, 1);
+ElectricTile t98 = new ElectricTile(tw*7, th*10, tw, th, -1);
+ElectricTile t99 = new ElectricTile(tw*8, th*10, tw, th, 1);
 
 SolidTile t100 = new SolidTile(0, th*11, tw, th);
 SafeTile t101 = new SafeTile(tw, th*11, tw, th);
@@ -141,33 +141,24 @@ SafeTile t102 = new SafeTile(tw*2, th*11, tw, th);
 SafeTile t103 = new SafeTile(tw*3, th*11, tw, th);
 SafeTile t104 = new SafeTile(tw*4, th*11, tw, th);
 SafeTile t105 = new SafeTile(tw*5, th*11, tw, th);
-SafeTile t106 = new SafeTile(tw*6, th*11, tw, th);
-SafeTile t107 = new SafeTile(tw*7, th*11, tw, th);
-SolidTile t108 = new SolidTile(tw*8,th*11, tw, th);
+ElectricTile t106 = new ElectricTile(tw*6, th*11, tw, th, -1);
+ElectricTile t107 = new ElectricTile(tw*7, th*11, tw, th, 1);
+ElectricTile t108 = new ElectricTile(tw*8, th*11, tw, th, -1);
 
 SolidTile t109 = new SolidTile(0, th*12, tw, th);
-SolidTile t110 = new SolidTile(tw, th*12, tw, th);
-SolidTile t111 = new SolidTile(tw*2, th*12, tw, th);
-SolidTile t112 = new SolidTile(tw*3, th*12, tw, th);
-SolidTile t113 = new SolidTile(tw*4, th*12, tw, th);
-SolidTile t114 = new SolidTile(tw*5, th*12, tw, th);
-SolidTile t115 = new SolidTile(tw*6, th*12, tw, th);
-SolidTile t116 = new SolidTile(tw*7, th*12, tw, th);
-SolidTile t117 = new SolidTile(tw*8, th*12, tw, th);
+SafeTile t110 = new SafeTile(tw, th*12, tw, th);
+SafeTile t111 = new SafeTile(tw*2, th*12, tw, th);
+SafeTile t112 = new SafeTile(tw*3, th*12, tw, th);
+SafeTile t113 = new SafeTile(tw*4, th*12, tw, th);
+SafeTile t114 = new SafeTile(tw*5, th*12, tw, th);
+ElectricTile t115 = new ElectricTile(tw*6, th*12, tw, th, 1);
+ElectricTile t116 = new ElectricTile(tw*7, th*12, tw, th, -1);
+ElectricTile t117 = new ElectricTile(tw*8, th*12, tw, th, 1);
 
-RMTile2 r1 = new RMTile2(tw, th*10, tw, th, 1);
-RMTile2 r2 = new RMTile2(tw, th*9, tw, th, 1);
-RMTile2 r3 = new RMTile2(tw*2, th*10, tw, th, 1);
-RMTile2 r4 = new RMTile2(tw*2, th*9, tw, th, 1);
+Pawn e1 = new Pawn(tw*6, th, tw, th);
+Pawn e2 = new Pawn(tw*7, th, tw, th);
+Pawn e3 = new Pawn(tw*8, th, tw, th);
 
-RMTile2 r5 = new RMTile2(tw, th*7, tw, th, 1);
-RMTile2 r6 = new RMTile2(tw, th*6, tw, th, 1);
-RMTile2 r7 = new RMTile2(tw*2, th*7, tw, th, 1);
-RMTile2 r8 = new RMTile2(tw*2, th*6, tw, th, 1);
-
-Pawn p1 = new Pawn(tw*2, th*4, tw, th);
-Pawn p2 = new Pawn(tw*4, th*4, tw, th);
-Pawn p3 = new Pawn(tw*6, th*4, tw, th);
 
 public static BufferedImage PlayerImg;
 public static BufferedImage NTImg;
@@ -180,7 +171,7 @@ public static BufferedImage OFFETImg;
 public static BufferedImage BTImg;
 
 
-public Level15State()
+public Level16State()
 {
 	timer = new Timer(1000/60, this);
 	
@@ -301,20 +292,12 @@ public Level15State()
 	manager.addObject(t115);
 	manager.addObject(t116);
 	manager.addObject(t117);
-
-	manager.addObject(r1);
-	manager.addObject(r2);
-	manager.addObject(r3);
-	manager.addObject(r4);
-	manager.addObject(r5);
-	manager.addObject(r6);
-	manager.addObject(r7);
-	manager.addObject(r8);
 	
-	manager.addObject(p1);
-	manager.addObject(p2);
-	manager.addObject(p3);
+	manager.addObject(e1);
+	manager.addObject(e2);
+	manager.addObject(e3);
 
+	
 	manager.addObject(gp);
 	manager.addObject(player);
 	
@@ -345,7 +328,7 @@ public void startGame()
 	timer.start();
 }
 
-public void updateLevel15State() {
+public void updateLevel17State() {
 	
 	manager.update();
 	manager.checkCollision(player, tw);
@@ -355,47 +338,12 @@ public void updateLevel15State() {
 	
 	if(player.isAlive == false)
 	{
-		gp.x = tw*4;
-		gp.y = th*10;
+		gp.x = tw* 2;
+		gp.y = th*11;
 		
 		
-		player.x = tw*4;
-		player.y = th*10;
-		
-		p1.x = tw*2;
-		p1.y = th*4;
-		
-		p2.x = tw*4;
-		p2.y = th*4;
-		
-		p3.x = tw*6;
-		p3.y = th*4;
-		
-		r1.x = tw;
-		r1.y = th*10;
-
-		r2.x = tw;
-		r2.y = th*9;
-
-		r3.x = tw*2;
-		r3.y = th*10;
-
-		r4.x = tw*2;
-		r4.y = th*9;
-		
-		r5.x = tw;
-		r5.y = th*7;
-
-		r6.x = tw;
-		r6.y = th*6;
-
-		r7.x = tw*2;
-		r7.y = th*7;
-
-		r8.x = tw*2;
-		r8.y = th*6;
-
-		
+		player.x = tw*2;
+		player.y = th*11;
 		
 		player.isAlive = true;
 		
@@ -415,37 +363,35 @@ public void boundChecker()
 
 public void winChecker()
 {
-	if(player.x == t14.x && player.y == t14.y)
-	{
-		manager.reset();
-		timer.stop();
-		GameRunner.frame.remove(GameRunner.lv15);
-		GameRunner.frame.add(GameRunner.lv16);
-		GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
-		GameRunner.frame.setVisible(true);
-		GameRunner.frame.addKeyListener(GameRunner.lv16);
-		GameRunner.lv16.startGame();
-	}
+	//if(player.x == t14.x && player.y == t14.y)
+	//{
+		//manager.reset();
+		//timer.stop();
+		//GameRunner.frame.remove(GameRunner.lv15);
+		//GameRunner.frame.add(GameRunner.lv16);
+		//GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
+		//GameRunner.frame.setVisible(true);
+		//GameRunner.frame.addKeyListener(GameRunner.lv16);
+		//GameRunner.lv16.startGame();
+	//}
 }
 
-public void drawLevel15State(Graphics g) {
+public void drawLevel17State(Graphics g) {
 	g.setColor(Color.BLACK);
 	g.fillRect(0, 0, GameRunner.width, GameRunner.height);
 	manager.draw(g);
 }
 
 
-
-
 public void paintComponent(Graphics g) {
-	drawLevel15State(g);
+	drawLevel17State(g);
 	
 }
 
 @Override
 public void actionPerformed(ActionEvent e) {
 	repaint();
-	updateLevel15State();
+	updateLevel17State();
 	
 }
 
@@ -527,6 +473,7 @@ public void keyPressed(KeyEvent e) {
 		player.x = gp.x;
 		player.y = gp.y;
 		manager.movePawn(tw,twn*tw, thn*th, player);
+		manager.switchState();
 		InputManager.horizontal = false;
 		InputManager.vertical = false;
 	}
@@ -538,7 +485,7 @@ public void keyReleased(KeyEvent e) {
 	
 }
 
+{
 
 }
-
-
+}
