@@ -30,6 +30,7 @@ public class GameObject {
 	protected GameObject collisionObject;
 
 	public int state;
+	public int RState;
 	public int direction;
 	public int superstate;
 

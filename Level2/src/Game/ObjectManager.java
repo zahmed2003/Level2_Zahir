@@ -59,6 +59,30 @@ public class ObjectManager {
 				
 				GameObject o1 = objects.get(i);
 				GameObject o2 = objects.get(j);
+				
+				if(o1 instanceof Rook && o2 instanceof SolidTile)
+				{
+					//tile 2
+					if(o1.x == o2.x && o1.y - tw == o2.y)
+					{
+						o1.setSolidColliding2(true);
+					}
+					//tile 4
+					if(o1.x + tw == o2.x && o1.y == o2.y)
+					{
+						o1.setSolidColliding4(true);
+					}
+					//tile 6
+					if(o1.x == o2.x && o1.y + tw == o2.y)
+					{
+						o1.setSolidColliding6(true);
+					}
+					//tile 8
+					if(o1.x - tw == o2.x && o1.y == o2.y)
+					{
+						o1.setSolidColliding8(true);
+					}
+				}
 				if(o2 instanceof Pawn && (o1 instanceof SolidTile || o1 instanceof Pawn))
 				{
 					//tile 1
@@ -116,7 +140,7 @@ public class ObjectManager {
 					
 				
 					
-					if((o1 instanceof RedTile || o1 instanceof RMTile || o1 instanceof RMTile2 || (o1 instanceof ElectricTile && o1.state == 1) || o1 instanceof Pawn) && o2 instanceof Player)
+					if((o1 instanceof RedTile || o1 instanceof RMTile || o1 instanceof RMTile2 || (o1 instanceof RedElectricTile && o1.RState == 1) ||(o1 instanceof ElectricTile && o1.state == 1) || o1 instanceof Pawn) && o2 instanceof Player)
 					{
 						p.isAlive = false;
 					}
@@ -234,16 +258,33 @@ public class ObjectManager {
 			
 			if(o instanceof Rook)
 			{
-				if(p.x == o.x && p.y < o.y)
+				if(p.x < o.x && p.y < o.y)
+				{
+					o.y -= tw;
+				}
+				else if(p.x == o.x && p.y < o.y)
 				{
 					o.y = p.y;
+				}
+				else if(p.x > o.x && p.y < o.y)
+				{
+					o.x = p.x;
 				}
 				else if(p.x > o.x && p.y == o.y)
 				{
 					o.x = p.x;
 				}
 				
+				else if(p.x > o.x && p.y > o.y)
+				{
+					o.x = p.x;
+				}
+				
 				else if(p.x == o.x && p.y > o.y)
+				{
+					o.y = p.y;
+				}
+				else if(p.x < o.x && p.y > o.y)
 				{
 					o.y = p.y;
 				}
@@ -633,6 +674,20 @@ public class ObjectManager {
 					}
 				}
 		}
+	}
+	
+	public void checkRedState(Player p)
+	{
+		for (int i = 0; i < objects.size(); i++) {
+			GameObject o = objects.get(i);
+			if(o instanceof RedElectricTile)
+			{
+				if(p.x == o.x && p.y == o.y)
+				{
+					o.RState = 1;
+				}
+			}
+			}
 	}
 	
 	

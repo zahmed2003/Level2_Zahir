@@ -81,6 +81,8 @@ SolidTile t48 = new SolidTile(tw * 7,4*th,tw,th);
 SolidTile t49 = new SolidTile(tw * 8,4*th,tw,th);
 SolidTile t50 = new SolidTile(tw * 9,4*th,tw,th);
 
+RedElectricTile ret1 = new RedElectricTile(tw * 5, th * 2, tw, th, -1);
+
 Rook r1 = new Rook(tw * 5, th * 2, tw, th);
 
 
@@ -157,8 +159,9 @@ public RookTest()
 	manager.addObject(t50);
 	
 	manager.addObject(t26);
+	manager.addObject(ret1);
 	
-	manager.addObject(r1);
+	//manager.addObject(r1);
 	
 	manager.addObject(gp);
 	manager.addObject(player);
@@ -204,6 +207,7 @@ public void updateLevel13State() {
 	
 	manager.update();
 	manager.checkCollision(player, tw);
+	manager.checkRedState(player);
 	winChecker();
 	boundChecker();
 	
