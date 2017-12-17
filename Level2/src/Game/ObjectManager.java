@@ -324,7 +324,7 @@ public class ObjectManager {
 						}
 						else
 						{
-							r1 = ra.nextInt(2);
+							r1 = ra.nextInt(1);
 							if(r1 == 0) {o.x -= tw;}
 							if(r1 == 1) {o.y -= tw;}
 						}
@@ -357,7 +357,7 @@ public class ObjectManager {
 						}
 						else
 						{
-							r2 = ra.nextInt(2);
+							r2 = ra.nextInt(1);
 							if(r2 == 0)
 							{
 							o.x += tw;
@@ -395,7 +395,7 @@ public class ObjectManager {
 						}
 						else
 						{
-							r3 = ra.nextInt(2);
+							r3 = ra.nextInt(1);
 							if(r3 == 0)
 							{
 								o.x += tw;
@@ -435,7 +435,7 @@ public class ObjectManager {
 						}
 						else
 						{
-							r4 = ra.nextInt(2);
+							r4 = ra.nextInt(1);
 							if(r4 == 0)
 							{
 								o.x += tw;
@@ -476,7 +476,7 @@ public class ObjectManager {
 						}
 						else
 						{
-							r5 = ra.nextInt(2);
+							r5 = ra.nextInt(1);
 							if(r5 == 0)
 							{
 								o.x += tw;
@@ -515,7 +515,7 @@ public class ObjectManager {
 						}
 						else
 						{
-							r6 = ra.nextInt(2);
+							r6 = ra.nextInt(1);
 							if(r6 == 0)
 							{
 								o.x -= tw;
@@ -553,7 +553,7 @@ public class ObjectManager {
 						}
 						else
 						{
-							r7 = ra.nextInt(2);
+							r7 = ra.nextInt(1);
 							if(r7 == 0)
 							{
 								o.x -= tw;
@@ -592,7 +592,7 @@ public class ObjectManager {
 						}
 						else
 						{
-							r8 = ra.nextInt(2);
+							r8 = ra.nextInt(1);
 							if(r8 == 0)
 							{
 								o.x -= tw;
@@ -684,10 +684,61 @@ public class ObjectManager {
 			{
 				if(p.x == o.x && p.y == o.y)
 				{
+					o.direction = 22;
+				}
+				if((p.x != o.x || p.y != o.y) && o.direction == 22)
+				{
 					o.RState = 1;
+					o.direction = 0;
 				}
 			}
 			}
+	}
+	
+	public void CBelt(Player p, int tw, int th, GridPlayer gp)
+	{
+		for (int i = 0; i < objects.size(); i++) {
+			GameObject o = objects.get(i);
+			if(o instanceof RightConveyerBelt)
+			{
+				if(p.x == o.x && p.y == o.y)
+				{
+					p.x += tw;
+					gp.x = p.x;
+					gp.y = p.y;
+				}
+			}
+			
+			else if(o instanceof LeftConveyerBelt)
+			{
+				if(p.x == o.x && p.y == o.y)
+				{
+					p.x -= tw;
+					gp.x = p.x;
+					gp.y = p.y;
+				}
+			}
+			
+			else if(o instanceof UpConveyerBelt)
+			{
+				if(p.x == o.x && p.y == o.y)
+				{
+					p.y -= tw;
+					gp.x = p.x;
+					gp.y = p.y;
+				}
+			}
+			
+			else if(o instanceof DownConveyerBelt)
+			{
+				if(p.x == o.x && p.y == o.y)
+				{
+					p.y += tw;
+					gp.x = p.x;
+					gp.y = p.y;
+				}
+			}
+		}
 	}
 	
 	

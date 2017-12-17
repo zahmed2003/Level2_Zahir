@@ -16,6 +16,8 @@ public class RedElectricTile extends GameObject{
 		this.width = width;
 		this.height = height;
 		this.RState = RState;
+		
+		direction = 0;
 	}
 	
 	public void update()

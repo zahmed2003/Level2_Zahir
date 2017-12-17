@@ -22,8 +22,8 @@ public static int th = GameRunner.height/thn;
 	
 Timer timer;
 ObjectManager manager = new ObjectManager();
-GridPlayer gp = new GridPlayer(2 * tw, 2 * th, tw,th);
-Player player = new Player(2 * tw, 2 * th, tw,th);
+GridPlayer gp = new GridPlayer(1 * tw, 2 * th, tw,th);
+Player player = new Player(1 * tw, 2 * th, tw,th);
 
 
 SafeTile t1 = new SafeTile(0,0,tw,th);
@@ -81,9 +81,10 @@ SolidTile t48 = new SolidTile(tw * 7,4*th,tw,th);
 SolidTile t49 = new SolidTile(tw * 8,4*th,tw,th);
 SolidTile t50 = new SolidTile(tw * 9,4*th,tw,th);
 
-RedElectricTile ret1 = new RedElectricTile(tw * 5, th * 2, tw, th, -1);
-
-Rook r1 = new Rook(tw * 5, th * 2, tw, th);
+RightConveyerBelt c1 = new RightConveyerBelt(tw * 5, th * 2, tw, th);
+LeftConveyerBelt c2 = new LeftConveyerBelt(tw * 4, th * 2, tw, th);
+DownConveyerBelt c3 = new DownConveyerBelt(tw * 3, th * 2, tw, th);
+UpConveyerBelt c4 = new UpConveyerBelt(tw * 2, th * 2, tw, th);
 
 
 
@@ -159,9 +160,12 @@ public RookTest()
 	manager.addObject(t50);
 	
 	manager.addObject(t26);
-	manager.addObject(ret1);
 	
-	//manager.addObject(r1);
+	manager.addObject(c1);
+	manager.addObject(c2);
+	manager.addObject(c3);
+	manager.addObject(c4);
+
 	
 	manager.addObject(gp);
 	manager.addObject(player);
@@ -216,11 +220,11 @@ public void updateLevel13State() {
 	if(player.isAlive == false)
 	{
 		
-		player.x = 2*tw;
-		player.y = 2*tw;
+		player.x = 1*tw;
+		player.y = 1*tw;
 		
-		gp.x = 2*tw;
-		gp.y = 2*tw;
+		gp.x = 1*tw;
+		gp.y = 1*tw;
 		
 		
 		player.isAlive = true;
@@ -358,6 +362,7 @@ public void keyPressed(KeyEvent e) {
 		player.y = gp.y;
 		manager.checkCollision(player, tw);
 		manager.moveRook(tw, twn * tw, thn*th, player);
+		manager.CBelt(player, tw, th, gp);
 		InputManager.horizontal = false;
 		InputManager.vertical = false;
 		
