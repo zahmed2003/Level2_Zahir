@@ -97,7 +97,7 @@ ElectricTile t63 = new ElectricTile(tw*8, th*6, tw, th, 1);
 
 SafeTile t64 = new SafeTile(0, th*7, tw, th);
 SafeTile t65 = new SafeTile(tw, th*7, tw, th);
-SafeTile t66 = new SafeTile(tw*2, th*7, tw, th);
+NextLevelTile t66 = new NextLevelTile(tw*2, th*7, tw, th);
 SafeTile t67 = new SafeTile(tw*3, th*7, tw, th);
 SafeTile t68 = new SafeTile(tw*4, th*7, tw, th);
 SolidTile t69 = new SolidTile(tw*5, th*7, tw, th);
@@ -328,7 +328,7 @@ public void startGame()
 	timer.start();
 }
 
-public void updateLevel17State() {
+public void updateLevel16State() {
 	
 	manager.update();
 	manager.checkCollision(player, tw);
@@ -363,20 +363,20 @@ public void boundChecker()
 
 public void winChecker()
 {
-	//if(player.x == t14.x && player.y == t14.y)
-	//{
-		//manager.reset();
-		//timer.stop();
-		//GameRunner.frame.remove(GameRunner.lv15);
-		//GameRunner.frame.add(GameRunner.lv16);
-		//GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
-		//GameRunner.frame.setVisible(true);
-		//GameRunner.frame.addKeyListener(GameRunner.lv16);
-		//GameRunner.lv16.startGame();
-	//}
+	if(player.x == t66.x && player.y == t66.y)
+	{
+		manager.reset();
+		timer.stop();
+		GameRunner.frame.remove(GameRunner.lv16);
+		GameRunner.frame.add(GameRunner.lv17);
+		GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
+		GameRunner.frame.setVisible(true);
+		GameRunner.frame.addKeyListener(GameRunner.lv17);
+		GameRunner.lv17.startGame();
+	}
 }
 
-public void drawLevel17State(Graphics g) {
+public void drawLevel16State(Graphics g) {
 	g.setColor(Color.BLACK);
 	g.fillRect(0, 0, GameRunner.width, GameRunner.height);
 	manager.draw(g);
@@ -384,14 +384,14 @@ public void drawLevel17State(Graphics g) {
 
 
 public void paintComponent(Graphics g) {
-	drawLevel17State(g);
+	drawLevel16State(g);
 	
 }
 
 @Override
 public void actionPerformed(ActionEvent e) {
 	repaint();
-	updateLevel17State();
+	updateLevel16State();
 	
 }
 
