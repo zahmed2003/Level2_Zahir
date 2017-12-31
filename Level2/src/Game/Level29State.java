@@ -303,7 +303,7 @@ public void updateLevel29State() {
 	winChecker();
 	boundChecker();
 
-	System.out.println(r1.isSolidColliding4);
+	System.out.println((player.y - r1.y)/tw);
 	
 	if(player.isAlive == false)
 	{
@@ -327,6 +327,8 @@ public void updateLevel29State() {
 
 	
 }
+
+
 
 public void boundChecker()
 {

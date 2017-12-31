@@ -299,8 +299,11 @@ public class ObjectManager {
 	public void moveRook(int tw, int width, int height, Player p)
 	{
 		for (int i = 0; i < objects.size(); i++) { 
+			for (int j = i + 1; j < objects.size(); j++) {
 			
 			GameObject o = objects.get(i);
+			GameObject o2 = objects.get(j);
+			
 			
 			if(o instanceof Rook)
 			{
@@ -317,6 +320,7 @@ public class ObjectManager {
 						{
 							//do nothing
 						}
+						
 					}
 
 				}
@@ -325,6 +329,7 @@ public class ObjectManager {
 				{
 					for(int i2 = 1; i2 <= (p.x - o.x)/tw; i2++)
 					{
+						
 						if(o.isSolidColliding4 == false)
 						{
 							o.x += ((p.x - o.x)/tw)*tw;
@@ -333,6 +338,7 @@ public class ObjectManager {
 						{
 							//do nothing
 						}
+						
 					}
 				}
 				
@@ -349,6 +355,7 @@ public class ObjectManager {
 						{
 							//do nothing
 						}
+						
 					}
 				}
 				
@@ -356,6 +363,7 @@ public class ObjectManager {
 				{
 					for(int i4 = 1; i4 <= (o.x - p.x)/tw; i4++)
 					{
+						
 						if(o.isSolidColliding8 == false)
 						{
 							o.x -= ((o.x - p.x)/tw)*tw;
@@ -364,9 +372,11 @@ public class ObjectManager {
 						{
 							//do nothing
 						}
+						
 					}
 				}
 			}
+		}
 		}
 	}
 	

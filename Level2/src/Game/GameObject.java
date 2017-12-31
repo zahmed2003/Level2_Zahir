@@ -26,6 +26,8 @@ public class GameObject {
 	protected boolean isSolidColliding7;
 	protected boolean isSolidColliding8;
 	
+	
+	
 	protected Rectangle colBox; 
 	
 	protected GameObject collisionObject;
