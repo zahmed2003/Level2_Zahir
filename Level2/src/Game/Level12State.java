@@ -10,6 +10,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -19,6 +20,8 @@ public class Level12State extends JPanel implements ActionListener, KeyListener{
 	public static int thn = 5;
 	public static int tw = GameRunner.width/twn;
 	public static int th = tw;
+	public static int opacity = 0;
+	long currTime, totalTime; 
 	
 Timer timer;
 ObjectManager manager = new ObjectManager();
@@ -85,7 +88,7 @@ ElectricTile t55 = new ElectricTile(14*tw, th*2, tw, th, -1);
 SafeTile t56 = new SafeTile(15*tw, th*2, tw, th);
 SafeTile t57 = new SafeTile(16*tw, th*2, tw, th);
 SolidTile t58 = new SolidTile(17*tw, th*2, tw, th);
-NextLevelTile t59 = new NextLevelTile(18*tw, th*2, tw, th);
+NextFloorTile t59 = new NextFloorTile(18*tw, th*2, tw, th);
 SafeTile t60 = new SafeTile(19*tw, th*2, tw, th);
 
 SolidTile t61 = new SolidTile(0,th*3, tw, th);
@@ -344,14 +347,32 @@ public void winChecker()
 {
 	if(player.x == t59.x && player.y == t59.y)
 	{
-		manager.reset();
-		timer.stop();
-		GameRunner.frame.remove(GameRunner.lv12);
-		GameRunner.frame.add(GameRunner.lv13);
-		GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
-		GameRunner.frame.setVisible(true);
-		GameRunner.frame.addKeyListener(GameRunner.lv13);
-		GameRunner.lv13.startGame();
+		if(opacity < 245)
+		{
+		if(System.currentTimeMillis() % 2 == 0)
+			{
+				opacity += 10;
+			}
+		}
+		
+		if(opacity >= 245)
+		{
+			Sound.sound1.stop();
+			
+		FloorSelector.floor = 2;
+		
+			manager.reset();
+			timer.stop();
+			Sound.sound4.loop();
+			GameRunner.frame.add(GameRunner.m);
+			GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
+			GameRunner.frame.setVisible(true);
+			GameRunner.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			GameRunner.frame.addKeyListener(GameRunner.m);
+			GameRunner.m.startGame();
+
+		}
+			
 	}
 }
 
@@ -359,6 +380,11 @@ public void drawLevel12State(Graphics g) {
 	g.setColor(Color.BLACK);
 	g.fillRect(0, 0, GameRunner.width, GameRunner.height);
 	manager.draw(g);
+	
+	
+		g.setColor(new Color(255, 255, 255, opacity));
+		g.fillRect(0, 0, GameRunner.width, GameRunner.height);
+		
 }
 
 

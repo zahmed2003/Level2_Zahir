@@ -194,6 +194,9 @@ public Level13State()
 public void startGame()
 {
 	timer.start();
+	
+	Sound.sound1.stop();
+	Sound.sound2.loop();
 }
 
 public void updateMenuState() {

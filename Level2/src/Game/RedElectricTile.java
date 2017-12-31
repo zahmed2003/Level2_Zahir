@@ -29,11 +29,11 @@ public class RedElectricTile extends GameObject{
 	{
 		if(RState == 1)
 		{
-		g.drawImage(GamePanel.ONETImg, x, y, width, height, null);
+		g.drawImage(GamePanel.ONRTImg, x, y, width, height, null);
 		}
 		if(RState == -1)
 		{
-			g.drawImage(GamePanel.OFFETImg, x, y, width, height, null);
+			g.drawImage(GamePanel.OFFRTImg, x, y, width, height, null);
 		}
 	}
 	

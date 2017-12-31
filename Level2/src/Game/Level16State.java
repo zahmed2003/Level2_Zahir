@@ -155,6 +155,20 @@ ElectricTile t115 = new ElectricTile(tw*6, th*12, tw, th, 1);
 ElectricTile t116 = new ElectricTile(tw*7, th*12, tw, th, -1);
 ElectricTile t117 = new ElectricTile(tw*8, th*12, tw, th, 1);
 
+SolidTile t118 = new SolidTile(tw*9, 0, tw, th);
+SolidTile t119 = new SolidTile(tw*9, th, tw, th);
+SolidTile t120 = new SolidTile(tw*9, th*2, tw, th);
+SolidTile t121 = new SolidTile(tw*9, th*3, tw, th);
+SolidTile t122 = new SolidTile(tw*9, th*4, tw, th);
+SolidTile t123 = new SolidTile(tw*9, th*5, tw, th);
+SolidTile t124 = new SolidTile(tw*9, th*6, tw, th);
+SolidTile t125 = new SolidTile(tw*9, th*7, tw, th);
+SolidTile t126 = new SolidTile(tw*9, th*8, tw, th);
+SolidTile t127 = new SolidTile(tw*9, th*9, tw, th);
+SolidTile t128 = new SolidTile(tw*9, th*10, tw, th);
+SolidTile t129 = new SolidTile(tw*9, th*11, tw, th);
+SolidTile t130 = new SolidTile(tw*9, th*12, tw, th);
+
 Pawn e1 = new Pawn(tw*6, th, tw, th);
 Pawn e2 = new Pawn(tw*7, th, tw, th);
 Pawn e3 = new Pawn(tw*8, th, tw, th);
@@ -292,6 +306,19 @@ public Level16State()
 	manager.addObject(t115);
 	manager.addObject(t116);
 	manager.addObject(t117);
+	manager.addObject(t118);
+	manager.addObject(t119);
+	manager.addObject(t120);
+	manager.addObject(t121);
+	manager.addObject(t122);
+	manager.addObject(t123);
+	manager.addObject(t124);
+	manager.addObject(t125);
+	manager.addObject(t126);
+	manager.addObject(t127);
+	manager.addObject(t128);
+	manager.addObject(t129);
+	manager.addObject(t130);
 	
 	manager.addObject(e1);
 	manager.addObject(e2);
@@ -344,6 +371,17 @@ public void updateLevel16State() {
 		
 		player.x = tw*2;
 		player.y = th*11;
+		
+		e1.x = tw*6;
+		e1.y = th; 
+
+		e2.x = tw*7;
+		e2.y = th; 
+		
+		e3.x = tw*8;
+		e3.y = th; 
+		
+		manager.resetElectric();
 		
 		player.isAlive = true;
 		

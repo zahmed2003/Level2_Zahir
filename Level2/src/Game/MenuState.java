@@ -43,7 +43,7 @@ public class MenuState extends JPanel implements KeyListener, ActionListener{
 					).getSubimage(110, 130, 120, 110);
 				} catch (IOException e) {
 					
-					e.printStackTrace();
+					e.printStackTrace(); 
 				}
 				
 				// titles and fonts
@@ -80,6 +80,7 @@ public class MenuState extends JPanel implements KeyListener, ActionListener{
 			g.setFont(font2);
 			g.drawString("2017 Zahir A.", 10, 725);
 			
+			menuSelect = true;
 		}
 		
 		public void startGame()
@@ -92,12 +93,14 @@ public class MenuState extends JPanel implements KeyListener, ActionListener{
 			if(currentChoice == 0) {
 				timer.stop();
 				menuSelect = false;
+				Sound.click.play();
 				GameRunner.frame.remove(GameRunner.m);
-				GameRunner.frame.add(GameRunner.lv1);
+				GameRunner.frame.add(GameRunner.f);
 				GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
 				GameRunner.frame.setVisible(true);
-				GameRunner.frame.addKeyListener(GameRunner.lv1);
-				GameRunner.lv1.startGame();
+				GameRunner.frame.addKeyListener(GameRunner.f);
+				GameRunner.f.startGame();
+				
 			}
 			else if(currentChoice == 1) {
 				System.exit(0);

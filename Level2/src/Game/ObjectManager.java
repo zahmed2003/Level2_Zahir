@@ -7,6 +7,8 @@ import java.util.Random;
 
 public class ObjectManager {
 	ArrayList<GameObject> objects;
+	public boolean cb = false;
+	public boolean cbp = false;
 	
 	Random ra = new Random();
 	int r1;
@@ -17,6 +19,7 @@ public class ObjectManager {
 	int r6;
 	int r7;
 	int r8;
+	int r;
 
 
 	public ObjectManager() {
@@ -35,7 +38,7 @@ public class ObjectManager {
 		
 		purgeObjects();	
 	}
-
+ 
 	public void draw(Graphics g) {
 		for (int i = 0; i < objects.size(); i++) {
 			GameObject o = objects.get(i);
@@ -138,11 +141,53 @@ public class ObjectManager {
 					o2.setColliding(true);
 					o2.setCollisionObject(o1);
 					
-				
+					if(o1 instanceof Pawn && o2 instanceof Pawn)
+					{
+						r = ra.nextInt(7);
+						if(r == 0 && o2.isSolidColliding1 == false)
+						{
+							o2.x -= tw;
+							o2.y -= tw;
+						}
+						if(r == 1 && o2.isSolidColliding2 == false)
+						{
+							o2.y -= tw;
+						}
+						if(r == 2 && o2.isSolidColliding3 == false)
+						{
+							o2.x += tw;
+							o2.y -= tw;
+						}
+						if(r == 3 && o2.isSolidColliding4 == false)
+						{
+							o2.x += tw;
+						}
+						if(r == 4 && o2.isSolidColliding5 == false)
+						{
+							o2.x += tw;
+							o2.y += tw;
+						}
+						if(r == 5 && o2.isSolidColliding6 == false)
+						{
+							o2.y += tw;
+						}
+						if(r == 6 && o2.isSolidColliding7 == false)
+						{
+							o2.x -= tw;
+							o2.y += tw;
+						}
+						if(r == 7 && o2.isSolidColliding8 == false)
+						{
+							o2.x -= tw;
+						}
+						
+						
+					}
 					
-					if((o1 instanceof RedTile || o1 instanceof RMTile || o1 instanceof RMTile2 || (o1 instanceof RedElectricTile && o1.RState == 1) ||(o1 instanceof ElectricTile && o1.state == 1) || o1 instanceof Pawn) && o2 instanceof Player)
+					if((o1 instanceof RedTile || o1 instanceof RMTile || o1 instanceof RMTile2 || (o1 instanceof RedElectricTile && o1.RState == 1) ||(o1 instanceof ElectricTile && o1.state == 1) || o1 instanceof Pawn || (o1 instanceof ECL && o1.state == 1) || (o1 instanceof ECR && o1.state == 1) || (o1 instanceof DECL && o1.state == 1) || (o1 instanceof DECR && o1.state == 1)) && o2 instanceof Player)
 					{
 						p.isAlive = false;
+						Sound.death.play();
 					}
 					
 					
@@ -230,7 +275,7 @@ public class ObjectManager {
 	{
 		for (int i = 0; i < objects.size(); i++) {
 			GameObject o = objects.get(i);
-			if(o instanceof ElectricTile)
+			if(o instanceof ElectricTile || o instanceof DECR || o instanceof DECL || o instanceof ECR || o instanceof ECL)
 			{
 				o.state = -o.state;
 				
@@ -243,7 +288,7 @@ public class ObjectManager {
 	{
 		for (int i = 0; i < objects.size(); i++) {
 			GameObject o = objects.get(i);
-			if(o instanceof ElectricTile)
+			if(o instanceof ElectricTile || o instanceof DECR || o instanceof DECL || o instanceof ECR || o instanceof ECL)
 			{
 				o.state = -o.state;
 			}
@@ -252,42 +297,52 @@ public class ObjectManager {
 	
 	public void moveRook(int tw, int width, int height, Player p)
 	{
-		for (int i = 0; i < objects.size(); i++) {
+		for (int i = 0; i < objects.size(); i++) { 
 			
 			GameObject o = objects.get(i);
 			
 			if(o instanceof Rook)
 			{
-				if(p.x < o.x && p.y < o.y)
+				
+				if(p.x == o.x && p.y < o.y)
 				{
-					o.y -= tw;
-				}
-				else if(p.x == o.x && p.y < o.y)
-				{
+					for(int i3 = 0; i3 <= (o.y - p.y)/tw; i3++)
+					{
 					o.y = p.y;
-				}
-				else if(p.x > o.x && p.y < o.y)
-				{
-					o.x = p.x;
-				}
-				else if(p.x > o.x && p.y == o.y)
-				{
-					o.x = p.x;
+					}
 				}
 				
-				else if(p.x > o.x && p.y > o.y)
+				else if(p.x > o.x && p.y == o.y)
 				{
-					o.x = p.x;
+					for(int i4 = 0; i4 <= (p.x + o.x)/tw; i4++)
+					{
+					if(o.isSolidColliding4 == false)
+					{
+					o.x += tw;
+					}
+					if(o.isSolidColliding4 == true)
+					{
+						
+					}
+					}
 				}
+				
 				
 				else if(p.x == o.x && p.y > o.y)
 				{
-					o.y = p.y;
+					for(int i5 = 0; i5 <= (p.y + o.y)/tw; i5++)
+					{
+						if(o.isSolidColliding6 == false)
+						{
+					o.y += tw;
+						}
+						if(o.isSolidColliding6 == true)
+						{
+							//do nothing
+						}
+					}
 				}
-				else if(p.x < o.x && p.y > o.y)
-				{
-					o.y = p.y;
-				}
+				
 				else if(p.x < o.x && p.y == o.y)
 				{
 					o.x = p.x;
@@ -695,52 +750,50 @@ public class ObjectManager {
 			}
 	}
 	
-	public void CBelt(Player p, int tw, int th, GridPlayer gp)
+	public void redTileReset()
 	{
 		for (int i = 0; i < objects.size(); i++) {
 			GameObject o = objects.get(i);
-			if(o instanceof RightConveyerBelt)
+			if(o instanceof RedElectricTile)
 			{
-				if(p.x == o.x && p.y == o.y)
-				{
-					p.x += tw;
-					gp.x = p.x;
-					gp.y = p.y;
-				}
-			}
-			
-			else if(o instanceof LeftConveyerBelt)
-			{
-				if(p.x == o.x && p.y == o.y)
-				{
-					p.x -= tw;
-					gp.x = p.x;
-					gp.y = p.y;
-				}
-			}
-			
-			else if(o instanceof UpConveyerBelt)
-			{
-				if(p.x == o.x && p.y == o.y)
-				{
-					p.y -= tw;
-					gp.x = p.x;
-					gp.y = p.y;
-				}
-			}
-			
-			else if(o instanceof DownConveyerBelt)
-			{
-				if(p.x == o.x && p.y == o.y)
-				{
-					p.y += tw;
-					gp.x = p.x;
-					gp.y = p.y;
-				}
+				o.RState = -1;
 			}
 		}
 	}
 	
+	public void rightConveyerBelt(Player p, GridPlayer gp, int tw)
+	{
+		for (int i = 0; i < objects.size(); i++) {
+			GameObject o = objects.get(i);
+			if(cb == false)
+			{
+			if((o instanceof RightConveyerBelt || o instanceof ECR)&& o.x == p.x && o.y == p.y)
+			{
+				p.x += tw;
+				gp.x += tw;
+				cb = true;
+			}
+			if((o instanceof LeftConveyerBelt || o instanceof ECL) && o.x == p.x && o.y == p.y)
+			{
+				p.x -= tw;
+				gp.x -= tw;
+				cb = true;
+			}
+			if((o instanceof DoubleRCB || o instanceof DECR) && o.x == p.x && o.y == p.y)
+			{
+				p.x += 2*tw;
+				gp.x += 2*tw;
+				cb = true;
+			}
+			if((o instanceof DoubleLCB || o instanceof DECL) && o.x == p.x && o.y == p.y)
+			{
+				p.x -= 2*tw;
+				gp.x -= 2*tw;
+				cb = true;
+			}
+			}
+		}
+		}
 	
 	public void reset(){
 		objects.clear();

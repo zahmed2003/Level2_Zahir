@@ -26,7 +26,7 @@ public class Rook extends GameObject{
 	
 	public void draw(Graphics g)
 	{
-		g.drawImage(GamePanel.deathImg, x, y, width, height, null);
+		g.drawImage(GamePanel.RookImg, x, y, width, height, null);
 
 	}
 	

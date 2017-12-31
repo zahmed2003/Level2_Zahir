@@ -95,11 +95,30 @@ public static BufferedImage deathImg;
 public static BufferedImage wtImg;
 public static BufferedImage ONETImg;
 public static BufferedImage OFFETImg;
+public static BufferedImage ONRTImg;
+public static BufferedImage OFFRTImg;
 public static BufferedImage BTImg;
 public static BufferedImage RMUpImg;
 public static BufferedImage RMDownImg;
 public static BufferedImage RMRImg;
 public static BufferedImage RMLImg;
+public static BufferedImage NFTImg;
+public static BufferedImage CRImg;
+public static BufferedImage CLImg;
+public static BufferedImage DCRImg;
+public static BufferedImage DCLImg;
+
+public static BufferedImage DECROffImg;
+public static BufferedImage DECROnImg;
+public static BufferedImage DECLOffImg;
+public static BufferedImage DECLOnImg;
+
+public static BufferedImage ECROffImg;
+public static BufferedImage ECROnImg;
+public static BufferedImage ECLOffImg;
+public static BufferedImage ECLOnImg;
+
+public static BufferedImage RookImg;
 
 
 public GamePanel()
@@ -174,12 +193,31 @@ public GamePanel()
 		wtImg = ImageIO.read(this.getClass().getResourceAsStream("wt.png"));
 		ONETImg = ImageIO.read(this.getClass().getResourceAsStream("ONET.png"));
 		OFFETImg = ImageIO.read(this.getClass().getResourceAsStream("OFFET.png"));
+		ONRTImg = ImageIO.read(this.getClass().getResourceAsStream("ONRT.png"));
+		OFFRTImg = ImageIO.read(this.getClass().getResourceAsStream("OFFRT.png"));
 		BTImg = ImageIO.read(this.getClass().getResourceAsStream("BT.png"));
 		
 		RMUpImg = ImageIO.read(this.getClass().getResourceAsStream("RMUp.png"));
 		RMDownImg = ImageIO.read(this.getClass().getResourceAsStream("RMDown.png"));
 		RMRImg = ImageIO.read(this.getClass().getResourceAsStream("RMR.png"));
 		RMLImg = ImageIO.read(this.getClass().getResourceAsStream("RML.png"));
+		NFTImg = ImageIO.read(this.getClass().getResourceAsStream("NFT.png"));
+		CRImg = ImageIO.read(this.getClass().getResourceAsStream("CR.png"));
+		CLImg = ImageIO.read(this.getClass().getResourceAsStream("CL.png"));
+		DCRImg = ImageIO.read(this.getClass().getResourceAsStream("DCR.png"));
+		DCLImg = ImageIO.read(this.getClass().getResourceAsStream("DCL.png"));
+		
+		DECROffImg = ImageIO.read(this.getClass().getResourceAsStream("DECROff.png"));
+		DECROnImg = ImageIO.read(this.getClass().getResourceAsStream("DECROn.png"));
+		DECLOffImg = ImageIO.read(this.getClass().getResourceAsStream("DECLOff.png"));
+		DECLOnImg = ImageIO.read(this.getClass().getResourceAsStream("DECLOn.png"));
+		
+		ECROffImg = ImageIO.read(this.getClass().getResourceAsStream("ECROff.png"));
+		ECROnImg = ImageIO.read(this.getClass().getResourceAsStream("ECROn.png"));
+		ECLOffImg = ImageIO.read(this.getClass().getResourceAsStream("ECLOff.png"));
+		ECLOnImg = ImageIO.read(this.getClass().getResourceAsStream("ECLOn.png"));
+
+		RookImg = ImageIO.read(this.getClass().getResourceAsStream("Rook.png"));
 		
 		
 		

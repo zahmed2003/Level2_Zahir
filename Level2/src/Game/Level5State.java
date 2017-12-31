@@ -29,7 +29,7 @@ GridPlayer gp = new GridPlayer(tw,2*th, tw,th);
 
 SolidTile t1 = new SolidTile(0,0,tw,th);
 SolidTile t2 = new SolidTile(tw,0,tw,th);
-SolidTile t3 = new SolidTile(tw * 2,0,tw,th);
+SolidTile t3 = new SolidTile(tw * 2,0,tw,th); 
 SolidTile t4 = new SolidTile(tw * 3,0,tw,th);
 SafeTile t5 = new SafeTile(tw * 4,0,tw,th);
 SafeTile t6 = new SafeTile(tw * 5,0,tw,th);
@@ -81,6 +81,10 @@ SolidTile t47 = new SolidTile(tw * 6,4*th,tw,th);
 SolidTile t48 = new SolidTile(tw * 7,4*th,tw,th);
 SolidTile t49 = new SolidTile(tw * 8,4*th,tw,th);
 SolidTile t50 = new SolidTile(tw * 9,4*th,tw,th);
+
+SolidTile t55 = new SolidTile(4*tw, 5*th, tw, th);
+SolidTile t56 = new SolidTile(5*tw, 5*th, tw, th);
+
 
 RMTile t51 = new RMTile(tw * 4,4*th,tw,th,1);
 RMTile t52 = new RMTile(tw * 5,4*th,tw,th,1);
@@ -158,6 +162,9 @@ public Level5State()
 	manager.addObject(t52);
 	manager.addObject(t53);
 	manager.addObject(t54);
+	manager.addObject(t55);
+	manager.addObject(t56);
+	
 	
 	manager.addObject(gp);
 	manager.addObject(player);

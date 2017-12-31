@@ -5,7 +5,8 @@ import java.awt.Rectangle;
 
 public class RightConveyerBelt extends GameObject{
 	
-
+	public boolean cColl;
+	
 	public RightConveyerBelt(int x, int y, int width, int height)
 	{
 		super(x, y, width, height);
@@ -14,6 +15,8 @@ public class RightConveyerBelt extends GameObject{
 		this.y = y;
 		this.width = width;
 		this.height = height;
+		
+		cColl = false;
 		
 		colBox = new Rectangle(x - (width/2), y - (height/2), width, height);
 	}
@@ -26,7 +29,7 @@ public class RightConveyerBelt extends GameObject{
 	
 	public void draw(Graphics g)
 	{
-		g.drawImage(GamePanel.deathImg, x, y, width, height, null);
+		g.drawImage(GamePanel.CRImg, x, y, width, height, null);
 
 	}
 	

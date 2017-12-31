@@ -15,6 +15,7 @@ public class GameObject {
 	protected int height;
 	protected int speed;
 	protected boolean isColliding;
+	public boolean cColl;
 	
 	protected boolean isSolidColliding1;
 	protected boolean isSolidColliding2;
