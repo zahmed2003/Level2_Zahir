@@ -302,7 +302,8 @@ public void updateLevel29State() {
 	manager.checkCollision(player, tw);
 	winChecker();
 	boundChecker();
-	
+
+	System.out.println(r1.isSolidColliding4);
 	
 	if(player.isAlive == false)
 	{

@@ -63,27 +63,28 @@ public class ObjectManager {
 				GameObject o1 = objects.get(i);
 				GameObject o2 = objects.get(j);
 				
-				if(o1 instanceof Rook && o2 instanceof SolidTile)
+				
+				if(o1 instanceof SolidTile && o2 instanceof Rook)
 				{
 					//tile 2
-					if(o1.x == o2.x && o1.y - tw == o2.y)
+					if(o2.x == o1.x && o2.y - tw == o1.y)
 					{
-						o1.setSolidColliding2(true);
+						o2.setSolidColliding2(true);
 					}
 					//tile 4
-					if(o1.x + tw == o2.x && o1.y == o2.y)
+					if(o2.x + tw == o1.x && o2.y == o1.y)
 					{
-						o1.setSolidColliding4(true);
+						o2.setSolidColliding4(true);
 					}
 					//tile 6
-					if(o1.x == o2.x && o1.y + tw == o2.y)
+					if(o2.x == o1.x && o2.y + tw == o1.y)
 					{
-						o1.setSolidColliding6(true);
+						o2.setSolidColliding6(true);
 					}
 					//tile 8
-					if(o1.x - tw == o2.x && o1.y == o2.y)
+					if(o2.x - tw == o1.x && o2.y == o1.y)
 					{
-						o1.setSolidColliding8(true);
+						o2.setSolidColliding8(true);
 					}
 				}
 				if(o2 instanceof Pawn && (o1 instanceof SolidTile || o1 instanceof Pawn))
@@ -306,35 +307,43 @@ public class ObjectManager {
 				
 				if(p.x == o.x && p.y < o.y)
 				{
-					for(int i3 = 0; i3 <= (o.y - p.y)/tw; i3++)
+					for(int i1 = 1; i1 <= (o.y - p.y)/tw; i1++)
 					{
-					o.y = p.y;
+						if(o.isSolidColliding2 == false)
+						{
+							o.y += ((p.y - o.y)/tw)*tw;
+						}
+						if(o.isSolidColliding2 == true)
+						{
+							//do nothing
+						}
 					}
+
 				}
 				
 				else if(p.x > o.x && p.y == o.y)
 				{
-					for(int i4 = 0; i4 <= (p.x + o.x)/tw; i4++)
+					for(int i2 = 1; i2 <= (p.x - o.x)/tw; i2++)
 					{
-					if(o.isSolidColliding4 == false)
-					{
-					o.x += tw;
-					}
-					if(o.isSolidColliding4 == true)
-					{
-						
-					}
+						if(o.isSolidColliding4 == false)
+						{
+							o.x += ((p.x - o.x)/tw)*tw;
+						}
+						if(o.isSolidColliding4 == true)
+						{
+							//do nothing
+						}
 					}
 				}
 				
 				
 				else if(p.x == o.x && p.y > o.y)
 				{
-					for(int i5 = 0; i5 <= (p.y + o.y)/tw; i5++)
+					for(int i3 = 1; i3 <= (p.y - o.y)/tw; i3++)
 					{
 						if(o.isSolidColliding6 == false)
 						{
-					o.y += tw;
+							o.y += ((p.y - o.y)/tw)*tw;
 						}
 						if(o.isSolidColliding6 == true)
 						{
@@ -345,7 +354,17 @@ public class ObjectManager {
 				
 				else if(p.x < o.x && p.y == o.y)
 				{
-					o.x = p.x;
+					for(int i4 = 1; i4 <= (o.x - p.x)/tw; i4++)
+					{
+						if(o.isSolidColliding8 == false)
+						{
+							o.x -= ((o.x - p.x)/tw)*tw;
+						}
+						if(o.isSolidColliding8 == true)
+						{
+							//do nothing
+						}
+					}
 				}
 			}
 		}
