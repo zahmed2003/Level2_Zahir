@@ -10,6 +10,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -19,6 +20,7 @@ public class Level28State extends JPanel implements ActionListener, KeyListener{
 	public static int thn = 13;
 	public static int th = GameRunner.height/thn;
 	public static int tw = th;
+	public static int opacity = 0;
 	
 Timer timer;
 ObjectManager manager = new ObjectManager();
@@ -57,7 +59,7 @@ SolidTile t27 = new SolidTile(tw*4, th*2, tw, th);
 SolidTile t28 = new SolidTile(tw*5, th*2, tw, th);
 SolidTile t29 = new SolidTile(tw*6, th*2, tw, th);
 SafeTile t30 = new SafeTile(tw*7, th*2, tw, th);
-NextLevelTile t31 = new NextLevelTile(tw*8, th*2, tw, th);
+NextFloorTile t31 = new NextFloorTile(tw*8, th*2, tw, th);
 SafeTile t32 = new SafeTile(tw*9, th*2, tw, th);
 SolidTile t33 = new SolidTile(tw*10, th*2, tw, th);
 
@@ -104,7 +106,7 @@ DoubleLCB t70 = new DoubleLCB(tw*3, th*6, tw, th);
 RedElectricTile t71 = new RedElectricTile(tw*4, th*6, tw, th, -1);
 SolidTile t72 = new SolidTile(tw*5, th*6, tw, th);
 RedElectricTile t73 = new RedElectricTile(tw*6, th*6, tw, th, -1);
-DoubleLCB t74 = new DoubleLCB(tw*7, th*6, tw, th);
+LeftConveyerBelt t74 = new LeftConveyerBelt(tw*7, th*6, tw, th);
 DoubleLCB t75 = new DoubleLCB(tw*8, th*6, tw, th);
 DoubleLCB t76 = new DoubleLCB(tw*9, th*6, tw, th);
 RedElectricTile t77 = new RedElectricTile(tw*10, th*6, tw, th, -1);
@@ -124,7 +126,7 @@ RedTile t88 = new RedTile(tw*10, th*7, tw, th);
 RedElectricTile t89 = new RedElectricTile(0, th*8, tw, th, -1);
 DoubleRCB t90 = new DoubleRCB(tw, th*8, tw, th);
 DoubleRCB t91 = new DoubleRCB(tw*2, th*8, tw, th);
-DoubleRCB t92 = new DoubleRCB(tw*3, th*8, tw, th);
+RightConveyerBelt t92 = new RightConveyerBelt(tw*3, th*8, tw, th);
 RedElectricTile t93 = new RedElectricTile(tw*4, th*8, tw, th, -1);
 SolidTile t94 = new SolidTile(tw*5, th*8, tw, th);
 RedElectricTile t95 = new RedElectricTile(tw*6, th*8, tw, th, -1);
@@ -398,14 +400,29 @@ public void winChecker()
 {
 	if(player.x == t31.x && player.y == t31.y)
 	{
-		manager.reset();
-		timer.stop();
-		GameRunner.frame.remove(GameRunner.lv28);
-		GameRunner.frame.add(GameRunner.lv29);
-		GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
-		GameRunner.frame.setVisible(true);
-		GameRunner.frame.addKeyListener(GameRunner.lv29);
-		GameRunner.lv29.startGame();
+		if(opacity < 245)
+		{
+		if(System.currentTimeMillis() % 2 == 0)
+			{
+				opacity += 10;
+			}
+		}
+		
+		if(opacity >= 245)
+		{
+			Sound.sound3.stop();
+		
+			manager.reset();
+			timer.stop();
+			Sound.end.loop();
+			GameRunner.frame.add(GameRunner.e);
+			GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
+			GameRunner.frame.setVisible(true);
+			GameRunner.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			GameRunner.frame.addKeyListener(GameRunner.e);
+			GameRunner.e.startGame();
+
+		}
 	}
 }
 
@@ -413,6 +430,9 @@ public void drawLevel28State(Graphics g) {
 	g.setColor(Color.BLACK);
 	g.fillRect(0, 0, GameRunner.width, GameRunner.height);
 	manager.draw(g);
+	
+	g.setColor(new Color(255, 255, 255, opacity));
+	g.fillRect(0, 0, GameRunner.width, GameRunner.height);
 }
 
 
@@ -503,6 +523,7 @@ public void keyPressed(KeyEvent e) {
 	if(key == KeyEvent.VK_ENTER)
 	{
 		manager.cb = false;
+		KeyHandler.enterPressed = true;
 		
 		manager.moveTile(tw, twn, thn + 2*tw);
 		
@@ -517,6 +538,8 @@ public void keyPressed(KeyEvent e) {
 		
 		InputManager.horizontal = false;
 		InputManager.vertical = false;
+		
+		KeyHandler.enterPressed = false;
 	}
 }
 

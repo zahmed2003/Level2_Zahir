@@ -49,7 +49,7 @@ public class FloorSelector extends JPanel implements KeyListener, ActionListener
 			
 			// titles and fonts
 			titleColor = Color.WHITE;
-			titleFont = new Font("Times New Roman", Font.PLAIN, 280);
+			titleFont = new Font("Times New Roman", Font.PLAIN, 175);
 			font = new Font("Arial", Font.PLAIN, 100);
 			font2 = new Font("Arial", Font.PLAIN, 50);
 		
@@ -65,7 +65,7 @@ public class FloorSelector extends JPanel implements KeyListener, ActionListener
 		// draw title
 		g.setColor(titleColor);
 		g.setFont(titleFont);
-		g.drawString("G A M E", 200, 200);
+		g.drawString("P I X E L  R O O K", 50, 200);
 		
 		// draw menu options
 		g.setFont(font);
@@ -98,7 +98,7 @@ public class FloorSelector extends JPanel implements KeyListener, ActionListener
 		
 		// other
 		g.setFont(font2);
-		g.drawString("2017 Zahir A.", 10, 725);
+		g.drawString("2018 Zahir A.", 10, 725);
 		
 		menuSelect = true;
 	}

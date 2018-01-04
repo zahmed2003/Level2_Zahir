@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 
-public class GameRunner{
+public class GameRunner extends JFrame{
 
 	static JFrame frame = new JFrame();
 	final static int width = 1500;
@@ -18,6 +18,7 @@ public class GameRunner{
 	
 	static MenuState m = new MenuState();
 	static FloorSelector f = new FloorSelector();
+	static EndState e = new EndState();
 	
 	static GamePanel lv1 = new GamePanel();
 	static Level2State lv2 = new Level2State();
@@ -47,18 +48,18 @@ public class GameRunner{
 	static Level26State lv26 = new Level26State();
 	static Level27State lv27 = new Level27State();
 	static Level28State lv28 = new Level28State();
-	static Level29State lv29 = new Level29State();
 	
 
 
 	public static void main(String[] args) {
 		GameRunner game = new GameRunner();
-	
+		game.setup();
 	}
 
 	public GameRunner() {
 		
 		MenuState m = new MenuState();
+		EndState e = new EndState();
 		FloorSelector f = new FloorSelector();
 		GamePanel lv1 = new GamePanel();
 		Level2State lv2 = new Level2State();
@@ -88,7 +89,6 @@ public class GameRunner{
 		Level26State lv26 = new Level26State();
 		Level27State lv27 = new Level27State();
 		Level28State lv28 = new Level28State();
-		Level29State lv29 = new Level29State();
 		
 		JFrame frame = new JFrame();
 
@@ -122,21 +122,20 @@ public class GameRunner{
 		GameRunner.lv26 = lv26;
 		GameRunner.lv27 = lv27;
 		GameRunner.lv28 = lv28;
-		GameRunner.lv29 = lv29;
 		GameRunner.f = f;
+		GameRunner.e = e;
 		
-		setup();
 	}
 
 	public void setup() {
 		Sound.sound4.loop();
 	
-		GameRunner.frame.add(GameRunner.lv29);
+		GameRunner.frame.add(m);
 		GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
 		GameRunner.frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		GameRunner.frame.addKeyListener(GameRunner.lv29);
-		GameRunner.lv29.startGame();
+		GameRunner.frame.addKeyListener(GameRunner.m);
+		GameRunner.m.startGame();
 
 			
 			

@@ -16,7 +16,7 @@ import javax.swing.Timer;
 public class Level16State extends JPanel implements ActionListener, KeyListener{
 	
 	public static int twn = 9;
-	public static int thn = 13;
+	public static int thn = 14;
 	public static int th = GameRunner.height/thn;
 	public static int tw = th;
 	
@@ -169,6 +169,18 @@ SolidTile t128 = new SolidTile(tw*9, th*10, tw, th);
 SolidTile t129 = new SolidTile(tw*9, th*11, tw, th);
 SolidTile t130 = new SolidTile(tw*9, th*12, tw, th);
 
+SolidTile t131 = new SolidTile(0, th*13, tw, th);
+SolidTile t132 = new SolidTile(tw, th*13, tw, th);
+SolidTile t133 = new SolidTile(tw, th*13, tw, th);
+SolidTile t134 = new SolidTile(tw*2, th*13, tw, th);
+SolidTile t135 = new SolidTile(tw*3, th*13, tw, th);
+SolidTile t136 = new SolidTile(tw*4, th*13, tw, th);
+SolidTile t137 = new SolidTile(tw*5, th*13, tw, th);
+SolidTile t138 = new SolidTile(tw*6, th*13, tw, th);
+SolidTile t139 = new SolidTile(tw*7, th*13, tw, th);
+SolidTile t140 = new SolidTile(tw*8, th*13, tw, th);
+SolidTile t141 = new SolidTile(tw*9, th*13, tw, th);
+
 Pawn e1 = new Pawn(tw*6, th, tw, th);
 Pawn e2 = new Pawn(tw*7, th, tw, th);
 Pawn e3 = new Pawn(tw*8, th, tw, th);
@@ -319,6 +331,17 @@ public Level16State()
 	manager.addObject(t128);
 	manager.addObject(t129);
 	manager.addObject(t130);
+	manager.addObject(t131);
+	manager.addObject(t132);
+	manager.addObject(t133);
+	manager.addObject(t134);
+	manager.addObject(t135);
+	manager.addObject(t136);
+	manager.addObject(t137);
+	manager.addObject(t138);
+	manager.addObject(t139);
+	manager.addObject(t140);
+	manager.addObject(t141);
 	
 	manager.addObject(e1);
 	manager.addObject(e2);

@@ -118,6 +118,15 @@ public static BufferedImage ECROnImg;
 public static BufferedImage ECLOffImg;
 public static BufferedImage ECLOnImg;
 
+public static BufferedImage DRECROffImg;
+public static BufferedImage DRECROnImg;
+public static BufferedImage DRECLOffImg;
+public static BufferedImage DRECLOnImg;
+public static BufferedImage RECROffImg;
+public static BufferedImage RECROnImg;
+public static BufferedImage RECLOffImg;
+public static BufferedImage RECLOnImg;
+
 public static BufferedImage RookImg;
 
 
@@ -216,6 +225,16 @@ public GamePanel()
 		ECROnImg = ImageIO.read(this.getClass().getResourceAsStream("ECROn.png"));
 		ECLOffImg = ImageIO.read(this.getClass().getResourceAsStream("ECLOff.png"));
 		ECLOnImg = ImageIO.read(this.getClass().getResourceAsStream("ECLOn.png"));
+		
+		DRECROffImg = ImageIO.read(this.getClass().getResourceAsStream("DRECROff.png"));
+		DRECROnImg = ImageIO.read(this.getClass().getResourceAsStream("DRECROn.png"));
+		DRECLOffImg = ImageIO.read(this.getClass().getResourceAsStream("DRECLOff.png"));
+		DRECLOnImg = ImageIO.read(this.getClass().getResourceAsStream("DRECLOn.png"));
+		
+		RECROffImg = ImageIO.read(this.getClass().getResourceAsStream("RECROff.png"));
+		RECROnImg = ImageIO.read(this.getClass().getResourceAsStream("RECROn.png"));
+		RECLOffImg = ImageIO.read(this.getClass().getResourceAsStream("RECLOff.png"));
+		RECLOnImg = ImageIO.read(this.getClass().getResourceAsStream("RECLOn.png"));
 
 		RookImg = ImageIO.read(this.getClass().getResourceAsStream("Rook.png"));
 		
@@ -378,9 +397,19 @@ public void keyPressed(KeyEvent e) {
 	
 	if(key == KeyEvent.VK_ENTER)
 	{
-		manager.moveTile(tw, twn, thn);
-		player.x = gp.x;
-		player.y = gp.y;
+manager.cb = false;
+		
+		manager.moveTile(tw, twn, thn + 2*tw);
+		
+		manager.switchState();
+		player.x= gp.x;
+		player.y= gp.y;
+		
+		manager.rightConveyerBelt(player, gp, tw);
+		manager.movePawn(tw, twn * tw, thn*th, player);
+		manager.moveRook(tw, twn * tw, thn*th, player);
+		manager.checkRedState(player);
+		
 		InputManager.horizontal = false;
 		InputManager.vertical = false;
 		

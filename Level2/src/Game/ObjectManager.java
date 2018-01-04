@@ -142,53 +142,321 @@ public class ObjectManager {
 					o2.setColliding(true);
 					o2.setCollisionObject(o1);
 					
+					
 					if(o1 instanceof Pawn && o2 instanceof Pawn)
 					{
 						r = ra.nextInt(7);
-						if(r == 0 && o2.isSolidColliding1 == false)
+						if(r == 0)
 						{
+							if(o2.isSolidColliding1 == true)
+							{
+								if(o2.isSolidColliding2 == true && o2.isSolidColliding8 == false)
+								{
+									o2.x -= tw;
+								}
+								else if(o2.isSolidColliding8 == true && o2.isSolidColliding2 == false)
+								{
+									o2.y -= tw;
+								}
+								else if(o2.isSolidColliding8 == true && o2.isSolidColliding2 == true)
+								{
+									
+								}
+								else
+								{
+									r1 = ra.nextInt(1);
+									if(r1 == 0) {o2.x -= tw;}
+									if(r1 == 1) {o2.y -= tw;}
+								}
+							}
+							else
+							{
 							o2.x -= tw;
 							o2.y -= tw;
-						}
-						if(r == 1 && o2.isSolidColliding2 == false)
-						{
-							o2.y -= tw;
-						}
-						if(r == 2 && o2.isSolidColliding3 == false)
-						{
-							o2.x += tw;
-							o2.y -= tw;
-						}
-						if(r == 3 && o2.isSolidColliding4 == false)
-						{
-							o2.x += tw;
-						}
-						if(r == 4 && o2.isSolidColliding5 == false)
-						{
-							o2.x += tw;
-							o2.y += tw;
-						}
-						if(r == 5 && o2.isSolidColliding6 == false)
-						{
-							o2.y += tw;
-						}
-						if(r == 6 && o2.isSolidColliding7 == false)
-						{
-							o2.x -= tw;
-							o2.y += tw;
-						}
-						if(r == 7 && o2.isSolidColliding8 == false)
-						{
-							o2.x -= tw;
+							}
 						}
 						
+						//tile 2
+						else if(r == 1)
+						{
+							if(o2.isSolidColliding2 == true)
+							{
+								if(o2.isSolidColliding1 == true && o2.isSolidColliding3 == false)
+								{
+									o2.x += tw;
+									o2.y -= tw;
+								}
+								else if(o2.isSolidColliding3 == true && o2.isSolidColliding1 == false)
+								{
+									o2.x -= tw;
+									o2.y -= tw;
+								}
+								else if(o2.isSolidColliding3 == true && o2.isSolidColliding1 == true)
+								{
+									
+								}
+								else
+								{
+									r2 = ra.nextInt(1);
+									if(r2 == 0)
+									{
+									o2.x += tw;
+									o2.y -= tw;
+									}
+									if(r2 == 1)
+									{
+										o2.x -= tw;
+										o2.y -= tw;
+									}
+								}
+							}
+							else
+							{
+							o2.y -= tw;
+							}
+						}
 						
+						//tile 3
+						else if(r == 2)
+						{
+							if(o2.isSolidColliding3 == true)
+							{
+								if(o2.isSolidColliding2 == true && o2.isSolidColliding4 == false)
+								{
+									o2.x += tw;
+								}
+								else if (o2.isSolidColliding4 == true && o2.isSolidColliding2 == false)
+								{
+									o2.y -= tw;
+								}
+								else if (o2.isSolidColliding2 == true && o2.isSolidColliding4 == true)
+								{
+									
+								}
+								else
+								{
+									r3 = ra.nextInt(1);
+									if(r3 == 0)
+									{
+										o2.x += tw;
+									}
+									if(r3 == 1)
+									{
+										o2.y -= tw;
+									}
+								}
+							}
+							else
+							{
+							o2.x += tw;
+							o2.y -= tw;
+							}
+							
+						}
+						
+						//tile 4
+						else if(r == 3)
+						{
+							if(o2.isSolidColliding4 == true)
+							{
+								if(o2.isSolidColliding3 == true && o2.isSolidColliding5 == false)
+								{
+								o2.x += tw;
+								o2.y += tw;
+								}
+								else if(o2.isSolidColliding5 == true && o2.isSolidColliding3 == false)
+								{
+								o2.x += tw;
+								o2.y -= tw;
+								}
+								else if (o2.isSolidColliding3 == true && o2.isSolidColliding5 == true)
+								{
+									
+								}
+								else
+								{
+									r4 = ra.nextInt(1);
+									if(r4 == 0)
+									{
+										o2.x += tw;
+										o2.y += tw;
+									}
+									if(r4 == 1)
+									{
+										o2.x += tw;
+										o2.y -= tw;
+									}
+								}
+								
+								
+							}
+							else
+							{	
+								o2.x += tw;
+							}
+							
+						}
+						
+						//tile 5
+						else if(r == 4)
+						{
+							if(o2.isSolidColliding5 == true)
+							{
+								if(o2.isSolidColliding4 == true && o2.isSolidColliding6 == false)
+								{
+									o2.y += tw;
+								}
+								else if(o2.isSolidColliding6 == true && o2.isSolidColliding4 == false)
+								{
+									o2.x += tw;
+								}
+								else if (o2.isSolidColliding4 == true && o2.isSolidColliding4 == true)
+								{
+									
+								}
+								else
+								{
+									r5 = ra.nextInt(1);
+									if(r5 == 0)
+									{
+										o2.x += tw;
+									}
+									if(r5 == 1)
+									{
+										o2.y += tw;
+									}
+								}
+							}
+							else
+							{
+							o2.x += tw;
+							o2.y += tw;
+							}
+						}
+						
+						//tile 6
+						else if(r == 5)
+						{
+							if(o2.isSolidColliding6 == true)
+							{
+								if(o2.isSolidColliding5 == true && o2.isSolidColliding7 == false)
+								{
+									o2.x -= tw;
+									o2.y += tw;
+								}
+								else if(o2.isSolidColliding7 == true && o2.isSolidColliding5 == false)
+								{
+									o2.x += tw;
+									o2.y += tw;
+								}
+								else if(o2.isSolidColliding7 == true && o2.isSolidColliding5 == true)
+								{
+									
+								}
+								else
+								{
+									r6 = ra.nextInt(1);
+									if(r6 == 0)
+									{
+										o2.x -= tw;
+										o2.y += tw;
+									}
+									if(r6 == 1)
+									{
+										o2.x += tw;
+										o2.y += tw;
+									}
+								}
+							}
+							else
+							{
+							o2.y += tw;
+							}
+						}
+						
+						//tile 7
+						else if(r == 6)
+						{
+							if(o2.isSolidColliding7 == true)
+							{
+								if(o2.isSolidColliding6 == true && o2.isSolidColliding8 == false)
+								{
+									o2.x -= tw;
+								}
+								else if(o2.isSolidColliding8 == true && o2.isSolidColliding6 == false)
+								{
+									o2.y += tw;
+								}
+								else if(o2.isSolidColliding8 == true && o2.isSolidColliding6 == true)
+								{
+									
+								}
+								else
+								{
+									r7 = ra.nextInt(1);
+									if(r7 == 0)
+									{
+										o2.x -= tw;
+									}
+									if(r7 == 1)
+									{
+										o2.y += tw;
+									}
+								}
+							}
+							else
+							{
+							o2.x -= tw;
+							o2.y += tw;
+							}
+						}
+						
+						//tile 8
+						else if(r == 7)
+						{
+							if(o2.isSolidColliding8 == true)
+							{
+								if(o2.isSolidColliding7 == true && o2.isSolidColliding1 == false)
+								{
+									o2.x -= tw;
+									o2.y -= tw;
+								}
+								else if(o2.isSolidColliding1 == true && o2.isSolidColliding7 == false)
+								{
+									o2.x -= tw;
+									o2.y += tw;
+								}
+								else if(o2.isSolidColliding1 == true && o2.isSolidColliding7 == true)
+								{
+									
+								}
+								else
+								{
+									r8 = ra.nextInt(1);
+									if(r8 == 0)
+									{
+										o2.x -= tw;
+										o2.y -= tw;
+									}
+									if(r8 == 1)
+									{
+										o2.x -= tw;
+										o2.y += tw;
+									}
+								}
+							}
+							else
+							{
+							o2.x -= tw;
+							}
+						}
 					}
 					
-					if((o1 instanceof RedTile || o1 instanceof RMTile || o1 instanceof RMTile2 || (o1 instanceof RedElectricTile && o1.RState == 1) ||(o1 instanceof ElectricTile && o1.state == 1) || o1 instanceof Pawn || (o1 instanceof ECL && o1.state == 1) || (o1 instanceof ECR && o1.state == 1) || (o1 instanceof DECL && o1.state == 1) || (o1 instanceof DECR && o1.state == 1)) && o2 instanceof Player)
+					if((o1 instanceof RedTile || o1 instanceof RMTile || o1 instanceof RMTile2 || (o1 instanceof RedElectricTile && o1.RState == 1) ||(o1 instanceof ElectricTile && o1.state == 1) || o1 instanceof Pawn || (o1 instanceof ECL && o1.state == 1) || (o1 instanceof ECR && o1.state == 1) || (o1 instanceof DECL && o1.state == 1) || (o1 instanceof RECL && o1.state == 1) || (o1 instanceof RECR && o1.state == 1) || (o1 instanceof DRECL && o1.state == 1) || (o1 instanceof DECR && o1.state == 1) || (o1 instanceof DRECR && o1.state == 1)) && o2 instanceof Player)
 					{
 						p.isAlive = false;
 						Sound.death.play();
+						KeyHandler.numDeaths += 1;
 					}
 					
 					
@@ -764,16 +1032,16 @@ public class ObjectManager {
 	{
 		for (int i = 0; i < objects.size(); i++) {
 			GameObject o = objects.get(i);
-			if(o instanceof RedElectricTile)
+			if(o instanceof RedElectricTile || o instanceof RECR || o instanceof RECL || o instanceof DRECR || o instanceof DRECL)
 			{
-				if(p.x == o.x && p.y == o.y)
-				{
-					o.direction = 22;
-				}
-				if((p.x != o.x || p.y != o.y) && o.direction == 22)
+				if(KeyHandler.enterPressed == true && o.direction == 22)
 				{
 					o.RState = 1;
 					o.direction = 0;
+				}
+				else if(p.x == o.x && p.y == o.y && KeyHandler.enterPressed == true)
+				{
+					o.direction = 22;
 				}
 			}
 			}
@@ -783,7 +1051,7 @@ public class ObjectManager {
 	{
 		for (int i = 0; i < objects.size(); i++) {
 			GameObject o = objects.get(i);
-			if(o instanceof RedElectricTile)
+			if(o instanceof RedElectricTile || o instanceof RECR || o instanceof RECL || o instanceof DRECR || o instanceof DRECL)
 			{
 				o.RState = -1;
 			}
@@ -796,25 +1064,25 @@ public class ObjectManager {
 			GameObject o = objects.get(i);
 			if(cb == false)
 			{
-			if((o instanceof RightConveyerBelt || o instanceof ECR)&& o.x == p.x && o.y == p.y)
+			if((o instanceof RightConveyerBelt || o instanceof ECR || o instanceof RECR)&& o.x == p.x && o.y == p.y)
 			{
 				p.x += tw;
 				gp.x += tw;
 				cb = true;
 			}
-			if((o instanceof LeftConveyerBelt || o instanceof ECL) && o.x == p.x && o.y == p.y)
+			if((o instanceof LeftConveyerBelt || o instanceof ECL || o instanceof RECL) && o.x == p.x && o.y == p.y)
 			{
 				p.x -= tw;
 				gp.x -= tw;
 				cb = true;
 			}
-			if((o instanceof DoubleRCB || o instanceof DECR) && o.x == p.x && o.y == p.y)
+			if((o instanceof DoubleRCB || o instanceof DECR || o instanceof DRECR) && o.x == p.x && o.y == p.y)
 			{
 				p.x += 2*tw;
 				gp.x += 2*tw;
 				cb = true;
 			}
-			if((o instanceof DoubleLCB || o instanceof DECL) && o.x == p.x && o.y == p.y)
+			if((o instanceof DoubleLCB || o instanceof DECL || o instanceof DRECL) && o.x == p.x && o.y == p.y)
 			{
 				p.x -= 2*tw;
 				gp.x -= 2*tw;

@@ -348,6 +348,7 @@ public void keyPressed(KeyEvent e) {
 	}
 	if(key == KeyEvent.VK_ENTER)
 	{
+		KeyHandler.enterPressed = true;
 		manager.moveTile(tw, twn, thn);
 		player.x = gp.x;
 		player.y = gp.y;
@@ -358,6 +359,7 @@ public void keyPressed(KeyEvent e) {
 		manager.checkRedState(player);
 		InputManager.horizontal = false;
 		InputManager.vertical = false;
+		KeyHandler.enterPressed = false;
 	}
 }
 
