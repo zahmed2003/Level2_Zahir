@@ -1,0 +1,7 @@
+package Game.tiles;
+
+/**
+ * Created by jamesmaron on 3/8/18.
+ */
+public class Tile {
+}
