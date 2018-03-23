@@ -2,19 +2,20 @@ package Game;
 
 
 
-import java.awt.Color;
-import java.awt.Graphics;
+import Game.tiles.ElectricTile;
+import Game.tiles.RedTile;
+import Game.tiles.SafeTile;
+import Game.tiles.SolidTile;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-
-import javax.imageio.ImageIO;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.Timer;
 
 public class Level19State extends JPanel implements ActionListener, KeyListener{
 	
@@ -252,15 +253,14 @@ public void winChecker()
 		
 		if(opacity >= 245)
 		{
-			Sound.sound1.stop();
+			Sound.gameSong.stop();
 			FloorSelector.currentChoice = 1;
 			
 		FloorSelector.floor = 3;
 		
 			manager.reset();
 			timer.stop();
-			Sound.sound2.stop();
-			Sound.sound4.loop();
+			Sound.menuTrack.loop();
 			GameRunner.frame.add(GameRunner.m);
 			GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
 			GameRunner.frame.setVisible(true);

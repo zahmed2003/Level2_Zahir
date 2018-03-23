@@ -1,12 +1,6 @@
 package Game;
 
-import java.awt.Color;
-import java.io.File;
-
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 
 public class GameRunner extends JFrame{
@@ -128,7 +122,7 @@ public class GameRunner extends JFrame{
 	}
 
 	public void setup() {
-		Sound.sound4.loop();
+		Sound.menuTrack.loop();
 	
 		GameRunner.frame.add(m);
 		GameRunner.frame.setSize(GameRunner.width, GameRunner.height);

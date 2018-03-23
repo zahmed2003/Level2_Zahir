@@ -1,22 +1,14 @@
-package Game;
+package Game.tiles;
 
-import java.awt.Graphics;
+import Game.GamePanel;
 
-public class RedTile extends GameObject{
+import java.awt.*;
+
+public class RedTile extends Tile {
 
 	public RedTile(int x, int y, int width, int height)
 	{
 		super(x, y, width, height);
-		
-		this.x = x;
-		this.y = y;
-		this.width = width;
-		this.height = height;
-	}
-	
-	public void update()
-	{
-		colBox.setBounds(x, y, width, height);
 	}
 	
 	public void draw(Graphics g)

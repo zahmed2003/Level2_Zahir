@@ -1,5 +1,9 @@
 package Game;
 
+import Game.tiles.RedElectricTile;
+import Game.tiles.RedTile;
+import Game.tiles.SolidTile;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;

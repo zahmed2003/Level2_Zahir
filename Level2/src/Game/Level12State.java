@@ -1,5 +1,9 @@
 package Game;
 
+import Game.tiles.ElectricTile;
+import Game.tiles.SafeTile;
+import Game.tiles.SolidTile;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
@@ -357,13 +361,13 @@ public void winChecker()
 		
 		if(opacity >= 245)
 		{
-			Sound.sound1.stop();
+			Sound.gameSong.stop();
 			
 		FloorSelector.floor = 2;
 		
 			manager.reset();
 			timer.stop();
-			Sound.sound4.loop();
+			Sound.menuTrack.loop();
 			GameRunner.frame.add(GameRunner.m);
 			GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
 			GameRunner.frame.setVisible(true);

@@ -1,17 +1,16 @@
 package Game;
 
-import java.awt.Color;
-import java.awt.Graphics;
+import Game.tiles.*;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-
-import javax.imageio.ImageIO;
-import javax.swing.JPanel;
-import javax.swing.Timer;
 
 public class Level20State extends JPanel implements ActionListener, KeyListener{
 	
@@ -317,8 +316,8 @@ public void startGame()
 {
 	timer.start();
 	
-	Sound.sound2.stop();
-	Sound.sound3.loop();
+	Sound.menuTrack.stop();
+	Sound.gameSong.loop();
 }
 
 public void updateLevel18State() {

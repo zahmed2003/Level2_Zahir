@@ -1,25 +1,14 @@
-package Game;
+package Game.tiles;
 
-import java.awt.Color;
-import java.awt.Graphics;
+import Game.GamePanel;
 
-import javax.imageio.ImageIO;
+import java.awt.*;
 
-public class SafeTile extends GameObject{
+public class SafeTile extends Tile {
 
 	public SafeTile(int x, int y, int width, int height)
 	{
 		super(x, y, width, height);
-		
-		this.x = x;
-		this.y = y;
-		this.width = width;
-		this.height = height;
-	}
-	
-	public void update()
-	{
-		
 	}
 	
 	public void draw(Graphics g)

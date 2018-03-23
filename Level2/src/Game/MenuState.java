@@ -1,19 +1,15 @@
 package Game;
 
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-
-import javax.imageio.ImageIO;
-import javax.swing.JPanel;
-import javax.swing.Timer;
 
 
 public class MenuState extends JPanel implements KeyListener, ActionListener{
@@ -31,7 +27,8 @@ public class MenuState extends JPanel implements KeyListener, ActionListener{
 		private Font titleFont;
 		
 		private Font font;
-		private Font font2;
+		private Font ccFont;
+		private Font editsFont;
 		
 		public MenuState() {
 			timer = new Timer(1000/60, this);
@@ -50,7 +47,9 @@ public class MenuState extends JPanel implements KeyListener, ActionListener{
 				titleColor = Color.WHITE;
 				titleFont = new Font("Times New Roman", Font.PLAIN, 175);
 				font = new Font("Callibri", Font.PLAIN, 140);
-				font2 = new Font("Arial", Font.PLAIN, 50);
+				ccFont = new Font("Arial", Font.PLAIN, 50);
+				editsFont = new Font("Arial", Font.PLAIN, 20);
+
 			
 		}
 		
@@ -77,8 +76,11 @@ public class MenuState extends JPanel implements KeyListener, ActionListener{
 			else if(currentChoice == 1) g.drawImage(p, 450, 500, null);
 			
 			// other
-			g.setFont(font2);
+			g.setFont(ccFont);
 			g.drawString("2018 Zahir A.", 10, 725);
+
+			g.setFont(editsFont);
+			g.drawString("Changes by James M.", 310, 725);
 			
 			menuSelect = true;
 		}

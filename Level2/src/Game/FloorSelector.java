@@ -1,18 +1,14 @@
 package Game;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-
-import javax.imageio.ImageIO;
-import javax.swing.JPanel;
-import javax.swing.Timer;
 
 public class FloorSelector extends JPanel implements KeyListener, ActionListener{
 	private BufferedImage p;
@@ -114,8 +110,8 @@ public class FloorSelector extends JPanel implements KeyListener, ActionListener
 			timer.stop();
 			menuSelect = false;
 			Sound.click.play();
-			Sound.sound4.stop();
-			Sound.sound1.loop();
+			Sound.menuTrack.stop();
+			Sound.gameSong.loop();
 			GameRunner.frame.remove(GameRunner.f);
 			GameRunner.frame.add(GameRunner.lv1);
 			GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
@@ -129,8 +125,8 @@ public class FloorSelector extends JPanel implements KeyListener, ActionListener
 			timer.stop();
 			menuSelect = false;
 			Sound.click.play();
-			Sound.sound4.stop();
-			Sound.sound2.loop();
+			Sound.menuTrack.stop();
+			Sound.gameSong.loop();
 			GameRunner.frame.remove(GameRunner.f);
 			GameRunner.frame.add(GameRunner.lv13);
 			GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
@@ -144,8 +140,8 @@ public class FloorSelector extends JPanel implements KeyListener, ActionListener
 			timer.stop();
 			menuSelect = false;
 			Sound.click.play();
-			Sound.sound4.stop();
-			Sound.sound3.loop();
+			Sound.menuTrack.stop();
+			Sound.gameSong.loop();
 			GameRunner.frame.remove(GameRunner.f);
 			GameRunner.frame.add(GameRunner.lv20);
 			GameRunner.frame.setSize(GameRunner.width, GameRunner.height);

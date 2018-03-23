@@ -1,190 +1,184 @@
 package Game;
 
-import java.awt.Color;
-import java.awt.Graphics;
+import Game.tiles.*;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.Timer;
 
 public class Level28State extends JPanel implements ActionListener, KeyListener{
 	
-	public static int twn = 11;
-	public static int thn = 13;
-	public static int th = GameRunner.height/thn;
-	public static int tw = th;
-	public static int opacity = 0;
+	private final static int WIDTH_IN_TILES = 11;
+	private final static int HEIGHT_IN_TILES = 13;
+	private final static int TILE_SIDE_LENGTH = GameRunner.height/ HEIGHT_IN_TILES;
+	private static int opacity = 0;
 	
 Timer timer;
 ObjectManager manager = new ObjectManager();
-Player player = new Player(tw*2, th*2, tw,th);
-GridPlayer gp = new GridPlayer(tw*2,th*2, tw,th);
+Player player = new Player(TILE_SIDE_LENGTH *2, TILE_SIDE_LENGTH *2, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+GridPlayer gp = new GridPlayer(TILE_SIDE_LENGTH *2, TILE_SIDE_LENGTH *2, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
 
-SolidTile t1 = new SolidTile(0, 0, tw, th);
-SolidTile t2 = new SolidTile(tw, 0, tw, th);
-SolidTile t3 = new SolidTile(tw*2, 0, tw, th);
-SolidTile t4 = new SolidTile(tw*3, 0, tw, th);
-SolidTile t5 = new SolidTile(tw*4, 0, tw, th);
-SolidTile t6 = new SolidTile(tw*5, 0, tw, th);
-SolidTile t7 = new SolidTile(tw*6, 0, tw, th);
-SolidTile t8 = new SolidTile(tw*7, 0, tw, th);
-SolidTile t9 = new SolidTile(tw*8, 0, tw, th);
-SolidTile t10 = new SolidTile(tw*9, 0, tw, th);
-SolidTile t11 = new SolidTile(tw*10, 0, tw, th);
+SolidTile t1 = new SolidTile(0, 0, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+SolidTile t2 = new SolidTile(TILE_SIDE_LENGTH, 0, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+SolidTile t3 = new SolidTile(TILE_SIDE_LENGTH *2, 0, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+SolidTile t4 = new SolidTile(TILE_SIDE_LENGTH *3, 0, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+SolidTile t5 = new SolidTile(TILE_SIDE_LENGTH *4, 0, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+SolidTile t6 = new SolidTile(TILE_SIDE_LENGTH *5, 0, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+SolidTile t7 = new SolidTile(TILE_SIDE_LENGTH *6, 0, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+SolidTile t8 = new SolidTile(TILE_SIDE_LENGTH *7, 0, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+SolidTile t9 = new SolidTile(TILE_SIDE_LENGTH *8, 0, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+SolidTile t10 = new SolidTile(TILE_SIDE_LENGTH *9, 0, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+SolidTile t11 = new SolidTile(TILE_SIDE_LENGTH *10, 0, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
 
-SolidTile t12 = new SolidTile(0, th, tw, th);
-SafeTile t13 = new SafeTile(tw, th, tw, th);
-RedElectricTile t14 = new RedElectricTile(tw*2, th, tw, th, -1);
-SafeTile t15 = new SafeTile(tw*3, th, tw, th);
-SolidTile t16 = new SolidTile(tw*4, th, tw, th);
-SolidTile t17 = new SolidTile(tw*5, th, tw, th);
-SolidTile t18 = new SolidTile(tw*6, th, tw, th);
-SafeTile t19 = new SafeTile(tw*7, th, tw, th);
-RedElectricTile t20 = new RedElectricTile(tw*8, th, tw, th, -1);
-SafeTile t21 = new SafeTile(tw*9, th, tw, th);
-SolidTile t22 = new SolidTile(tw*10, th, tw, th);
+SolidTile t12 = new SolidTile(0, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+SafeTile t13 = new SafeTile(TILE_SIDE_LENGTH, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedElectricTile t14 = new RedElectricTile(TILE_SIDE_LENGTH *2, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH, -1);
+SafeTile t15 = new SafeTile(TILE_SIDE_LENGTH *3, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+SolidTile t16 = new SolidTile(TILE_SIDE_LENGTH *4, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+SolidTile t17 = new SolidTile(TILE_SIDE_LENGTH *5, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+SolidTile t18 = new SolidTile(TILE_SIDE_LENGTH *6, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+SafeTile t19 = new SafeTile(TILE_SIDE_LENGTH *7, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedElectricTile t20 = new RedElectricTile(TILE_SIDE_LENGTH *8, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH, -1);
+SafeTile t21 = new SafeTile(TILE_SIDE_LENGTH *9, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+SolidTile t22 = new SolidTile(TILE_SIDE_LENGTH *10, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
 
-SolidTile t23 = new SolidTile(0, th*2, tw, th);
-SafeTile t24 = new SafeTile(tw, th*2, tw, th);
-RedElectricTile t25 = new RedElectricTile(tw*2, th*2, tw, th, -1);
-SafeTile t26 = new SafeTile(tw*3, th*2, tw, th);
-SolidTile t27 = new SolidTile(tw*4, th*2, tw, th);
-SolidTile t28 = new SolidTile(tw*5, th*2, tw, th);
-SolidTile t29 = new SolidTile(tw*6, th*2, tw, th);
-SafeTile t30 = new SafeTile(tw*7, th*2, tw, th);
-NextFloorTile t31 = new NextFloorTile(tw*8, th*2, tw, th);
-SafeTile t32 = new SafeTile(tw*9, th*2, tw, th);
-SolidTile t33 = new SolidTile(tw*10, th*2, tw, th);
+SolidTile t23 = new SolidTile(0, TILE_SIDE_LENGTH *2, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+SafeTile t24 = new SafeTile(TILE_SIDE_LENGTH, TILE_SIDE_LENGTH *2, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedElectricTile t25 = new RedElectricTile(TILE_SIDE_LENGTH *2, TILE_SIDE_LENGTH *2, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH, -1);
+SafeTile t26 = new SafeTile(TILE_SIDE_LENGTH *3, TILE_SIDE_LENGTH *2, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+SolidTile t27 = new SolidTile(TILE_SIDE_LENGTH *4, TILE_SIDE_LENGTH *2, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+SolidTile t28 = new SolidTile(TILE_SIDE_LENGTH *5, TILE_SIDE_LENGTH *2, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+SolidTile t29 = new SolidTile(TILE_SIDE_LENGTH *6, TILE_SIDE_LENGTH *2, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+SafeTile t30 = new SafeTile(TILE_SIDE_LENGTH *7, TILE_SIDE_LENGTH *2, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+NextFloorTile t31 = new NextFloorTile(TILE_SIDE_LENGTH *8, TILE_SIDE_LENGTH *2, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+SafeTile t32 = new SafeTile(TILE_SIDE_LENGTH *9, TILE_SIDE_LENGTH *2, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+SolidTile t33 = new SolidTile(TILE_SIDE_LENGTH *10, TILE_SIDE_LENGTH *2, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
 
-SolidTile t34 = new SolidTile(0, th*3, tw, th);
-SafeTile t35 = new SafeTile(tw, th*3, tw, th);
-RedElectricTile t36 = new RedElectricTile(tw*2, th*3, tw, th, -1);
-SafeTile t37 = new SafeTile(tw*3, th*3, tw, th);
-SolidTile t38 = new SolidTile(tw*4, th*3, tw, th);
-SolidTile t39 = new SolidTile(tw*5, th*3, tw, th);
-SolidTile t40 = new SolidTile(tw*6, th*3, tw, th);
-SafeTile t41 = new SafeTile(tw*7, th*3, tw, th);
-RedElectricTile t42 = new RedElectricTile(tw*8, th*3, tw, th, -1);
-SafeTile t43 = new SafeTile(tw*9, th*3, tw, th);
-SolidTile t44 = new SolidTile(tw*10, th*3, tw, th);
+SolidTile t34 = new SolidTile(0, TILE_SIDE_LENGTH *3, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+SafeTile t35 = new SafeTile(TILE_SIDE_LENGTH, TILE_SIDE_LENGTH *3, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedElectricTile t36 = new RedElectricTile(TILE_SIDE_LENGTH *2, TILE_SIDE_LENGTH *3, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH, -1);
+SafeTile t37 = new SafeTile(TILE_SIDE_LENGTH *3, TILE_SIDE_LENGTH *3, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+SolidTile t38 = new SolidTile(TILE_SIDE_LENGTH *4, TILE_SIDE_LENGTH *3, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+SolidTile t39 = new SolidTile(TILE_SIDE_LENGTH *5, TILE_SIDE_LENGTH *3, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+SolidTile t40 = new SolidTile(TILE_SIDE_LENGTH *6, TILE_SIDE_LENGTH *3, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+SafeTile t41 = new SafeTile(TILE_SIDE_LENGTH *7, TILE_SIDE_LENGTH *3, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedElectricTile t42 = new RedElectricTile(TILE_SIDE_LENGTH *8, TILE_SIDE_LENGTH *3, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH, -1);
+SafeTile t43 = new SafeTile(TILE_SIDE_LENGTH *9, TILE_SIDE_LENGTH *3, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+SolidTile t44 = new SolidTile(TILE_SIDE_LENGTH *10, TILE_SIDE_LENGTH *3, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
 
-SolidTile t45 = new SolidTile(0, th*4, tw, th);
-SolidTile t46 = new SolidTile(tw, th*4, tw, th);
-RedTile t47 = new RedTile(tw*2, th*4, tw, th);
-SolidTile t48 = new SolidTile(tw*3, th*4, tw, th);
-SolidTile t49 = new SolidTile(tw*4, th*4, tw, th);
-SolidTile t50 = new SolidTile(tw*5, th*4, tw, th);
-SolidTile t51 = new SolidTile(tw*6, th*4, tw, th);
-SolidTile t52 = new SolidTile(tw*7, th*4, tw, th);
-RedTile t53 = new RedTile(tw*8, th*4, tw, th);
-SolidTile t54 = new SolidTile(tw*9, th*4, tw, th);
-SolidTile t55 = new SolidTile(tw*10, th*4, tw, th);
+SolidTile t45 = new SolidTile(0, TILE_SIDE_LENGTH *4, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+SolidTile t46 = new SolidTile(TILE_SIDE_LENGTH, TILE_SIDE_LENGTH *4, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedTile t47 = new RedTile(TILE_SIDE_LENGTH *2, TILE_SIDE_LENGTH *4, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+SolidTile t48 = new SolidTile(TILE_SIDE_LENGTH *3, TILE_SIDE_LENGTH *4, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+SolidTile t49 = new SolidTile(TILE_SIDE_LENGTH *4, TILE_SIDE_LENGTH *4, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+SolidTile t50 = new SolidTile(TILE_SIDE_LENGTH *5, TILE_SIDE_LENGTH *4, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+SolidTile t51 = new SolidTile(TILE_SIDE_LENGTH *6, TILE_SIDE_LENGTH *4, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+SolidTile t52 = new SolidTile(TILE_SIDE_LENGTH *7, TILE_SIDE_LENGTH *4, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedTile t53 = new RedTile(TILE_SIDE_LENGTH *8, TILE_SIDE_LENGTH *4, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+SolidTile t54 = new SolidTile(TILE_SIDE_LENGTH *9, TILE_SIDE_LENGTH *4, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+SolidTile t55 = new SolidTile(TILE_SIDE_LENGTH *10, TILE_SIDE_LENGTH *4, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
 
-RedTile t56 = new RedTile(0, th*5, tw, th);
-RedTile t57 = new RedTile(tw, th*5, tw, th);
-RedTile t58 = new RedTile(tw*2, th*5, tw, th);
-RedTile t59 = new RedTile(tw*3, th*5, tw, th);
-RedTile t60 = new RedTile(tw*4, th*5, tw, th);
-SolidTile t61 = new SolidTile(tw*5, th*5, tw, th);
-RedTile t62 = new RedTile(tw*6, th*5, tw, th);
-RedTile t63 = new RedTile(tw*7, th*5, tw, th);
-RedTile t64 = new RedTile(tw*8, th*5, tw, th);
-RedTile t65 = new RedTile(tw*9, th*5, tw, th);
-RedTile t66 = new RedTile(tw*10, th*5, tw, th);
+RedTile t56 = new RedTile(0, TILE_SIDE_LENGTH *5, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedTile t57 = new RedTile(TILE_SIDE_LENGTH, TILE_SIDE_LENGTH *5, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedTile t58 = new RedTile(TILE_SIDE_LENGTH *2, TILE_SIDE_LENGTH *5, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedTile t59 = new RedTile(TILE_SIDE_LENGTH *3, TILE_SIDE_LENGTH *5, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedTile t60 = new RedTile(TILE_SIDE_LENGTH *4, TILE_SIDE_LENGTH *5, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+SolidTile t61 = new SolidTile(TILE_SIDE_LENGTH *5, TILE_SIDE_LENGTH *5, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedTile t62 = new RedTile(TILE_SIDE_LENGTH *6, TILE_SIDE_LENGTH *5, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedTile t63 = new RedTile(TILE_SIDE_LENGTH *7, TILE_SIDE_LENGTH *5, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedTile t64 = new RedTile(TILE_SIDE_LENGTH *8, TILE_SIDE_LENGTH *5, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedTile t65 = new RedTile(TILE_SIDE_LENGTH *9, TILE_SIDE_LENGTH *5, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedTile t66 = new RedTile(TILE_SIDE_LENGTH *10, TILE_SIDE_LENGTH *5, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
 
-RedElectricTile t67 = new RedElectricTile(0, th*6, tw, th, -1);
-DoubleLCB t68 = new DoubleLCB(tw, th*6, tw, th);
-DoubleLCB t69 = new DoubleLCB(tw*2, th*6, tw, th);
-DoubleLCB t70 = new DoubleLCB(tw*3, th*6, tw, th);
-RedElectricTile t71 = new RedElectricTile(tw*4, th*6, tw, th, -1);
-SolidTile t72 = new SolidTile(tw*5, th*6, tw, th);
-RedElectricTile t73 = new RedElectricTile(tw*6, th*6, tw, th, -1);
-LeftConveyerBelt t74 = new LeftConveyerBelt(tw*7, th*6, tw, th);
-DoubleLCB t75 = new DoubleLCB(tw*8, th*6, tw, th);
-DoubleLCB t76 = new DoubleLCB(tw*9, th*6, tw, th);
-RedElectricTile t77 = new RedElectricTile(tw*10, th*6, tw, th, -1);
+RedElectricTile t67 = new RedElectricTile(0, TILE_SIDE_LENGTH *6, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH, -1);
+DoubleLCB t68 = new DoubleLCB(TILE_SIDE_LENGTH, TILE_SIDE_LENGTH *6, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+DoubleLCB t69 = new DoubleLCB(TILE_SIDE_LENGTH *2, TILE_SIDE_LENGTH *6, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+DoubleLCB t70 = new DoubleLCB(TILE_SIDE_LENGTH *3, TILE_SIDE_LENGTH *6, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedElectricTile t71 = new RedElectricTile(TILE_SIDE_LENGTH *4, TILE_SIDE_LENGTH *6, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH, -1);
+SolidTile t72 = new SolidTile(TILE_SIDE_LENGTH *5, TILE_SIDE_LENGTH *6, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedElectricTile t73 = new RedElectricTile(TILE_SIDE_LENGTH *6, TILE_SIDE_LENGTH *6, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH, -1);
+LeftConveyerBelt t74 = new LeftConveyerBelt(TILE_SIDE_LENGTH *7, TILE_SIDE_LENGTH *6, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+DoubleLCB t75 = new DoubleLCB(TILE_SIDE_LENGTH *8, TILE_SIDE_LENGTH *6, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+DoubleLCB t76 = new DoubleLCB(TILE_SIDE_LENGTH *9, TILE_SIDE_LENGTH *6, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedElectricTile t77 = new RedElectricTile(TILE_SIDE_LENGTH *10, TILE_SIDE_LENGTH *6, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH, -1);
 
-RedTile t78 = new RedTile(0, th*7, tw, th);
-RedTile t79 = new RedTile(tw, th*7, tw, th);
-RedTile t80 = new RedTile(tw*2, th*7, tw, th);
-RedTile t81 = new RedTile(tw*3, th*7, tw, th);
-RedTile t82 = new RedTile(tw*4, th*7, tw, th);
-SolidTile t83 = new SolidTile(tw*5, th*7, tw, th);
-RedTile t84 = new RedTile(tw*6, th*7, tw, th);
-RedTile t85 = new RedTile(tw*7, th*7, tw, th);
-RedTile t86 = new RedTile(tw*8, th*7, tw, th);
-RedTile t87 = new RedTile(tw*9, th*7, tw, th);
-RedTile t88 = new RedTile(tw*10, th*7, tw, th);
+RedTile t78 = new RedTile(0, TILE_SIDE_LENGTH *7, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedTile t79 = new RedTile(TILE_SIDE_LENGTH, TILE_SIDE_LENGTH *7, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedTile t80 = new RedTile(TILE_SIDE_LENGTH *2, TILE_SIDE_LENGTH *7, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedTile t81 = new RedTile(TILE_SIDE_LENGTH *3, TILE_SIDE_LENGTH *7, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedTile t82 = new RedTile(TILE_SIDE_LENGTH *4, TILE_SIDE_LENGTH *7, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+SolidTile t83 = new SolidTile(TILE_SIDE_LENGTH *5, TILE_SIDE_LENGTH *7, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedTile t84 = new RedTile(TILE_SIDE_LENGTH *6, TILE_SIDE_LENGTH *7, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedTile t85 = new RedTile(TILE_SIDE_LENGTH *7, TILE_SIDE_LENGTH *7, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedTile t86 = new RedTile(TILE_SIDE_LENGTH *8, TILE_SIDE_LENGTH *7, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedTile t87 = new RedTile(TILE_SIDE_LENGTH *9, TILE_SIDE_LENGTH *7, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedTile t88 = new RedTile(TILE_SIDE_LENGTH *10, TILE_SIDE_LENGTH *7, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
 
-RedElectricTile t89 = new RedElectricTile(0, th*8, tw, th, -1);
-DoubleRCB t90 = new DoubleRCB(tw, th*8, tw, th);
-DoubleRCB t91 = new DoubleRCB(tw*2, th*8, tw, th);
-RightConveyerBelt t92 = new RightConveyerBelt(tw*3, th*8, tw, th);
-RedElectricTile t93 = new RedElectricTile(tw*4, th*8, tw, th, -1);
-SolidTile t94 = new SolidTile(tw*5, th*8, tw, th);
-RedElectricTile t95 = new RedElectricTile(tw*6, th*8, tw, th, -1);
-DoubleRCB t96 = new DoubleRCB(tw*7, th*8, tw, th);
-DoubleRCB t97 = new DoubleRCB(tw*8, th*8, tw, th);
-DoubleRCB t98 = new DoubleRCB(tw*9, th*8, tw, th);
-RedElectricTile t99 = new RedElectricTile(tw*10, th*8, tw, th, -1);
+RedElectricTile t89 = new RedElectricTile(0, TILE_SIDE_LENGTH *8, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH, -1);
+DoubleRCB t90 = new DoubleRCB(TILE_SIDE_LENGTH, TILE_SIDE_LENGTH *8, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+DoubleRCB t91 = new DoubleRCB(TILE_SIDE_LENGTH *2, TILE_SIDE_LENGTH *8, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RightConveyerBelt t92 = new RightConveyerBelt(TILE_SIDE_LENGTH *3, TILE_SIDE_LENGTH *8, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedElectricTile t93 = new RedElectricTile(TILE_SIDE_LENGTH *4, TILE_SIDE_LENGTH *8, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH, -1);
+SolidTile t94 = new SolidTile(TILE_SIDE_LENGTH *5, TILE_SIDE_LENGTH *8, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedElectricTile t95 = new RedElectricTile(TILE_SIDE_LENGTH *6, TILE_SIDE_LENGTH *8, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH, -1);
+DoubleRCB t96 = new DoubleRCB(TILE_SIDE_LENGTH *7, TILE_SIDE_LENGTH *8, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+DoubleRCB t97 = new DoubleRCB(TILE_SIDE_LENGTH *8, TILE_SIDE_LENGTH *8, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+DoubleRCB t98 = new DoubleRCB(TILE_SIDE_LENGTH *9, TILE_SIDE_LENGTH *8, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedElectricTile t99 = new RedElectricTile(TILE_SIDE_LENGTH *10, TILE_SIDE_LENGTH *8, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH, -1);
 
-RedTile t100 = new RedTile(0, th*9, tw, th);
-RedTile t101 = new RedTile(tw, th*9, tw, th);
-RedTile t102 = new RedTile(tw*2, th*9, tw, th);
-RedTile t103 = new RedTile(tw*3, th*9, tw, th);
-RedTile t104 = new RedTile(tw*4, th*9, tw, th);
-SolidTile t105 = new SolidTile(tw*5, th*9, tw, th);
-RedTile t106 = new RedTile(tw*6, th*9, tw, th);
-RedTile t107 = new RedTile(tw*7, th*9, tw, th);
-RedTile t108 = new RedTile(tw*8, th*9, tw, th);
-RedTile t109 = new RedTile(tw*9, th*9, tw, th);
-RedTile t110 = new RedTile(tw*10, th*9, tw, th);
+RedTile t100 = new RedTile(0, TILE_SIDE_LENGTH *9, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedTile t101 = new RedTile(TILE_SIDE_LENGTH, TILE_SIDE_LENGTH *9, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedTile t102 = new RedTile(TILE_SIDE_LENGTH *2, TILE_SIDE_LENGTH *9, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedTile t103 = new RedTile(TILE_SIDE_LENGTH *3, TILE_SIDE_LENGTH *9, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedTile t104 = new RedTile(TILE_SIDE_LENGTH *4, TILE_SIDE_LENGTH *9, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+SolidTile t105 = new SolidTile(TILE_SIDE_LENGTH *5, TILE_SIDE_LENGTH *9, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedTile t106 = new RedTile(TILE_SIDE_LENGTH *6, TILE_SIDE_LENGTH *9, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedTile t107 = new RedTile(TILE_SIDE_LENGTH *7, TILE_SIDE_LENGTH *9, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedTile t108 = new RedTile(TILE_SIDE_LENGTH *8, TILE_SIDE_LENGTH *9, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedTile t109 = new RedTile(TILE_SIDE_LENGTH *9, TILE_SIDE_LENGTH *9, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedTile t110 = new RedTile(TILE_SIDE_LENGTH *10, TILE_SIDE_LENGTH *9, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
 
-RedElectricTile t111 = new RedElectricTile(0, th*10, tw, th, -1);
-LeftConveyerBelt t112 = new LeftConveyerBelt(tw, th*10, tw, th);
-LeftConveyerBelt t113 = new LeftConveyerBelt(tw*2, th*10, tw, th);
-LeftConveyerBelt t114 = new LeftConveyerBelt(tw*3, th*10, tw, th);
-RedElectricTile t115 = new RedElectricTile(tw*4, th*10, tw, th, -1);
-SolidTile t116 = new SolidTile(tw*5, th*10, tw, th);
-RedElectricTile t117 = new RedElectricTile(tw*6, th*10, tw, th, -1);
-LeftConveyerBelt t118 = new LeftConveyerBelt(tw*7, th*10, tw, th);
-LeftConveyerBelt t119 = new LeftConveyerBelt(tw*8, th*10, tw, th);
-LeftConveyerBelt t120 = new LeftConveyerBelt(tw*9, th*10, tw, th);
-RedElectricTile t121 = new RedElectricTile(tw*10, th*10, tw, th, -1);
+RedElectricTile t111 = new RedElectricTile(0, TILE_SIDE_LENGTH *10, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH, -1);
+LeftConveyerBelt t112 = new LeftConveyerBelt(TILE_SIDE_LENGTH, TILE_SIDE_LENGTH *10, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+LeftConveyerBelt t113 = new LeftConveyerBelt(TILE_SIDE_LENGTH *2, TILE_SIDE_LENGTH *10, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+LeftConveyerBelt t114 = new LeftConveyerBelt(TILE_SIDE_LENGTH *3, TILE_SIDE_LENGTH *10, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedElectricTile t115 = new RedElectricTile(TILE_SIDE_LENGTH *4, TILE_SIDE_LENGTH *10, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH, -1);
+SolidTile t116 = new SolidTile(TILE_SIDE_LENGTH *5, TILE_SIDE_LENGTH *10, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedElectricTile t117 = new RedElectricTile(TILE_SIDE_LENGTH *6, TILE_SIDE_LENGTH *10, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH, -1);
+LeftConveyerBelt t118 = new LeftConveyerBelt(TILE_SIDE_LENGTH *7, TILE_SIDE_LENGTH *10, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+LeftConveyerBelt t119 = new LeftConveyerBelt(TILE_SIDE_LENGTH *8, TILE_SIDE_LENGTH *10, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+LeftConveyerBelt t120 = new LeftConveyerBelt(TILE_SIDE_LENGTH *9, TILE_SIDE_LENGTH *10, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedElectricTile t121 = new RedElectricTile(TILE_SIDE_LENGTH *10, TILE_SIDE_LENGTH *10, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH, -1);
 
-RedTile t122= new RedTile(0, th*11, tw, th);
-RedTile t123 = new RedTile(tw, th*11, tw, th);
-RedTile t124 = new RedTile(tw*2, th*11, tw, th);
-RedTile t125 = new RedTile(tw*3, th*11, tw, th);
-RedTile t126 = new RedTile(tw*4, th*11, tw, th);
-RedTile t127 = new RedTile(tw*5, th*11, tw, th);
-RedTile t128 = new RedTile(tw*6, th*11, tw, th);
-RedTile t129 = new RedTile(tw*7, th*11, tw, th);
-RedTile t130 = new RedTile(tw*8, th*11, tw, th);
-RedTile t131 = new RedTile(tw*9, th*11, tw, th);
-RedTile t132 = new RedTile(tw*10, th*11, tw, th);
+RedTile t122= new RedTile(0, TILE_SIDE_LENGTH *11, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedTile t123 = new RedTile(TILE_SIDE_LENGTH, TILE_SIDE_LENGTH *11, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedTile t124 = new RedTile(TILE_SIDE_LENGTH *2, TILE_SIDE_LENGTH *11, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedTile t125 = new RedTile(TILE_SIDE_LENGTH *3, TILE_SIDE_LENGTH *11, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedTile t126 = new RedTile(TILE_SIDE_LENGTH *4, TILE_SIDE_LENGTH *11, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedTile t127 = new RedTile(TILE_SIDE_LENGTH *5, TILE_SIDE_LENGTH *11, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedTile t128 = new RedTile(TILE_SIDE_LENGTH *6, TILE_SIDE_LENGTH *11, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedTile t129 = new RedTile(TILE_SIDE_LENGTH *7, TILE_SIDE_LENGTH *11, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedTile t130 = new RedTile(TILE_SIDE_LENGTH *8, TILE_SIDE_LENGTH *11, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedTile t131 = new RedTile(TILE_SIDE_LENGTH *9, TILE_SIDE_LENGTH *11, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedTile t132 = new RedTile(TILE_SIDE_LENGTH *10, TILE_SIDE_LENGTH *11, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
 
-RedTile t133= new RedTile(0, th*12, tw, th);
-RedTile t134 = new RedTile(tw, th*12, tw, th);
-RedTile t135 = new RedTile(tw*2, th*12, tw, th);
-RightConveyerBelt t136 = new RightConveyerBelt(tw*3, th*12, tw, th);
-RightConveyerBelt t137 = new RightConveyerBelt(tw*4, th*12, tw, th);
-RightConveyerBelt t138 = new RightConveyerBelt(tw*5, th*12, tw, th);
-RightConveyerBelt t139 = new RightConveyerBelt(tw*6, th*12, tw, th);
-RightConveyerBelt t140 = new RightConveyerBelt(tw*7, th*12, tw, th);
-RedTile t141 = new RedTile(tw*8, th*12, tw, th);
-RedTile t142 = new RedTile(tw*9, th*12, tw, th);
-RedTile t143 = new RedTile(tw*10, th*12, tw, th);
+RedTile t133= new RedTile(0, TILE_SIDE_LENGTH *12, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedTile t134 = new RedTile(TILE_SIDE_LENGTH, TILE_SIDE_LENGTH *12, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedTile t135 = new RedTile(TILE_SIDE_LENGTH *2, TILE_SIDE_LENGTH *12, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RightConveyerBelt t136 = new RightConveyerBelt(TILE_SIDE_LENGTH *3, TILE_SIDE_LENGTH *12, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RightConveyerBelt t137 = new RightConveyerBelt(TILE_SIDE_LENGTH *4, TILE_SIDE_LENGTH *12, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RightConveyerBelt t138 = new RightConveyerBelt(TILE_SIDE_LENGTH *5, TILE_SIDE_LENGTH *12, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RightConveyerBelt t139 = new RightConveyerBelt(TILE_SIDE_LENGTH *6, TILE_SIDE_LENGTH *12, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RightConveyerBelt t140 = new RightConveyerBelt(TILE_SIDE_LENGTH *7, TILE_SIDE_LENGTH *12, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedTile t141 = new RedTile(TILE_SIDE_LENGTH *8, TILE_SIDE_LENGTH *12, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedTile t142 = new RedTile(TILE_SIDE_LENGTH *9, TILE_SIDE_LENGTH *12, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+RedTile t143 = new RedTile(TILE_SIDE_LENGTH *10, TILE_SIDE_LENGTH *12, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
 
-Pawn e1 = new Pawn(tw*8, th*4, tw, th);
-Pawn e2 = new Pawn(tw*5, th*12, tw, th);
+Pawn e1 = new Pawn(TILE_SIDE_LENGTH *8, TILE_SIDE_LENGTH *4, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
+Pawn e2 = new Pawn(TILE_SIDE_LENGTH *5, TILE_SIDE_LENGTH *12, TILE_SIDE_LENGTH, TILE_SIDE_LENGTH);
 
 
 
@@ -353,25 +347,25 @@ public void startGame()
 public void updateLevel28State() {
 
 	manager.update();
-	manager.checkCollision(player, tw);
+	manager.checkCollision(player, TILE_SIDE_LENGTH);
 	winChecker();
 	boundChecker();
 	
 	
 	if(player.isAlive == false)
 	{
-		gp.x = tw* 2;
-		gp.y = th*2;
+		gp.x = TILE_SIDE_LENGTH * 2;
+		gp.y = TILE_SIDE_LENGTH *2;
 		
 		
-		player.x = tw*2;
-		player.y = th*2;
+		player.x = TILE_SIDE_LENGTH *2;
+		player.y = TILE_SIDE_LENGTH *2;
 		
-		e1.x = tw*8;
-		e1.y = th*4;
+		e1.x = TILE_SIDE_LENGTH *8;
+		e1.y = TILE_SIDE_LENGTH *4;
 		
-		e2.x = tw*5;
-		e2.y = th*12;
+		e2.x = TILE_SIDE_LENGTH *5;
+		e2.y = TILE_SIDE_LENGTH *12;
 		
 		manager.redTileReset();
 		
@@ -386,14 +380,14 @@ public void updateLevel28State() {
 public void boundChecker()
 {
 	if(gp.x < 0) {gp.x = 0;}
-	if(gp.x >tw*twn - gp.width) {gp.x = tw*twn - gp.width;}
+	if(gp.x > TILE_SIDE_LENGTH * WIDTH_IN_TILES - gp.width) {gp.x = TILE_SIDE_LENGTH * WIDTH_IN_TILES - gp.width;}
 	if(gp.y < 0) {gp.y = 0;}
-	if(gp.y > th*thn - gp.height) {gp.y = th*thn - gp.height;}
+	if(gp.y > TILE_SIDE_LENGTH * HEIGHT_IN_TILES - gp.height) {gp.y = TILE_SIDE_LENGTH * HEIGHT_IN_TILES - gp.height;}
 	
 	if(player.x < 0) {player.x = 0;}
-	if(player.x >tw*twn - player.width) {player.x = tw*twn - player.width;}
+	if(player.x > TILE_SIDE_LENGTH * WIDTH_IN_TILES - player.width) {player.x = TILE_SIDE_LENGTH * WIDTH_IN_TILES - player.width;}
 	if(player.y < 0) {player.y = 0;}
-	if(player.y > th*thn - player.height) {player.y = th*thn - player.height;}
+	if(player.y > TILE_SIDE_LENGTH * HEIGHT_IN_TILES - player.height) {player.y = TILE_SIDE_LENGTH * HEIGHT_IN_TILES - player.height;}
 }
 
 public void winChecker()
@@ -410,7 +404,7 @@ public void winChecker()
 		
 		if(opacity >= 245)
 		{
-			Sound.sound3.stop();
+			Sound.menuTrack.stop();
 		
 			manager.reset();
 			timer.stop();
@@ -462,22 +456,22 @@ public void keyPressed(KeyEvent e) {
 	{
 	if(key == KeyEvent.VK_RIGHT)
 	{
-		gp.x += tw;
+		gp.x += TILE_SIDE_LENGTH;
 		InputManager.horizontal = true;
 	}
 	if(key == KeyEvent.VK_LEFT)
 	{
-		gp.x -= tw;
+		gp.x -= TILE_SIDE_LENGTH;
 		InputManager.horizontal = true;
 	}
 	if(key == KeyEvent.VK_UP)
 	{
-		gp.y -= th;
+		gp.y -= TILE_SIDE_LENGTH;
 		InputManager.vertical = true;
 	}
 	if(key == KeyEvent.VK_DOWN)
 	{
-		gp.y += th;
+		gp.y += TILE_SIDE_LENGTH;
 		InputManager.vertical = true;
 	}
 
@@ -489,12 +483,12 @@ public void keyPressed(KeyEvent e) {
 	{
 		if(key == KeyEvent.VK_RIGHT)
 		{
-			gp.x += tw;
+			gp.x += TILE_SIDE_LENGTH;
 			InputManager.horizontal = true;
 		}
 		if(key == KeyEvent.VK_LEFT)
 		{
-			gp.x -= tw;
+			gp.x -= TILE_SIDE_LENGTH;
 			InputManager.horizontal = true;
 		}
 		
@@ -504,12 +498,12 @@ public void keyPressed(KeyEvent e) {
 	{
 		if(key == KeyEvent.VK_UP)
 		{
-			gp.y -= th;
+			gp.y -= TILE_SIDE_LENGTH;
 			InputManager.vertical = true;
 		}
 		if(key == KeyEvent.VK_DOWN)
 		{
-			gp.y += th;
+			gp.y += TILE_SIDE_LENGTH;
 			InputManager.vertical = true;
 		}
 		
@@ -525,15 +519,15 @@ public void keyPressed(KeyEvent e) {
 		manager.cb = false;
 		KeyHandler.enterPressed = true;
 		
-		manager.moveTile(tw, twn, thn + 2*tw);
+		manager.moveTile(TILE_SIDE_LENGTH, WIDTH_IN_TILES, HEIGHT_IN_TILES + 2* TILE_SIDE_LENGTH);
 		
 		manager.switchState();
 		player.x= gp.x;
 		player.y= gp.y;
 		
-		manager.rightConveyerBelt(player, gp, tw);
-		manager.movePawn(tw, twn * tw, thn*th, player);
-		manager.moveRook(tw, twn * tw, thn*th, player);
+		manager.rightConveyerBelt(player, gp, TILE_SIDE_LENGTH);
+		manager.movePawn(TILE_SIDE_LENGTH, WIDTH_IN_TILES * TILE_SIDE_LENGTH, HEIGHT_IN_TILES * TILE_SIDE_LENGTH, player);
+		manager.moveRook(TILE_SIDE_LENGTH, WIDTH_IN_TILES * TILE_SIDE_LENGTH, HEIGHT_IN_TILES * TILE_SIDE_LENGTH, player);
 		manager.checkRedState(player);
 		
 		InputManager.horizontal = false;

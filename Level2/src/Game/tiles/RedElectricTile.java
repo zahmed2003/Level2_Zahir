@@ -1,28 +1,16 @@
-package Game;
+package Game.tiles;
 
-import java.awt.Graphics;
+import Game.GamePanel;
 
-public class RedElectricTile extends GameObject{
-	public static final int ROn = 1;
-	public static final int ROff = -1;
+import java.awt.*;
 
+public class RedElectricTile extends Tile {
 	
 	public RedElectricTile(int x, int y, int width, int height, int RState)
 	{
 		super(x, y, width, height);
-		
-		this.x = x;
-		this.y = y;
-		this.width = width;
-		this.height = height;
 		this.RState = RState;
-		
 		direction = 0;
-	}
-	
-	public void update()
-	{
-		colBox.setBounds(x, y, width, height);
 	}
 	
 	public void draw(Graphics g)

@@ -1,5 +1,7 @@
 package Game;
 
+import Game.tiles.RedTile;
+
 import java.awt.Graphics;
 import java.awt.Rectangle;
 

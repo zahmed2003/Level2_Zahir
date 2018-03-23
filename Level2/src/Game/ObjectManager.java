@@ -1,6 +1,8 @@
 package Game;
 
 
+import Game.tiles.*;
+
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Random;

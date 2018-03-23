@@ -1,5 +1,7 @@
 package Game;
 
+import Game.tiles.ElectricTile;
+
 import java.awt.Graphics;
 
 public class DECL extends GameObject{
