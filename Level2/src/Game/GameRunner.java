@@ -1,18 +1,20 @@
 package Game;
 
+import Game.levels.Level28State;
+
 import javax.swing.JFrame;
 
 
 public class GameRunner extends JFrame{
 
-	static JFrame frame = new JFrame();
-	final static int width = 1500;
-	final static int height = 750;
+	private static JFrame frame = new JFrame();
+	public final static int WINDOW_WIDTH = 1500;
+	public final static int WINDOW_HEIGHT = 750;
 	GameRunner game;
 	
 	static MenuState m = new MenuState();
 	static FloorSelector f = new FloorSelector();
-	static EndState e = new EndState();
+	private static EndState endState = new EndState();
 	
 	static GamePanel lv1 = new GamePanel();
 	static Level2State lv2 = new Level2State();
@@ -86,7 +88,7 @@ public class GameRunner extends JFrame{
 		
 		JFrame frame = new JFrame();
 
-		GameRunner.frame = frame;
+		GameRunner.setFrame(frame);
 		
 		GameRunner.lv1 = lv1;
 		GameRunner.lv2 = lv2;
@@ -117,18 +119,34 @@ public class GameRunner extends JFrame{
 		GameRunner.lv27 = lv27;
 		GameRunner.lv28 = lv28;
 		GameRunner.f = f;
-		GameRunner.e = e;
+		GameRunner.setEndState(e);
 		
+	}
+
+	public static JFrame getFrame() {
+		return frame;
+	}
+
+	public static void setFrame(JFrame frame) {
+		GameRunner.frame = frame;
+	}
+
+	public static EndState getEndState() {
+		return endState;
+	}
+
+	public static void setEndState(EndState endState) {
+		GameRunner.endState = endState;
 	}
 
 	public void setup() {
 		Sound.menuTrack.loop();
 	
-		GameRunner.frame.add(m);
-		GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
-		GameRunner.frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		GameRunner.frame.addKeyListener(GameRunner.m);
+		GameRunner.getFrame().add(m);
+		GameRunner.getFrame().setSize(GameRunner.WINDOW_WIDTH, GameRunner.WINDOW_HEIGHT);
+		GameRunner.getFrame().setVisible(true);
+		getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		GameRunner.getFrame().addKeyListener(GameRunner.m);
 		GameRunner.m.startGame();
 
 			

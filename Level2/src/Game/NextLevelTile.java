@@ -7,10 +7,10 @@ public class NextLevelTile extends GameObject{
 	{
 		super(x, y, width, height);
 		
-		this.x = x;
-		this.y = y;
-		this.width = width;
-		this.height = height;
+		this.setX(x);
+		this.setY(y);
+		this.setWidth(width);
+		this.setHeight(height);
 	}
 	
 	public void update()
@@ -19,6 +19,6 @@ public class NextLevelTile extends GameObject{
 	
 	public void draw(Graphics g)
 	{
-		g.drawImage(GamePanel.wtImg, x, y, width, height, null);
+		g.drawImage(GamePanel.wtImg, getX(), getY(), getWidth(), getHeight(), null);
 	}
 }

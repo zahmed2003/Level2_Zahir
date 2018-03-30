@@ -1,18 +1,15 @@
 package Game;
 
-import java.awt.Graphics;
 import java.awt.Rectangle;
-
 import java.awt.Graphics;
-import java.awt.Rectangle;
 
 public class GameObject {
 	protected boolean isAlive;
 	
-	protected int x;
-	protected int y;
-	protected int width;
-	protected int height;
+	private int x;
+	private int y;
+	private int width;
+	private int height;
 	protected int speed;
 	protected boolean isColliding;
 	public boolean cColl;
@@ -28,7 +25,7 @@ public class GameObject {
 	
 	
 	
-	protected Rectangle colBox; 
+	protected Rectangle colBox;
 	
 	protected GameObject collisionObject;
 
@@ -51,14 +48,14 @@ public class GameObject {
 		isSolidColliding8 = false;
 		superstate = 1;
 		
-		this.x = x;
-		this.y = y;
-		this.width = w;
-		this.height = h;
+		this.setX(x);
+		this.setY(y);
+		this.setWidth(w);
+		this.setHeight(h);
 		
 		speed = 0;
 
-		colBox = new Rectangle(x, y, width, height);
+		colBox = new Rectangle(x, y, getWidth(), getHeight());
 	}
 	
 	public GameObject getCollisionObject() {
@@ -196,10 +193,10 @@ public class GameObject {
 	}
 
 	public void draw(Graphics g){
-		g.fillRect(x, y, width, height);
+		g.fillRect(getX(), getY(), getWidth(), getHeight());
 	}
 	
 	public void update(){
-		colBox.setBounds(x, y, width, height);
+		colBox.setBounds(getX(), getY(), getWidth(), getHeight());
 	}
 }

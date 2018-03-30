@@ -17,27 +17,27 @@ public class DECL extends GameObject{
 		
 		ElectricTile.superstate = 1;
 		
-		this.x = x;
-		this.y = y;
-		this.width = width;
-		this.height = height;
+		this.setX(x);
+		this.setY(y);
+		this.setWidth(width);
+		this.setHeight(height);
 		this.state = state;
 	}
 	
 	public void update()
 	{
-		colBox.setBounds(x, y, width, height);
+		colBox.setBounds(getX(), getY(), getWidth(), getHeight());
 	}
 	
 	public void draw(Graphics g)
 	{
 		if(state == 1)
 		{
-		g.drawImage(GamePanel.DECLOnImg, x, y, width, height, null);
+		g.drawImage(GamePanel.DECLOnImg, getX(), getY(), getWidth(), getHeight(), null);
 		}
 		if(state == -1)
 		{
-			g.drawImage(GamePanel.DECLOffImg, x, y, width, height, null);
+			g.drawImage(GamePanel.DECLOffImg, getX(), getY(), getWidth(), getHeight(), null);
 		}
 	}
 	

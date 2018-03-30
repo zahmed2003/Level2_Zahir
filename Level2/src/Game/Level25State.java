@@ -22,7 +22,7 @@ public class Level25State extends JPanel implements ActionListener, KeyListener{
 	
 	public static int twn = 16;
 	public static int thn = 3;
-	public static int tw = GameRunner.width/twn;
+	public static int tw = GameRunner.WINDOW_WIDTH /twn;
 	public static int th = tw;
 	
 Timer timer;
@@ -174,14 +174,14 @@ public void updateLeve25State() {
 	
 	if(player.isAlive == false)
 	{
-		gp.x = tw;
-		gp.y = th;
+		gp.setX(tw);
+		gp.setY(th);
 		
-		player.x = tw;
-		player.y = th;
+		player.setX(tw);
+		player.setY(th);
 		
-		e1.x = 11*tw;
-		e1.y = th;
+		e1.setX(11*tw);
+		e1.setY(th);
 		
 		manager.resetElectric();
 		player.isAlive = true;
@@ -193,31 +193,35 @@ public void updateLeve25State() {
 
 public void boundChecker()
 {
-	if(gp.x < 0) {gp.x = 0;}
-	if(gp.x >tw*16 - gp.width) {gp.x = tw*16 - gp.width;}
-	if(gp.y < 0) {gp.y = 0;}
-	if(gp.y > th*3 - gp.height) {gp.y = th*3 - gp.height;}
+	if(gp.getX() < 0) {
+		gp.setX(0);}
+	if(gp.getX() >tw*16 - gp.getWidth()) {
+		gp.setX(tw*16 - gp.getWidth());}
+	if(gp.getY() < 0) {
+		gp.setY(0);}
+	if(gp.getY() > th*3 - gp.getHeight()) {
+		gp.setY(th*3 - gp.getHeight());}
 
 }
 
 public void winChecker()
 {
-	if(player.x == t25.x && player.y == t25.y)
+	if(player.getX() == t25.getX() && player.getY() == t25.getY())
 	{
 		manager.reset();
 		timer.stop();
-		GameRunner.frame.remove(GameRunner.lv25);
-		GameRunner.frame.add(GameRunner.lv26);
-		GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
-		GameRunner.frame.setVisible(true);
-		GameRunner.frame.addKeyListener(GameRunner.lv26);
+		GameRunner.getFrame().remove(GameRunner.lv25);
+		GameRunner.getFrame().add(GameRunner.lv26);
+		GameRunner.getFrame().setSize(GameRunner.WINDOW_WIDTH, GameRunner.WINDOW_HEIGHT);
+		GameRunner.getFrame().setVisible(true);
+		GameRunner.getFrame().addKeyListener(GameRunner.lv26);
 		GameRunner.lv26.startGame();
 	}
 }
 
 public void drawLeve25State(Graphics g) {
 	g.setColor(Color.BLACK);
-	g.fillRect(0, 0, GameRunner.width, GameRunner.height);
+	g.fillRect(0, 0, GameRunner.WINDOW_WIDTH, GameRunner.WINDOW_HEIGHT);
 	manager.draw(g);
 }
 
@@ -250,22 +254,22 @@ public void keyPressed(KeyEvent e) {
 	{
 	if(key == KeyEvent.VK_RIGHT)
 	{
-		gp.x += tw;
+		gp.setX(gp.getX() + tw);
 		InputManager.horizontal = true;
 	}
 	if(key == KeyEvent.VK_LEFT)
 	{
-		gp.x -= tw;
+		gp.setX(gp.getX() - tw);
 		InputManager.horizontal = true;
 	}
 	if(key == KeyEvent.VK_UP)
 	{
-		gp.y -= th;
+		gp.setY(gp.getY() - th);
 		InputManager.vertical = true;
 	}
 	if(key == KeyEvent.VK_DOWN)
 	{
-		gp.y += th;
+		gp.setY(gp.getY() + th);
 		InputManager.vertical = true;
 	}
 
@@ -277,12 +281,12 @@ public void keyPressed(KeyEvent e) {
 	{
 		if(key == KeyEvent.VK_RIGHT)
 		{
-			gp.x += tw;
+			gp.setX(gp.getX() + tw);
 			InputManager.horizontal = true;
 		}
 		if(key == KeyEvent.VK_LEFT)
 		{
-			gp.x -= tw;
+			gp.setX(gp.getX() - tw);
 			InputManager.horizontal = true;
 		}
 		
@@ -292,18 +296,18 @@ public void keyPressed(KeyEvent e) {
 	{
 		if(key == KeyEvent.VK_UP)
 		{
-			gp.y -= th;
+			gp.setY(gp.getY() - th);
 			InputManager.vertical = true;
 		}
 		if(key == KeyEvent.VK_DOWN)
 		{
-			gp.y += th;
+			gp.setY(gp.getY() + th);
 			InputManager.vertical = true;
 		}
 		
 		
 	}
-	if(gp.x == player.x && gp.y == player.y)
+	if(gp.getX() == player.getX() && gp.getY() == player.getY())
 	{
 		InputManager.horizontal = false;
 		InputManager.vertical = false;
@@ -312,8 +316,8 @@ public void keyPressed(KeyEvent e) {
 	{
 		manager.cb = false;
 		manager.moveTile(tw, twn, thn + 2*tw);
-		player.x= gp.x;
-		player.y= gp.y;
+		player.setX(gp.getX());
+		player.setY(gp.getY());
 		
 		manager.switchState();
 		manager.rightConveyerBelt(player, gp, tw);

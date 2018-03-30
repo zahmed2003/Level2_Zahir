@@ -17,11 +17,11 @@ public class ElectricTile extends Tile {
 	{
 		if(state == 1)
 		{
-			g.drawImage(GamePanel.ONETImg, x, y, width, height, null);
+			g.drawImage(GamePanel.ONETImg, getX(), getY(), getWidth(), getHeight(), null);
 		}
 		if(state == -1)
 		{
-			g.drawImage(GamePanel.OFFETImg, x, y, width, height, null);
+			g.drawImage(GamePanel.OFFETImg, getX(), getY(), getWidth(), getHeight(), null);
 		}
 	}
 

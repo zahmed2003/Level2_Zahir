@@ -11,10 +11,10 @@ public class DoubleLCB extends GameObject{
 	{
 		super(x, y, width, height);
 		
-		this.x = x;
-		this.y = y;
-		this.width = width;
-		this.height = height;
+		this.setX(x);
+		this.setY(y);
+		this.setWidth(width);
+		this.setHeight(height);
 		
 		cColl = false;
 		
@@ -24,12 +24,12 @@ public class DoubleLCB extends GameObject{
 	public void update()
 	{
 		
-		colBox.setBounds(x, y, width, height);
+		colBox.setBounds(getX(), getY(), getWidth(), getHeight());
 	}
 	
 	public void draw(Graphics g)
 	{
-		g.drawImage(GamePanel.DCLImg, x, y, width, height, null);
+		g.drawImage(GamePanel.DCLImg, getX(), getY(), getWidth(), getHeight(), null);
 
 	}
 	

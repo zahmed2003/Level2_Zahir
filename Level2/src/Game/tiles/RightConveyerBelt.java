@@ -18,7 +18,7 @@ public class RightConveyerBelt extends Tile {
 	
 	public void draw(Graphics g)
 	{
-		g.drawImage(GamePanel.CRImg, x, y, width, height, null);
+		g.drawImage(GamePanel.CRImg, getX(), getY(), getWidth(), getHeight(), null);
 
 	}
 	

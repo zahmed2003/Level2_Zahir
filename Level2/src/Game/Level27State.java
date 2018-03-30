@@ -21,7 +21,7 @@ public class Level27State extends JPanel implements ActionListener, KeyListener{
 	
 public static int twn = 10;
 public static int thn = 10;
-public static int th = GameRunner.height/thn;
+public static int th = GameRunner.WINDOW_HEIGHT /thn;
 public static int tw = th;
 	
 Timer timer;
@@ -318,11 +318,11 @@ public void updateLevel27State() {
 	if(player.isAlive == false)
 	{
 		
-		player.x = 8*tw;
-		player.y = 8*tw;
+		player.setX(8*tw);
+		player.setY(8*tw);
 		
-		gp.x = 8*tw;
-		gp.y = 8*tw;
+		gp.setX(8*tw);
+		gp.setY(8*tw);
 		
 		if(t49.state == 1)
 		{
@@ -339,29 +339,37 @@ public void updateLevel27State() {
 
 public void boundChecker()
 {
-	if(gp.x < 0) {gp.x = 0;}
-	if(gp.x >tw*twn - gp.width) {gp.x = tw*twn - gp.width;}
-	if(gp.y < 0) {gp.y = 0;}
-	if(gp.y > th*thn - gp.height) {gp.y = th*thn - gp.height;}
+	if(gp.getX() < 0) {
+		gp.setX(0);}
+	if(gp.getX() >tw*twn - gp.getWidth()) {
+		gp.setX(tw*twn - gp.getWidth());}
+	if(gp.getY() < 0) {
+		gp.setY(0);}
+	if(gp.getY() > th*thn - gp.getHeight()) {
+		gp.setY(th*thn - gp.getHeight());}
 	
-	if(player.x < 0) {player.x = 0;}
-	if(player.x >tw*twn - player.width) {player.x = tw*twn - player.width;}
-	if(player.y < 0) {player.y = 0;}
-	if(player.y > th*thn - player.height) {player.y = th*thn - player.height;}
+	if(player.getX() < 0) {
+		player.setX(0);}
+	if(player.getX() >tw*twn - player.getWidth()) {
+		player.setX(tw*twn - player.getWidth());}
+	if(player.getY() < 0) {
+		player.setY(0);}
+	if(player.getY() > th*thn - player.getHeight()) {
+		player.setY(th*thn - player.getHeight());}
 
 }
 
 public void winChecker()
 {
-	if(player.x == t52.x && player.y == t52.y)
+	if(player.getX() == t52.getX() && player.getY() == t52.getY())
 	{
 		manager.reset();
 		timer.stop();
-		GameRunner.frame.remove(GameRunner.lv27);
-		GameRunner.frame.add(GameRunner.lv28);
-		GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
-		GameRunner.frame.setVisible(true);
-		GameRunner.frame.addKeyListener(GameRunner.lv28);
+		GameRunner.getFrame().remove(GameRunner.lv27);
+		GameRunner.getFrame().add(GameRunner.lv28);
+		GameRunner.getFrame().setSize(GameRunner.WINDOW_WIDTH, GameRunner.WINDOW_HEIGHT);
+		GameRunner.getFrame().setVisible(true);
+		GameRunner.getFrame().addKeyListener(GameRunner.lv28);
 		GameRunner.lv28.startGame();
 	
 	}
@@ -369,7 +377,7 @@ public void winChecker()
 
 public void drawLevel27State(Graphics g) {
 	g.setColor(Color.BLACK);
-	g.fillRect(0, 0, GameRunner.width, GameRunner.height);
+	g.fillRect(0, 0, GameRunner.WINDOW_WIDTH, GameRunner.WINDOW_HEIGHT);
 	manager.draw(g);
 }
 
@@ -402,22 +410,22 @@ public void keyPressed(KeyEvent e) {
 	{
 	if(key == KeyEvent.VK_RIGHT)
 	{
-		gp.x += tw;
+		gp.setX(gp.getX() + tw);
 		InputManager.horizontal = true;
 	}
 	if(key == KeyEvent.VK_LEFT)
 	{
-		gp.x -= tw;
+		gp.setX(gp.getX() - tw);
 		InputManager.horizontal = true;
 	}
 	if(key == KeyEvent.VK_UP)
 	{
-		gp.y -= th;
+		gp.setY(gp.getY() - th);
 		InputManager.vertical = true;
 	}
 	if(key == KeyEvent.VK_DOWN)
 	{
-		gp.y += th;
+		gp.setY(gp.getY() + th);
 		InputManager.vertical = true;
 	}
 	
@@ -429,12 +437,12 @@ public void keyPressed(KeyEvent e) {
 	{
 		if(key == KeyEvent.VK_RIGHT)
 		{
-			gp.x += tw;
+			gp.setX(gp.getX() + tw);
 			InputManager.horizontal = true;
 		}
 		if(key == KeyEvent.VK_LEFT)
 		{
-			gp.x -= tw;
+			gp.setX(gp.getX() - tw);
 			InputManager.horizontal = true;
 		}
 		
@@ -444,18 +452,18 @@ public void keyPressed(KeyEvent e) {
 	{
 		if(key == KeyEvent.VK_UP)
 		{
-			gp.y -= th;
+			gp.setY(gp.getY() - th);
 			InputManager.vertical = true;
 		}
 		if(key == KeyEvent.VK_DOWN)
 		{
-			gp.y += th;
+			gp.setY(gp.getY() + th);
 			InputManager.vertical = true;
 		}
 		
 		
 	}
-	if(gp.x == player.x && gp.y == player.y)
+	if(gp.getX() == player.getX() && gp.getY() == player.getY())
 	{
 		InputManager.horizontal = false;
 		InputManager.vertical = false;
@@ -469,8 +477,8 @@ public void keyPressed(KeyEvent e) {
 		manager.moveTile(tw, twn, thn + 2*tw);
 		
 		manager.switchState();
-		player.x= gp.x;
-		player.y= gp.y;
+		player.setX(gp.getX());
+		player.setY(gp.getY());
 		
 		manager.rightConveyerBelt(player, gp, tw);
 		manager.movePawn(tw, twn * tw, thn*th, player);

@@ -58,7 +58,7 @@ public class MenuState extends JPanel implements KeyListener, ActionListener{
 			
 			// draw bg
 			g.setColor(Color.BLACK);
-			g.fillRect(0, 0, GameRunner.width, GameRunner.height);
+			g.fillRect(0, 0, GameRunner.WINDOW_WIDTH, GameRunner.WINDOW_HEIGHT);
 			
 			// draw title
 			g.setColor(titleColor);
@@ -96,11 +96,11 @@ public class MenuState extends JPanel implements KeyListener, ActionListener{
 				timer.stop();
 				menuSelect = false;
 				Sound.click.play();
-				GameRunner.frame.remove(GameRunner.m);
-				GameRunner.frame.add(GameRunner.f);
-				GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
-				GameRunner.frame.setVisible(true);
-				GameRunner.frame.addKeyListener(GameRunner.f);
+				GameRunner.getFrame().remove(GameRunner.m);
+				GameRunner.getFrame().add(GameRunner.f);
+				GameRunner.getFrame().setSize(GameRunner.WINDOW_WIDTH, GameRunner.WINDOW_HEIGHT);
+				GameRunner.getFrame().setVisible(true);
+				GameRunner.getFrame().addKeyListener(GameRunner.f);
 				GameRunner.f.startGame();
 				
 			}

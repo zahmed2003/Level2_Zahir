@@ -56,7 +56,7 @@ public class FloorSelector extends JPanel implements KeyListener, ActionListener
 		
 		// draw bg
 		g.setColor(Color.BLACK);
-		g.fillRect(0, 0, GameRunner.width, GameRunner.height);
+		g.fillRect(0, 0, GameRunner.WINDOW_WIDTH, GameRunner.WINDOW_HEIGHT);
 		
 		// draw title
 		g.setColor(titleColor);
@@ -112,11 +112,11 @@ public class FloorSelector extends JPanel implements KeyListener, ActionListener
 			Sound.click.play();
 			Sound.menuTrack.stop();
 			Sound.gameSong.loop();
-			GameRunner.frame.remove(GameRunner.f);
-			GameRunner.frame.add(GameRunner.lv1);
-			GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
-			GameRunner.frame.setVisible(true);
-			GameRunner.frame.addKeyListener(GameRunner.lv1);
+			GameRunner.getFrame().remove(GameRunner.f);
+			GameRunner.getFrame().add(GameRunner.lv1);
+			GameRunner.getFrame().setSize(GameRunner.WINDOW_WIDTH, GameRunner.WINDOW_HEIGHT);
+			GameRunner.getFrame().setVisible(true);
+			GameRunner.getFrame().addKeyListener(GameRunner.lv1);
 			GameRunner.lv1.startGame();
 			menuSelect = false;
 		}
@@ -127,11 +127,11 @@ public class FloorSelector extends JPanel implements KeyListener, ActionListener
 			Sound.click.play();
 			Sound.menuTrack.stop();
 			Sound.gameSong.loop();
-			GameRunner.frame.remove(GameRunner.f);
-			GameRunner.frame.add(GameRunner.lv13);
-			GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
-			GameRunner.frame.setVisible(true);
-			GameRunner.frame.addKeyListener(GameRunner.lv13);
+			GameRunner.getFrame().remove(GameRunner.f);
+			GameRunner.getFrame().add(GameRunner.lv13);
+			GameRunner.getFrame().setSize(GameRunner.WINDOW_WIDTH, GameRunner.WINDOW_HEIGHT);
+			GameRunner.getFrame().setVisible(true);
+			GameRunner.getFrame().addKeyListener(GameRunner.lv13);
 			GameRunner.lv13.startGame();
 			menuSelect = false;
 		}
@@ -142,11 +142,11 @@ public class FloorSelector extends JPanel implements KeyListener, ActionListener
 			Sound.click.play();
 			Sound.menuTrack.stop();
 			Sound.gameSong.loop();
-			GameRunner.frame.remove(GameRunner.f);
-			GameRunner.frame.add(GameRunner.lv20);
-			GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
-			GameRunner.frame.setVisible(true);
-			GameRunner.frame.addKeyListener(GameRunner.lv20);
+			GameRunner.getFrame().remove(GameRunner.f);
+			GameRunner.getFrame().add(GameRunner.lv20);
+			GameRunner.getFrame().setSize(GameRunner.WINDOW_WIDTH, GameRunner.WINDOW_HEIGHT);
+			GameRunner.getFrame().setVisible(true);
+			GameRunner.getFrame().addKeyListener(GameRunner.lv20);
 			GameRunner.lv20.startGame();
 			menuSelect = false;
 		}

@@ -13,7 +13,7 @@ public class SafeTile extends Tile {
 	
 	public void draw(Graphics g)
 	{
-		g.drawImage(GamePanel.NTImg, x, y, width, height, null);
+		g.drawImage(GamePanel.NTImg, getX(), getY(), getWidth(), getHeight(), null);
 	}
 	
 }

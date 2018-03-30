@@ -17,27 +17,27 @@ public class ECL extends GameObject{
 		
 		ElectricTile.superstate = 1;
 		
-		this.x = x;
-		this.y = y;
-		this.width = width;
-		this.height = height;
+		this.setX(x);
+		this.setY(y);
+		this.setWidth(width);
+		this.setHeight(height);
 		this.state = state;
 	}
 	
 	public void update()
 	{
-		colBox.setBounds(x, y, width, height);
+		colBox.setBounds(getX(), getY(), getWidth(), getHeight());
 	}
 	
 	public void draw(Graphics g)
 	{
 		if(state == 1)
 		{
-		g.drawImage(GamePanel.ECLOnImg, x, y, width, height, null);
+		g.drawImage(GamePanel.ECLOnImg, getX(), getY(), getWidth(), getHeight(), null);
 		}
 		if(state == -1)
 		{
-			g.drawImage(GamePanel.ECLOffImg, x, y, width, height, null);
+			g.drawImage(GamePanel.ECLOffImg, getX(), getY(), getWidth(), getHeight(), null);
 		}
 	}
 	

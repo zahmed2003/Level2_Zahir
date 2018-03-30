@@ -57,7 +57,7 @@ public class EndState extends JPanel implements KeyListener, ActionListener{
 		
 		// draw bg
 		g.setColor(Color.BLACK);
-		g.fillRect(0, 0, GameRunner.width, GameRunner.height);
+		g.fillRect(0, 0, GameRunner.WINDOW_WIDTH, GameRunner.WINDOW_HEIGHT);
 		
 		// draw title
 		g.setColor(titleColor);

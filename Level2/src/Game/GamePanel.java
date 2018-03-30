@@ -19,8 +19,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	
 public static int twn = 10;
 public static int thn = 5;
-public static int tw = GameRunner.width/twn;
-public static int th = GameRunner.height/thn;
+public static int tw = GameRunner.WINDOW_WIDTH /twn;
+public static int th = GameRunner.WINDOW_HEIGHT /thn;
 	
 Timer timer;
 ObjectManager manager = new ObjectManager();
@@ -277,24 +277,28 @@ public void updateLevel1State() {
 
 public void boundChecker()
 {
-	if(gp.x < 0) {gp.x =0;}
-	if(gp.x > GameRunner.width - gp.width) {gp.x = GameRunner.width - gp.width;}
-	if(gp.y < 0) {gp.y = 0;}
-	if(gp.y > GameRunner.height - gp.height) {gp.y = GameRunner.height - gp.height;}
+	if(gp.getX() < 0) {
+		gp.setX(0);}
+	if(gp.getX() > GameRunner.WINDOW_WIDTH - gp.getWidth()) {
+		gp.setX(GameRunner.WINDOW_WIDTH - gp.getWidth());}
+	if(gp.getY() < 0) {
+		gp.setY(0);}
+	if(gp.getY() > GameRunner.WINDOW_HEIGHT - gp.getHeight()) {
+		gp.setY(GameRunner.WINDOW_HEIGHT - gp.getHeight());}
 
 }
 
 public void winChecker()
 {
-	if(player.x == t28.x && player.y == t28.y)
+	if(player.getX() == t28.getX() && player.getY() == t28.getY())
 	{
 		manager.reset();
 		timer.stop();
-		GameRunner.frame.remove(GameRunner.lv1);
-		GameRunner.frame.add(GameRunner.lv2);
-		GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
-		GameRunner.frame.setVisible(true);
-		GameRunner.frame.addKeyListener(GameRunner.lv2);
+		GameRunner.getFrame().remove(GameRunner.lv1);
+		GameRunner.getFrame().add(GameRunner.lv2);
+		GameRunner.getFrame().setSize(GameRunner.WINDOW_WIDTH, GameRunner.WINDOW_HEIGHT);
+		GameRunner.getFrame().setVisible(true);
+		GameRunner.getFrame().addKeyListener(GameRunner.lv2);
 		GameRunner.lv2.startGame();
 		
 	}
@@ -302,7 +306,7 @@ public void winChecker()
 
 public void drawLevel1State(Graphics g) {
 	g.setColor(Color.BLACK);
-	g.fillRect(0, 0, GameRunner.width, GameRunner.height);
+	g.fillRect(0, 0, GameRunner.WINDOW_WIDTH, GameRunner.WINDOW_HEIGHT);
 	manager.draw(g);
 }
 
@@ -335,22 +339,22 @@ public void keyPressed(KeyEvent e) {
 	{
 	if(key == KeyEvent.VK_RIGHT)
 	{
-		gp.x += tw;
+		gp.setX(gp.getX() + tw);
 		InputManager.horizontal = true;
 	}
 	if(key == KeyEvent.VK_LEFT)
 	{
-		gp.x -= tw;
+		gp.setX(gp.getX() - tw);
 		InputManager.horizontal = true;
 	}
 	if(key == KeyEvent.VK_UP)
 	{
-		gp.y -= th;
+		gp.setY(gp.getY() - th);
 		InputManager.vertical = true;
 	}
 	if(key == KeyEvent.VK_DOWN)
 	{
-		gp.y += th;
+		gp.setY(gp.getY() + th);
 		InputManager.vertical = true;
 	}
 	
@@ -362,12 +366,12 @@ public void keyPressed(KeyEvent e) {
 	{
 		if(key == KeyEvent.VK_RIGHT)
 		{
-			gp.x += tw;
+			gp.setX(gp.getX() + tw);
 			InputManager.horizontal = true;
 		}
 		if(key == KeyEvent.VK_LEFT)
 		{
-			gp.x -= tw;
+			gp.setX(gp.getX() - tw);
 			InputManager.horizontal = true;
 		}
 		
@@ -377,18 +381,18 @@ public void keyPressed(KeyEvent e) {
 	{
 		if(key == KeyEvent.VK_UP)
 		{
-			gp.y -= th;
+			gp.setY(gp.getY() - th);
 			InputManager.vertical = true;
 		}
 		if(key == KeyEvent.VK_DOWN)
 		{
-			gp.y += th;
+			gp.setY(gp.getY() + th);
 			InputManager.vertical = true;
 		}
 		
 		
 	}
-	if(gp.x == player.x && gp.y == player.y)
+	if(gp.getX() == player.getX() && gp.getY() == player.getY())
 	{
 		InputManager.horizontal = false;
 		InputManager.vertical = false;
@@ -401,8 +405,8 @@ manager.cb = false;
 		manager.moveTile(tw, twn, thn + 2*tw);
 		
 		manager.switchState();
-		player.x= gp.x;
-		player.y= gp.y;
+		player.setX(gp.getX());
+		player.setY(gp.getY());
 		
 		manager.rightConveyerBelt(player, gp, tw);
 		manager.movePawn(tw, twn * tw, thn*th, player);

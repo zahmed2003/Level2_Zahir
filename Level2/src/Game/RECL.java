@@ -11,10 +11,10 @@ public class RECL extends GameObject{
 	{
 		super(x, y, width, height);
 		
-		this.x = x;
-		this.y = y;
-		this.width = width;
-		this.height = height;
+		this.setX(x);
+		this.setY(y);
+		this.setWidth(width);
+		this.setHeight(height);
 		this.RState = RState;
 		
 		direction = 0;
@@ -22,18 +22,18 @@ public class RECL extends GameObject{
 	
 	public void update()
 	{
-		colBox.setBounds(x, y, width, height);
+		colBox.setBounds(getX(), getY(), getWidth(), getHeight());
 	}
 	
 	public void draw(Graphics g)
 	{
 		if(RState == 1)
 		{
-		g.drawImage(GamePanel.RECLOnImg, x, y, width, height, null);
+		g.drawImage(GamePanel.RECLOnImg, getX(), getY(), getWidth(), getHeight(), null);
 		}
 		if(RState == -1)
 		{
-			g.drawImage(GamePanel.RECLOffImg, x, y, width, height, null);
+			g.drawImage(GamePanel.RECLOffImg, getX(), getY(), getWidth(), getHeight(), null);
 		}
 	}
 	

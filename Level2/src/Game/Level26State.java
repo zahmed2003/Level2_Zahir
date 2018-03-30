@@ -20,7 +20,7 @@ public class Level26State extends JPanel implements ActionListener, KeyListener{
 	
 	public static int twn = 5;
 	public static int thn = 10;
-	public static int th = GameRunner.height/thn;
+	public static int th = GameRunner.WINDOW_HEIGHT /thn;
 	public static int tw = th;
 	
 Timer timer;
@@ -198,14 +198,14 @@ public void updateLeve26State() {
 	
 	if(player.isAlive == false)
 	{
-		gp.x = tw*2;
-		gp.y = 0;
+		gp.setX(tw*2);
+		gp.setY(0);
 		
-		player.x = tw*2;
-		player.y = 0;
+		player.setX(tw*2);
+		player.setY(0);
 		
-		e1.x = tw*2;
-		e1.y = th*9;
+		e1.setX(tw*2);
+		e1.setY(th*9);
 		
 		manager.resetElectric();
 		player.isAlive = true;
@@ -217,36 +217,44 @@ public void updateLeve26State() {
 
 public void boundChecker()
 {
-	if(gp.x < 0) {gp.x = 0;}
-	if(gp.x >tw*twn - gp.width) {gp.x = tw*twn - gp.width;}
-	if(gp.y < 0) {gp.y = 0;}
-	if(gp.y > th*thn - gp.height) {gp.y = th*thn - gp.height;}
+	if(gp.getX() < 0) {
+		gp.setX(0);}
+	if(gp.getX() >tw*twn - gp.getWidth()) {
+		gp.setX(tw*twn - gp.getWidth());}
+	if(gp.getY() < 0) {
+		gp.setY(0);}
+	if(gp.getY() > th*thn - gp.getHeight()) {
+		gp.setY(th*thn - gp.getHeight());}
 	
-	if(player.x < 0) {player.x = 0;}
-	if(player.x >tw*twn - player.width) {player.x = tw*twn - player.width;}
-	if(player.y < 0) {player.y = 0;}
-	if(player.y > th*thn - player.height) {player.y = th*thn - player.height;}
+	if(player.getX() < 0) {
+		player.setX(0);}
+	if(player.getX() >tw*twn - player.getWidth()) {
+		player.setX(tw*twn - player.getWidth());}
+	if(player.getY() < 0) {
+		player.setY(0);}
+	if(player.getY() > th*thn - player.getHeight()) {
+		player.setY(th*thn - player.getHeight());}
 
 }
 
 public void winChecker()
 {
-	if(player.x == t48.x && player.y == t48.y)
+	if(player.getX() == t48.getX() && player.getY() == t48.getY())
 	{
 		manager.reset();
 		timer.stop();
-		GameRunner.frame.remove(GameRunner.lv26);
-		GameRunner.frame.add(GameRunner.lv27);
-		GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
-		GameRunner.frame.setVisible(true);
-		GameRunner.frame.addKeyListener(GameRunner.lv27);
+		GameRunner.getFrame().remove(GameRunner.lv26);
+		GameRunner.getFrame().add(GameRunner.lv27);
+		GameRunner.getFrame().setSize(GameRunner.WINDOW_WIDTH, GameRunner.WINDOW_HEIGHT);
+		GameRunner.getFrame().setVisible(true);
+		GameRunner.getFrame().addKeyListener(GameRunner.lv27);
 		GameRunner.lv27.startGame();
 	}
 }
 
 public void drawLeve26State(Graphics g) {
 	g.setColor(Color.BLACK);
-	g.fillRect(0, 0, GameRunner.width, GameRunner.height);
+	g.fillRect(0, 0, GameRunner.WINDOW_WIDTH, GameRunner.WINDOW_HEIGHT);
 	manager.draw(g);
 }
 
@@ -279,22 +287,22 @@ public void keyPressed(KeyEvent e) {
 	{
 	if(key == KeyEvent.VK_RIGHT)
 	{
-		gp.x += tw;
+		gp.setX(gp.getX() + tw);
 		InputManager.horizontal = true;
 	}
 	if(key == KeyEvent.VK_LEFT)
 	{
-		gp.x -= tw;
+		gp.setX(gp.getX() - tw);
 		InputManager.horizontal = true;
 	}
 	if(key == KeyEvent.VK_UP)
 	{
-		gp.y -= th;
+		gp.setY(gp.getY() - th);
 		InputManager.vertical = true;
 	}
 	if(key == KeyEvent.VK_DOWN)
 	{
-		gp.y += th;
+		gp.setY(gp.getY() + th);
 		InputManager.vertical = true;
 	}
 
@@ -306,12 +314,12 @@ public void keyPressed(KeyEvent e) {
 	{
 		if(key == KeyEvent.VK_RIGHT)
 		{
-			gp.x += tw;
+			gp.setX(gp.getX() + tw);
 			InputManager.horizontal = true;
 		}
 		if(key == KeyEvent.VK_LEFT)
 		{
-			gp.x -= tw;
+			gp.setX(gp.getX() - tw);
 			InputManager.horizontal = true;
 		}
 		
@@ -321,18 +329,18 @@ public void keyPressed(KeyEvent e) {
 	{
 		if(key == KeyEvent.VK_UP)
 		{
-			gp.y -= th;
+			gp.setY(gp.getY() - th);
 			InputManager.vertical = true;
 		}
 		if(key == KeyEvent.VK_DOWN)
 		{
-			gp.y += th;
+			gp.setY(gp.getY() + th);
 			InputManager.vertical = true;
 		}
 		
 		
 	}
-	if(gp.x == player.x && gp.y == player.y)
+	if(gp.getX() == player.getX() && gp.getY() == player.getY())
 	{
 		InputManager.horizontal = false;
 		InputManager.vertical = false;
@@ -341,8 +349,8 @@ public void keyPressed(KeyEvent e) {
 	{
 		manager.cb = false;
 		manager.moveTile(tw, twn, thn + 2*tw);
-		player.x= gp.x;
-		player.y= gp.y;
+		player.setX(gp.getX());
+		player.setY(gp.getY());
 		
 		manager.switchState();
 		manager.rightConveyerBelt(player, gp, tw);

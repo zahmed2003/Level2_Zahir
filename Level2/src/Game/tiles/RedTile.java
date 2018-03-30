@@ -13,7 +13,7 @@ public class RedTile extends Tile {
 	
 	public void draw(Graphics g)
 	{
-		g.drawImage(GamePanel.RTImg, x, y, width, height, null);
+		g.drawImage(GamePanel.RTImg, getX(), getY(), getWidth(), getHeight(), null);
 	}
 	
 }

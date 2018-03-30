@@ -17,11 +17,11 @@ public class RedElectricTile extends Tile {
 	{
 		if(RState == 1)
 		{
-		g.drawImage(GamePanel.ONRTImg, x, y, width, height, null);
+		g.drawImage(GamePanel.ONRTImg, getX(), getY(), getWidth(), getHeight(), null);
 		}
 		if(RState == -1)
 		{
-			g.drawImage(GamePanel.OFFRTImg, x, y, width, height, null);
+			g.drawImage(GamePanel.OFFRTImg, getX(), getY(), getWidth(), getHeight(), null);
 		}
 	}
 	

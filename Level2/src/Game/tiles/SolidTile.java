@@ -15,7 +15,7 @@ public class SolidTile extends Tile {
 
 	public void draw(Graphics g)
 	{
-		g.drawImage(GamePanel.BTImg, x, y, width, height, null);
+		g.drawImage(GamePanel.BTImg, getX(), getY(), getWidth(), getHeight(), null);
 	}
 	
 }
