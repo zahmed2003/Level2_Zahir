@@ -479,7 +479,7 @@ public void keyPressed(KeyEvent e) {
 	
 	
 	
-	else if(InputManager.horizontal == true)
+	else if(InputManager.horizontal )
 	{
 		if(key == KeyEvent.VK_RIGHT)
 		{
@@ -494,7 +494,7 @@ public void keyPressed(KeyEvent e) {
 		
 	}
 	
-	else if(InputManager.vertical == true)
+	else if(InputManager.vertical )
 	{
 		if(key == KeyEvent.VK_UP)
 		{

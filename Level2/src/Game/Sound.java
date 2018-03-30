@@ -11,7 +11,7 @@ public class Sound {
 	public static Sound click = new Sound("Click.wav");
 	public static Sound death = new Sound("death.wav");
 	public static Sound end = new Sound("end.wav");
-	
+
 	public Sound (String fileName) {
 		try {
 			AudioInputStream ais = AudioSystem.getAudioInputStream(Sound.class.getResource(fileName));
