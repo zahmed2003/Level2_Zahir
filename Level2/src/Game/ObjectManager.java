@@ -150,17 +150,17 @@ public class ObjectManager {
 						r = ra.nextInt(7);
 						if(r == 0)
 						{
-							if(o2.isSolidColliding1 == true)
+							if(o2.isSolidColliding1)
 							{
-								if(o2.isSolidColliding2 == true && o2.isSolidColliding8 == false)
+								if(o2.isSolidColliding2 && !o2.isSolidColliding8)
 								{
 									o2.setX(o2.getX() - tw);
 								}
-								else if(o2.isSolidColliding8 == true && o2.isSolidColliding2 == false)
+								else if(o2.isSolidColliding8 && !o2.isSolidColliding2)
 								{
 									o2.setY(o2.getY() - tw);
 								}
-								else if(o2.isSolidColliding8 == true && o2.isSolidColliding2 == true)
+								else if(o2.isSolidColliding8 && o2.isSolidColliding2)
 								{
 									
 								}
@@ -584,11 +584,11 @@ public class ObjectManager {
 				{
 					for(int i1 = 1; i1 <= (o.getY() - p.getY())/tw; i1++)
 					{
-						if(o.isSolidColliding2 == false)
+						if(!o.isSolidColliding2)
 						{
 							o.setY(o.getY() + ((p.getY() - o.getY())/tw)*tw);
 						}
-						if(o.isSolidColliding2 == true)
+						if(o.isSolidColliding2)
 						{
 							//do nothing
 						}
@@ -602,11 +602,11 @@ public class ObjectManager {
 					for(int i2 = 1; i2 <= (p.getX() - o.getX())/tw; i2++)
 					{
 						
-						if(o.isSolidColliding4 == false)
+						if(!o.isSolidColliding4)
 						{
 							o.setX(o.getX() + ((p.getX() - o.getX())/tw)*tw);
 						}
-						if(o.isSolidColliding4 == true)
+						if(o.isSolidColliding4)
 						{
 							//do nothing
 						}
@@ -619,11 +619,11 @@ public class ObjectManager {
 				{
 					for(int i3 = 1; i3 <= (p.getY() - o.getY())/tw; i3++)
 					{
-						if(o.isSolidColliding6 == false)
+						if(!o.isSolidColliding6 )
 						{
 							o.setY(o.getY() + ((p.getY() - o.getY())/tw)*tw);
 						}
-						if(o.isSolidColliding6 == true)
+						if(o.isSolidColliding6)
 						{
 							//do nothing
 						}
@@ -636,11 +636,11 @@ public class ObjectManager {
 					for(int i4 = 1; i4 <= (o.getX() - p.getX())/tw; i4++)
 					{
 						
-						if(o.isSolidColliding8 == false)
+						if(!o.isSolidColliding8)
 						{
 							o.setX(o.getX() - ((o.getX() - p.getX())/tw)*tw);
 						}
-						if(o.isSolidColliding8 == true)
+						if(o.isSolidColliding8)
 						{
 							//do nothing
 						}
@@ -656,25 +656,25 @@ public class ObjectManager {
 	{
 		for (int i = 0; i < objects.size(); i++) {
 			
-				GameObject o = objects.get(i);
+				GameObject obj = objects.get(i);
 				
-				if(o instanceof Pawn)
+				if(obj instanceof Pawn)
 				{
 					
 				//tile 1
-				if(p.getX() < o.getX() && p.getY() < o.getY())
+				if(p.getX() < obj.getX() && p.getY() < obj.getY())
 				{
-					if(o.isSolidColliding1 == true)
+					if(obj.isSolidColliding1 == true)
 					{
-						if(o.isSolidColliding2 == true && o.isSolidColliding8 == false)
+						if(obj.isSolidColliding2 == true && obj.isSolidColliding8 == false)
 						{
-							o.setX(o.getX() - tw);
+							obj.setX(obj.getX() - tw);
 						}
-						else if(o.isSolidColliding8 == true && o.isSolidColliding2 == false)
+						else if(obj.isSolidColliding8 == true && obj.isSolidColliding2 == false)
 						{
-							o.setY(o.getY() - tw);
+							obj.setY(obj.getY() - tw);
 						}
-						else if(o.isSolidColliding8 == true && o.isSolidColliding2 == true)
+						else if(obj.isSolidColliding8 == true && obj.isSolidColliding2 == true)
 						{
 							
 						}
@@ -682,34 +682,34 @@ public class ObjectManager {
 						{
 							r1 = ra.nextInt(1);
 							if(r1 == 0) {
-                                o.setX(o.getX() - tw);}
+                                obj.setX(obj.getX() - tw);}
 							if(r1 == 1) {
-                                o.setY(o.getY() - tw);}
+                                obj.setY(obj.getY() - tw);}
 						}
 					}
 					else
 					{
-					o.setX(o.getX() - tw);
-					o.setY(o.getY() - tw);
+					obj.setX(obj.getX() - tw);
+					obj.setY(obj.getY() - tw);
 					}
 				}
 				
 				//tile 2
-				else if(p.getX() == o.getX() && p.getY() < o.getY())
+				else if(p.getX() == obj.getX() && p.getY() < obj.getY())
 				{
-					if(o.isSolidColliding2 == true)
+					if(obj.isSolidColliding2 == true)
 					{
-						if(o.isSolidColliding1 == true && o.isSolidColliding3 == false)
+						if(obj.isSolidColliding1 == true && obj.isSolidColliding3 == false)
 						{
-							o.setX(o.getX() + tw);
-							o.setY(o.getY() - tw);
+							obj.setX(obj.getX() + tw);
+							obj.setY(obj.getY() - tw);
 						}
-						else if(o.isSolidColliding3 == true && o.isSolidColliding1 == false)
+						else if(obj.isSolidColliding3 == true && obj.isSolidColliding1 == false)
 						{
-							o.setX(o.getX() - tw);
-							o.setY(o.getY() - tw);
+							obj.setX(obj.getX() - tw);
+							obj.setY(obj.getY() - tw);
 						}
-						else if(o.isSolidColliding3 == true && o.isSolidColliding1 == true)
+						else if(obj.isSolidColliding3 == true && obj.isSolidColliding1 == true)
 						{
 							
 						}
@@ -718,36 +718,36 @@ public class ObjectManager {
 							r2 = ra.nextInt(1);
 							if(r2 == 0)
 							{
-							o.setX(o.getX() + tw);
-							o.setY(o.getY() - tw);
+							obj.setX(obj.getX() + tw);
+							obj.setY(obj.getY() - tw);
 							}
 							if(r2 == 1)
 							{
-								o.setX(o.getX() - tw);
-								o.setY(o.getY() - tw);
+								obj.setX(obj.getX() - tw);
+								obj.setY(obj.getY() - tw);
 							}
 						}
 					}
 					else
 					{
-					o.setY(o.getY() - tw);
+					obj.setY(obj.getY() - tw);
 					}
 				}
 				
 				//tile 3
-				else if(p.getX() > o.getX() && p.getY() < o.getY())
+				else if(p.getX() > obj.getX() && p.getY() < obj.getY())
 				{
-					if(o.isSolidColliding3 == true)
+					if(obj.isSolidColliding3 == true)
 					{
-						if(o.isSolidColliding2 == true && o.isSolidColliding4 == false)
+						if(obj.isSolidColliding2 == true && obj.isSolidColliding4 == false)
 						{
-							o.setX(o.getX() + tw);
+							obj.setX(obj.getX() + tw);
 						}
-						else if (o.isSolidColliding4 == true && o.isSolidColliding2 == false)
+						else if (obj.isSolidColliding4 == true && obj.isSolidColliding2 == false)
 						{
-							o.setY(o.getY() - tw);
+							obj.setY(obj.getY() - tw);
 						}
-						else if (o.isSolidColliding2 == true && o.isSolidColliding4 == true)
+						else if (obj.isSolidColliding2 == true && obj.isSolidColliding4 == true)
 						{
 							
 						}
@@ -756,38 +756,38 @@ public class ObjectManager {
 							r3 = ra.nextInt(1);
 							if(r3 == 0)
 							{
-								o.setX(o.getX() + tw);
+								obj.setX(obj.getX() + tw);
 							}
 							if(r3 == 1)
 							{
-								o.setY(o.getY() - tw);
+								obj.setY(obj.getY() - tw);
 							}
 						}
 					}
 					else
 					{
-					o.setX(o.getX() + tw);
-					o.setY(o.getY() - tw);
+					obj.setX(obj.getX() + tw);
+					obj.setY(obj.getY() - tw);
 					}
 					
 				}
 				
 				//tile 4
-				else if(p.getX() > o.getX() && p.getY() == o.getY())
+				else if(p.getX() > obj.getX() && p.getY() == obj.getY())
 				{
-					if(o.isSolidColliding4 == true)
+					if(obj.isSolidColliding4 == true)
 					{
-						if(o.isSolidColliding3 == true && o.isSolidColliding5 == false)
+						if(obj.isSolidColliding3 == true && obj.isSolidColliding5 == false)
 						{
-						o.setX(o.getX() + tw);
-						o.setY(o.getY() + tw);
+						obj.setX(obj.getX() + tw);
+						obj.setY(obj.getY() + tw);
 						}
-						else if(o.isSolidColliding5 == true && o.isSolidColliding3 == false)
+						else if(obj.isSolidColliding5 == true && obj.isSolidColliding3 == false)
 						{
-						o.setX(o.getX() + tw);
-						o.setY(o.getY() - tw);
+						obj.setX(obj.getX() + tw);
+						obj.setY(obj.getY() - tw);
 						}
-						else if (o.isSolidColliding3 == true && o.isSolidColliding5 == true)
+						else if (obj.isSolidColliding3 == true && obj.isSolidColliding5 == true)
 						{
 							
 						}
@@ -796,13 +796,13 @@ public class ObjectManager {
 							r4 = ra.nextInt(1);
 							if(r4 == 0)
 							{
-								o.setX(o.getX() + tw);
-								o.setY(o.getY() + tw);
+								obj.setX(obj.getX() + tw);
+								obj.setY(obj.getY() + tw);
 							}
 							if(r4 == 1)
 							{
-								o.setX(o.getX() + tw);
-								o.setY(o.getY() - tw);
+								obj.setX(obj.getX() + tw);
+								obj.setY(obj.getY() - tw);
 							}
 						}
 						
@@ -810,25 +810,25 @@ public class ObjectManager {
 					}
 					else
 					{	
-						o.setX(o.getX() + tw);
+						obj.setX(obj.getX() + tw);
 					}
 					
 				}
 				
 				//tile 5
-				else if(p.getX() > o.getX() && p.getY() > o.getY())
+				else if(p.getX() > obj.getX() && p.getY() > obj.getY())
 				{
-					if(o.isSolidColliding5 == true)
+					if(obj.isSolidColliding5 == true)
 					{
-						if(o.isSolidColliding4 == true && o.isSolidColliding6 == false)
+						if(obj.isSolidColliding4 == true && obj.isSolidColliding6 == false)
 						{
-							o.setY(o.getY() + tw);
+							obj.setY(obj.getY() + tw);
 						}
-						else if(o.isSolidColliding6 == true && o.isSolidColliding4 == false)
+						else if(obj.isSolidColliding6 == true && obj.isSolidColliding4 == false)
 						{
-							o.setX(o.getX() + tw);
+							obj.setX(obj.getX() + tw);
 						}
-						else if (o.isSolidColliding4 == true && o.isSolidColliding4 == true)
+						else if (obj.isSolidColliding4 == true && obj.isSolidColliding4 == true)
 						{
 							
 						}
@@ -837,37 +837,37 @@ public class ObjectManager {
 							r5 = ra.nextInt(1);
 							if(r5 == 0)
 							{
-								o.setX(o.getX() + tw);
+								obj.setX(obj.getX() + tw);
 							}
 							if(r5 == 1)
 							{
-								o.setY(o.getY() + tw);
+								obj.setY(obj.getY() + tw);
 							}
 						}
 					}
 					else
 					{
-					o.setX(o.getX() + tw);
-					o.setY(o.getY() + tw);
+					obj.setX(obj.getX() + tw);
+					obj.setY(obj.getY() + tw);
 					}
 				}
 				
 				//tile 6
-				else if(p.getX() == o.getX() && p.getY() > o.getY())
+				else if(p.getX() == obj.getX() && p.getY() > obj.getY())
 				{
-					if(o.isSolidColliding6 == true)
+					if(obj.isSolidColliding6 == true)
 					{
-						if(o.isSolidColliding5 == true && o.isSolidColliding7 == false)
+						if(obj.isSolidColliding5 == true && obj.isSolidColliding7 == false)
 						{
-							o.setX(o.getX() - tw);
-							o.setY(o.getY() + tw);
+							obj.setX(obj.getX() - tw);
+							obj.setY(obj.getY() + tw);
 						}
-						else if(o.isSolidColliding7 == true && o.isSolidColliding5 == false)
+						else if(obj.isSolidColliding7 == true && obj.isSolidColliding5 == false)
 						{
-							o.setX(o.getX() + tw);
-							o.setY(o.getY() + tw);
+							obj.setX(obj.getX() + tw);
+							obj.setY(obj.getY() + tw);
 						}
-						else if(o.isSolidColliding7 == true && o.isSolidColliding5 == true)
+						else if(obj.isSolidColliding7 == true && obj.isSolidColliding5 == true)
 						{
 							
 						}
@@ -876,36 +876,36 @@ public class ObjectManager {
 							r6 = ra.nextInt(1);
 							if(r6 == 0)
 							{
-								o.setX(o.getX() - tw);
-								o.setY(o.getY() + tw);
+								obj.setX(obj.getX() - tw);
+								obj.setY(obj.getY() + tw);
 							}
 							if(r6 == 1)
 							{
-								o.setX(o.getX() + tw);
-								o.setY(o.getY() + tw);
+								obj.setX(obj.getX() + tw);
+								obj.setY(obj.getY() + tw);
 							}
 						}
 					}
 					else
 					{
-					o.setY(o.getY() + tw);
+					obj.setY(obj.getY() + tw);
 					}
 				}
 				
 				//tile 7
-				else if(p.getX() < o.getX() && p.getY() > o.getY())
+				else if(p.getX() < obj.getX() && p.getY() > obj.getY())
 				{
-					if(o.isSolidColliding7 == true)
+					if(obj.isSolidColliding7 == true)
 					{
-						if(o.isSolidColliding6 == true && o.isSolidColliding8 == false)
+						if(obj.isSolidColliding6 == true && obj.isSolidColliding8 == false)
 						{
-							o.setX(o.getX() - tw);
+							obj.setX(obj.getX() - tw);
 						}
-						else if(o.isSolidColliding8 == true && o.isSolidColliding6 == false)
+						else if(obj.isSolidColliding8 == true && obj.isSolidColliding6 == false)
 						{
-							o.setY(o.getY() + tw);
+							obj.setY(obj.getY() + tw);
 						}
-						else if(o.isSolidColliding8 == true && o.isSolidColliding6 == true)
+						else if(obj.isSolidColliding8 == true && obj.isSolidColliding6 == true)
 						{
 							
 						}
@@ -914,37 +914,37 @@ public class ObjectManager {
 							r7 = ra.nextInt(1);
 							if(r7 == 0)
 							{
-								o.setX(o.getX() - tw);
+								obj.setX(obj.getX() - tw);
 							}
 							if(r7 == 1)
 							{
-								o.setY(o.getY() + tw);
+								obj.setY(obj.getY() + tw);
 							}
 						}
 					}
 					else
 					{
-					o.setX(o.getX() - tw);
-					o.setY(o.getY() + tw);
+					obj.setX(obj.getX() - tw);
+					obj.setY(obj.getY() + tw);
 					}
 				}
 				
 				//tile 8
-				else if(p.getX() < o.getX() && p.getY() == o.getY())
+				else if(p.getX() < obj.getX() && p.getY() == obj.getY())
 				{
-					if(o.isSolidColliding8 == true)
+					if(obj.isSolidColliding8 == true)
 					{
-						if(o.isSolidColliding7 == true && o.isSolidColliding1 == false)
+						if(obj.isSolidColliding7 == true && obj.isSolidColliding1 == false)
 						{
-							o.setX(o.getX() - tw);
-							o.setY(o.getY() - tw);
+							obj.setX(obj.getX() - tw);
+							obj.setY(obj.getY() - tw);
 						}
-						else if(o.isSolidColliding1 == true && o.isSolidColliding7 == false)
+						else if(obj.isSolidColliding1 == true && obj.isSolidColliding7 == false)
 						{
-							o.setX(o.getX() - tw);
-							o.setY(o.getY() + tw);
+							obj.setX(obj.getX() - tw);
+							obj.setY(obj.getY() + tw);
 						}
-						else if(o.isSolidColliding1 == true && o.isSolidColliding7 == true)
+						else if(obj.isSolidColliding1 == true && obj.isSolidColliding7 == true)
 						{
 							
 						}
@@ -953,30 +953,30 @@ public class ObjectManager {
 							r8 = ra.nextInt(1);
 							if(r8 == 0)
 							{
-								o.setX(o.getX() - tw);
-								o.setY(o.getY() - tw);
+								obj.setX(obj.getX() - tw);
+								obj.setY(obj.getY() - tw);
 							}
 							if(r8 == 1)
 							{
-								o.setX(o.getX() - tw);
-								o.setY(o.getY() + tw);
+								obj.setX(obj.getX() - tw);
+								obj.setY(obj.getY() + tw);
 							}
 						}
 					}
 					else
 					{
-					o.setX(o.getX() - tw);
+					obj.setX(obj.getX() - tw);
 					}
 				}
 				
-				o.setSolidColliding1(false);
-				o.setSolidColliding2(false);
-				o.setSolidColliding3(false);
-				o.setSolidColliding4(false);
-				o.setSolidColliding5(false);
-				o.setSolidColliding6(false);
-				o.setSolidColliding7(false);
-				o.setSolidColliding8(false);
+				obj.setSolidColliding1(false);
+				obj.setSolidColliding2(false);
+				obj.setSolidColliding3(false);
+				obj.setSolidColliding4(false);
+				obj.setSolidColliding5(false);
+				obj.setSolidColliding6(false);
+				obj.setSolidColliding7(false);
+				obj.setSolidColliding8(false);
 				
 				}
 				
