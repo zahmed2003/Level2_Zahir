@@ -1,5 +1,8 @@
 package Game;
 
+import Game.tiles.SafeTile;
+import Game.tiles.SolidTile;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
@@ -17,7 +20,7 @@ public class Level15State extends JPanel implements ActionListener, KeyListener{
 	
 	public static int twn = 9;
 	public static int thn = 13;
-	public static int th = GameRunner.height/thn;
+	public static int th = GameRunner.WINDOW_HEIGHT /thn;
 	public static int tw = th;
 	
 Timer timer;
@@ -355,45 +358,45 @@ public void updateLevel15State() {
 	
 	if(player.isAlive == false)
 	{
-		gp.x = tw*4;
-		gp.y = th*10;
+		gp.setX(tw*4);
+		gp.setY(th*10);
 		
 		
-		player.x = tw*4;
-		player.y = th*10;
+		player.setX(tw*4);
+		player.setY(th*10);
 		
-		p1.x = tw*2;
-		p1.y = th*4;
+		p1.setX(tw*2);
+		p1.setY(th*4);
 		
-		p2.x = tw*4;
-		p2.y = th*4;
+		p2.setX(tw*4);
+		p2.setY(th*4);
 		
-		p3.x = tw*6;
-		p3.y = th*4;
+		p3.setX(tw*6);
+		p3.setY(th*4);
 		
-		r1.x = tw;
-		r1.y = th*10;
+		r1.setX(tw);
+		r1.setY(th*10);
 
-		r2.x = tw;
-		r2.y = th*9;
+		r2.setX(tw);
+		r2.setY(th*9);
 
-		r3.x = tw*2;
-		r3.y = th*10;
+		r3.setX(tw*2);
+		r3.setY(th*10);
 
-		r4.x = tw*2;
-		r4.y = th*9;
+		r4.setX(tw*2);
+		r4.setY(th*9);
 		
-		r5.x = tw;
-		r5.y = th*7;
+		r5.setX(tw);
+		r5.setY(th*7);
 
-		r6.x = tw;
-		r6.y = th*6;
+		r6.setX(tw);
+		r6.setY(th*6);
 
-		r7.x = tw*2;
-		r7.y = th*7;
+		r7.setX(tw*2);
+		r7.setY(th*7);
 
-		r8.x = tw*2;
-		r8.y = th*6;
+		r8.setX(tw*2);
+		r8.setY(th*6);
 
 		
 		
@@ -406,31 +409,35 @@ public void updateLevel15State() {
 
 public void boundChecker()
 {
-	if(gp.x < 0) {gp.x = 0;}
-	if(gp.x >tw*twn - gp.width) {gp.x = tw*twn - gp.width;}
-	if(gp.y < 0) {gp.y = 0;}
-	if(gp.y > th*thn - gp.height) {gp.y = th*thn - gp.height;}
+	if(gp.getX() < 0) {
+		gp.setX(0);}
+	if(gp.getX() >tw*twn - gp.getWidth()) {
+		gp.setX(tw*twn - gp.getWidth());}
+	if(gp.getY() < 0) {
+		gp.setY(0);}
+	if(gp.getY() > th*thn - gp.getHeight()) {
+		gp.setY(th*thn - gp.getHeight());}
 
 }
 
 public void winChecker()
 {
-	if(player.x == t14.x && player.y == t14.y)
+	if(player.getX() == t14.getX() && player.getY() == t14.getY())
 	{
 		manager.reset();
 		timer.stop();
-		GameRunner.frame.remove(GameRunner.lv15);
-		GameRunner.frame.add(GameRunner.lv16);
-		GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
-		GameRunner.frame.setVisible(true);
-		GameRunner.frame.addKeyListener(GameRunner.lv16);
+		GameRunner.getFrame().remove(GameRunner.lv15);
+		GameRunner.getFrame().add(GameRunner.lv16);
+		GameRunner.getFrame().setSize(GameRunner.WINDOW_WIDTH, GameRunner.WINDOW_HEIGHT);
+		GameRunner.getFrame().setVisible(true);
+		GameRunner.getFrame().addKeyListener(GameRunner.lv16);
 		GameRunner.lv16.startGame();
 	}
 }
 
 public void drawLevel15State(Graphics g) {
 	g.setColor(Color.BLACK);
-	g.fillRect(0, 0, GameRunner.width, GameRunner.height);
+	g.fillRect(0, 0, GameRunner.WINDOW_WIDTH, GameRunner.WINDOW_HEIGHT);
 	manager.draw(g);
 }
 
@@ -463,22 +470,22 @@ public void keyPressed(KeyEvent e) {
 	{
 	if(key == KeyEvent.VK_RIGHT)
 	{
-		gp.x += tw;
+		gp.setX(gp.getX() + tw);
 		InputManager.horizontal = true;
 	}
 	if(key == KeyEvent.VK_LEFT)
 	{
-		gp.x -= tw;
+		gp.setX(gp.getX() - tw);
 		InputManager.horizontal = true;
 	}
 	if(key == KeyEvent.VK_UP)
 	{
-		gp.y -= th;
+		gp.setY(gp.getY() - th);
 		InputManager.vertical = true;
 	}
 	if(key == KeyEvent.VK_DOWN)
 	{
-		gp.y += th;
+		gp.setY(gp.getY() + th);
 		InputManager.vertical = true;
 	}
 
@@ -490,12 +497,12 @@ public void keyPressed(KeyEvent e) {
 	{
 		if(key == KeyEvent.VK_RIGHT)
 		{
-			gp.x += tw;
+			gp.setX(gp.getX() + tw);
 			InputManager.horizontal = true;
 		}
 		if(key == KeyEvent.VK_LEFT)
 		{
-			gp.x -= tw;
+			gp.setX(gp.getX() - tw);
 			InputManager.horizontal = true;
 		}
 		
@@ -505,18 +512,18 @@ public void keyPressed(KeyEvent e) {
 	{
 		if(key == KeyEvent.VK_UP)
 		{
-			gp.y -= th;
+			gp.setY(gp.getY() - th);
 			InputManager.vertical = true;
 		}
 		if(key == KeyEvent.VK_DOWN)
 		{
-			gp.y += th;
+			gp.setY(gp.getY() + th);
 			InputManager.vertical = true;
 		}
 		
 		
 	}
-	if(gp.x == player.x && gp.y == player.y)
+	if(gp.getX() == player.getX() && gp.getY() == player.getY())
 	{
 		InputManager.horizontal = false;
 		InputManager.vertical = false;
@@ -524,8 +531,8 @@ public void keyPressed(KeyEvent e) {
 	if(key == KeyEvent.VK_ENTER)
 	{
 		manager.moveTile(tw, twn*tw, thn*th);
-		player.x = gp.x;
-		player.y = gp.y;
+		player.setX(gp.getX());
+		player.setY(gp.getY());
 		manager.movePawn(tw,twn*tw, thn*th, player);
 		InputManager.horizontal = false;
 		InputManager.vertical = false;

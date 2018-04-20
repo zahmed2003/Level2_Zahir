@@ -1,5 +1,7 @@
 package Game;
 
+import Game.tiles.RedTile;
+
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
@@ -10,10 +12,10 @@ public class Player extends GameObject{
 	{
 		super(x, y, width, height);
 		
-		this.x = x;
-		this.y = y;
-		this.width = width;
-		this.height = height;
+		this.setX(x);
+		this.setY(y);
+		this.setWidth(width);
+		this.setHeight(height);
 		
 		colBox = new Rectangle(x - (width/2), y - (height/2), width, height);
 	}
@@ -24,12 +26,12 @@ public class Player extends GameObject{
 		{
 			isAlive = false;
 		}
-		colBox.setBounds(x, y, width, height);
+		colBox.setBounds(getX(), getY(), getWidth(), getHeight());
 	}
 	
 	public void draw(Graphics g)
 	{
-		g.drawImage(GamePanel.PlayerImg, x, y, width, height, null);
+		g.drawImage(GamePanel.PlayerImg, getX(), getY(), getWidth(), getHeight(), null);
 
 	}
 	

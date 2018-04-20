@@ -1,5 +1,7 @@
 package Game;
 
+import Game.tiles.ElectricTile;
+
 import java.awt.Graphics;
 
 public class ECR extends GameObject{
@@ -15,27 +17,27 @@ public class ECR extends GameObject{
 		
 		ElectricTile.superstate = 1;
 		
-		this.x = x;
-		this.y = y;
-		this.width = width;
-		this.height = height;
+		this.setX(x);
+		this.setY(y);
+		this.setWidth(width);
+		this.setHeight(height);
 		this.state = state;
 	}
 	
 	public void update()
 	{
-		colBox.setBounds(x, y, width, height);
+		colBox.setBounds(getX(), getY(), getWidth(), getHeight());
 	}
 	
 	public void draw(Graphics g)
 	{
 		if(state == 1)
 		{
-		g.drawImage(GamePanel.ECROnImg, x, y, width, height, null);
+		g.drawImage(GamePanel.ECROnImg, getX(), getY(), getWidth(), getHeight(), null);
 		}
 		if(state == -1)
 		{
-			g.drawImage(GamePanel.ECROffImg, x, y, width, height, null);
+			g.drawImage(GamePanel.ECROffImg, getX(), getY(), getWidth(), getHeight(), null);
 		}
 	}
 	

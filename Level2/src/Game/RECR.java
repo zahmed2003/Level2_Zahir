@@ -11,10 +11,10 @@ public class RECR extends GameObject{
 	{
 		super(x, y, width, height);
 		
-		this.x = x;
-		this.y = y;
-		this.width = width;
-		this.height = height;
+		this.setX(x);
+		this.setY(y);
+		this.setWidth(width);
+		this.setHeight(height);
 		this.RState = RState;
 		
 		direction = 0;
@@ -22,18 +22,18 @@ public class RECR extends GameObject{
 	
 	public void update()
 	{
-		colBox.setBounds(x, y, width, height);
+		colBox.setBounds(getX(), getY(), getWidth(), getHeight());
 	}
 	
 	public void draw(Graphics g)
 	{
 		if(RState == 1)
 		{
-		g.drawImage(GamePanel.RECROnImg, x, y, width, height, null);
+		g.drawImage(GamePanel.RECROnImg, getX(), getY(), getWidth(), getHeight(), null);
 		}
 		if(RState == -1)
 		{
-			g.drawImage(GamePanel.RECROffImg, x, y, width, height, null);
+			g.drawImage(GamePanel.RECROffImg, getX(), getY(), getWidth(), getHeight(), null);
 		}
 	}
 	

@@ -1,7 +1,11 @@
 package Game;
 
-import java.awt.Color;
-import java.awt.Graphics;
+import Game.tiles.SafeTile;
+import Game.tiles.SolidTile;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -9,15 +13,11 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-import javax.imageio.ImageIO;
-import javax.swing.JPanel;
-import javax.swing.Timer;
-
 public class Level14State extends JPanel implements ActionListener, KeyListener{
 	
 	public static int twn = 16;
 	public static int thn = 3;
-	public static int tw = GameRunner.width/twn;
+	public static int tw = GameRunner.WINDOW_WIDTH /twn;
 	public static int th = tw;
 	
 Timer timer;
@@ -189,20 +189,20 @@ public void updateLevel14State() {
 	
 	if(player.isAlive == false)
 	{
-		gp.x = tw;
-		gp.y = th;
+		gp.setX(tw);
+		gp.setY(th);
 		
-		player.x = tw;
-		player.y = th;
+		player.setX(tw);
+		player.setY(th);
 		
-		e1.x = 7*tw;
-		e1.y = 0;
+		e1.setX(7*tw);
+		e1.setY(0);
 		
-		e2.x = 3*tw;
-		e2.y = 2*th;
+		e2.setX(3*tw);
+		e2.setY(2*th);
 		
-		e3.x = 11*tw;
-		e3.y = 2*th;
+		e3.setX(11*tw);
+		e3.setY(2*th);
 		
 		player.isAlive = true;
 		
@@ -213,31 +213,35 @@ public void updateLevel14State() {
 
 public void boundChecker()
 {
-	if(gp.x < 0) {gp.x = 0;}
-	if(gp.x >tw*16 - gp.width) {gp.x = tw*16 - gp.width;}
-	if(gp.y < 0) {gp.y = 0;}
-	if(gp.y > th*3 - gp.height) {gp.y = th*3 - gp.height;}
+	if(gp.getX() < 0) {
+		gp.setX(0);}
+	if(gp.getX() >tw*16 - gp.getWidth()) {
+		gp.setX(tw*16 - gp.getWidth());}
+	if(gp.getY() < 0) {
+		gp.setY(0);}
+	if(gp.getY() > th*3 - gp.getHeight()) {
+		gp.setY(th*3 - gp.getHeight());}
 
 }
 
 public void winChecker()
 {
-	if(player.x == t30.x && player.y == t30.y)
+	if(player.getX() == t30.getX() && player.getY() == t30.getY())
 	{
 		manager.reset();
 		timer.stop();
-		GameRunner.frame.remove(GameRunner.lv14);
-		GameRunner.frame.add(GameRunner.lv15);
-		GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
-		GameRunner.frame.setVisible(true);
-		GameRunner.frame.addKeyListener(GameRunner.lv15);
+		GameRunner.getFrame().remove(GameRunner.lv14);
+		GameRunner.getFrame().add(GameRunner.lv15);
+		GameRunner.getFrame().setSize(GameRunner.WINDOW_WIDTH, GameRunner.WINDOW_HEIGHT);
+		GameRunner.getFrame().setVisible(true);
+		GameRunner.getFrame().addKeyListener(GameRunner.lv15);
 		GameRunner.lv15.startGame();
 	}
 }
 
 public void drawLevel14State(Graphics g) {
 	g.setColor(Color.BLACK);
-	g.fillRect(0, 0, GameRunner.width, GameRunner.height);
+	g.fillRect(0, 0, GameRunner.WINDOW_WIDTH, GameRunner.WINDOW_HEIGHT);
 	manager.draw(g);
 }
 
@@ -270,22 +274,22 @@ public void keyPressed(KeyEvent e) {
 	{
 	if(key == KeyEvent.VK_RIGHT)
 	{
-		gp.x += tw;
+		gp.setX(gp.getX() + tw);
 		InputManager.horizontal = true;
 	}
 	if(key == KeyEvent.VK_LEFT)
 	{
-		gp.x -= tw;
+		gp.setX(gp.getX() - tw);
 		InputManager.horizontal = true;
 	}
 	if(key == KeyEvent.VK_UP)
 	{
-		gp.y -= th;
+		gp.setY(gp.getY() - th);
 		InputManager.vertical = true;
 	}
 	if(key == KeyEvent.VK_DOWN)
 	{
-		gp.y += th;
+		gp.setY(gp.getY() + th);
 		InputManager.vertical = true;
 	}
 
@@ -297,12 +301,12 @@ public void keyPressed(KeyEvent e) {
 	{
 		if(key == KeyEvent.VK_RIGHT)
 		{
-			gp.x += tw;
+			gp.setX(gp.getX() + tw);
 			InputManager.horizontal = true;
 		}
 		if(key == KeyEvent.VK_LEFT)
 		{
-			gp.x -= tw;
+			gp.setX(gp.getX() - tw);
 			InputManager.horizontal = true;
 		}
 		
@@ -312,18 +316,18 @@ public void keyPressed(KeyEvent e) {
 	{
 		if(key == KeyEvent.VK_UP)
 		{
-			gp.y -= th;
+			gp.setY(gp.getY() - th);
 			InputManager.vertical = true;
 		}
 		if(key == KeyEvent.VK_DOWN)
 		{
-			gp.y += th;
+			gp.setY(gp.getY() + th);
 			InputManager.vertical = true;
 		}
 		
 		
 	}
-	if(gp.x == player.x && gp.y == player.y)
+	if(gp.getX() == player.getX() && gp.getY() == player.getY())
 	{
 		InputManager.horizontal = false;
 		InputManager.vertical = false;
@@ -331,8 +335,8 @@ public void keyPressed(KeyEvent e) {
 	if(key == KeyEvent.VK_ENTER)
 	{
 		manager.moveTile(tw, twn*tw, thn*th);
-		player.x = gp.x;
-		player.y = gp.y;
+		player.setX(gp.getX());
+		player.setY(gp.getY());
 		manager.movePawn(tw,twn*tw, thn*th, player);
 		InputManager.horizontal = false;
 		InputManager.vertical = false;

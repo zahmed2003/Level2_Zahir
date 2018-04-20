@@ -10,10 +10,10 @@ public class LeftConveyerBelt extends GameObject{
 	{
 		super(x, y, width, height);
 		
-		this.x = x;
-		this.y = y;
-		this.width = width;
-		this.height = height;
+		this.setX(x);
+		this.setY(y);
+		this.setWidth(width);
+		this.setHeight(height);
 		
 		colBox = new Rectangle(x - (width/2), y - (height/2), width, height);
 	}
@@ -21,12 +21,12 @@ public class LeftConveyerBelt extends GameObject{
 	public void update()
 	{
 		
-		colBox.setBounds(x, y, width, height);
+		colBox.setBounds(getX(), getY(), getWidth(), getHeight());
 	}
 	
 	public void draw(Graphics g)
 	{
-		g.drawImage(GamePanel.CLImg, x, y, width, height, null);
+		g.drawImage(GamePanel.CLImg, getX(), getY(), getWidth(), getHeight(), null);
 
 	}
 	

@@ -11,10 +11,10 @@ public class RMTile2 extends GameObject{
 	{
 		super(x, y, width, height);
 		
-		this.x = x;
-		this.y = y;
-		this.width = width;
-		this.height = height;
+		this.setX(x);
+		this.setY(y);
+		this.setWidth(width);
+		this.setHeight(height);
 		this.direction = direction;
 		
 		colBox = new Rectangle(x - (width/2), y - (height/2), width, height);
@@ -22,18 +22,18 @@ public class RMTile2 extends GameObject{
 	
 	public void update()
 	{
-		colBox.setBounds(x, y, width, height);
+		colBox.setBounds(getX(), getY(), getWidth(), getHeight());
 	}
 	
 	public void draw(Graphics g)
 	{
 		if(direction == 1)
 		{
-		g.drawImage(GamePanel.RMRImg, x, y, width, height, null);
+		g.drawImage(GamePanel.RMRImg, getX(), getY(), getWidth(), getHeight(), null);
 		}
 		if(direction == -1)
 		{
-			g.drawImage(GamePanel.RMLImg, x, y, width, height, null);
+			g.drawImage(GamePanel.RMLImg, getX(), getY(), getWidth(), getHeight(), null);
 		}
 	}
 	

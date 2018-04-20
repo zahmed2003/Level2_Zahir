@@ -1,6 +1,5 @@
 package Game;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
@@ -12,22 +11,22 @@ public class GridPlayer extends GameObject implements KeyListener{
 	{
 		super(x, y, width, height);
 		
-		this.x = x;
-		this.y = y;
-		this.height = height;
-		this.width = width;
+		this.setX(x);
+		this.setY(y);
+		this.setHeight(height);
+		this.setWidth(width);
 		
 		colBox = new Rectangle(x - (width/2), y - (height/2), width, height);
 	}
 	
 	public void update()
 	{
-		colBox.setBounds(x, y, width, height);
+		colBox.setBounds(getX(), getY(), getWidth(), getHeight());
 	}
 	
 	public void draw(Graphics g)
 	{
-		g.drawImage(GamePanel.GPImg, x, y, width, height, null);
+		g.drawImage(GamePanel.GPImg, getX(), getY(), getWidth(), getHeight(), null);
 
 	}
 	

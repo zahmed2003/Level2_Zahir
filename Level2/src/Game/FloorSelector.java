@@ -1,18 +1,14 @@
 package Game;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-
-import javax.imageio.ImageIO;
-import javax.swing.JPanel;
-import javax.swing.Timer;
 
 public class FloorSelector extends JPanel implements KeyListener, ActionListener{
 	private BufferedImage p;
@@ -60,7 +56,7 @@ public class FloorSelector extends JPanel implements KeyListener, ActionListener
 		
 		// draw bg
 		g.setColor(Color.BLACK);
-		g.fillRect(0, 0, GameRunner.width, GameRunner.height);
+		g.fillRect(0, 0, GameRunner.WINDOW_WIDTH, GameRunner.WINDOW_HEIGHT);
 		
 		// draw title
 		g.setColor(titleColor);
@@ -114,13 +110,13 @@ public class FloorSelector extends JPanel implements KeyListener, ActionListener
 			timer.stop();
 			menuSelect = false;
 			Sound.click.play();
-			Sound.sound4.stop();
-			Sound.sound1.loop();
-			GameRunner.frame.remove(GameRunner.f);
-			GameRunner.frame.add(GameRunner.lv1);
-			GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
-			GameRunner.frame.setVisible(true);
-			GameRunner.frame.addKeyListener(GameRunner.lv1);
+			Sound.menuTrack.stop();
+			Sound.gameSong.loop();
+			GameRunner.getFrame().remove(GameRunner.f);
+			GameRunner.getFrame().add(GameRunner.lv1);
+			GameRunner.getFrame().setSize(GameRunner.WINDOW_WIDTH, GameRunner.WINDOW_HEIGHT);
+			GameRunner.getFrame().setVisible(true);
+			GameRunner.getFrame().addKeyListener(GameRunner.lv1);
 			GameRunner.lv1.startGame();
 			menuSelect = false;
 		}
@@ -129,13 +125,13 @@ public class FloorSelector extends JPanel implements KeyListener, ActionListener
 			timer.stop();
 			menuSelect = false;
 			Sound.click.play();
-			Sound.sound4.stop();
-			Sound.sound2.loop();
-			GameRunner.frame.remove(GameRunner.f);
-			GameRunner.frame.add(GameRunner.lv13);
-			GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
-			GameRunner.frame.setVisible(true);
-			GameRunner.frame.addKeyListener(GameRunner.lv13);
+			Sound.menuTrack.stop();
+			Sound.gameSong.loop();
+			GameRunner.getFrame().remove(GameRunner.f);
+			GameRunner.getFrame().add(GameRunner.lv13);
+			GameRunner.getFrame().setSize(GameRunner.WINDOW_WIDTH, GameRunner.WINDOW_HEIGHT);
+			GameRunner.getFrame().setVisible(true);
+			GameRunner.getFrame().addKeyListener(GameRunner.lv13);
 			GameRunner.lv13.startGame();
 			menuSelect = false;
 		}
@@ -144,13 +140,13 @@ public class FloorSelector extends JPanel implements KeyListener, ActionListener
 			timer.stop();
 			menuSelect = false;
 			Sound.click.play();
-			Sound.sound4.stop();
-			Sound.sound3.loop();
-			GameRunner.frame.remove(GameRunner.f);
-			GameRunner.frame.add(GameRunner.lv20);
-			GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
-			GameRunner.frame.setVisible(true);
-			GameRunner.frame.addKeyListener(GameRunner.lv20);
+			Sound.menuTrack.stop();
+			Sound.gameSong.loop();
+			GameRunner.getFrame().remove(GameRunner.f);
+			GameRunner.getFrame().add(GameRunner.lv20);
+			GameRunner.getFrame().setSize(GameRunner.WINDOW_WIDTH, GameRunner.WINDOW_HEIGHT);
+			GameRunner.getFrame().setVisible(true);
+			GameRunner.getFrame().addKeyListener(GameRunner.lv20);
 			GameRunner.lv20.startGame();
 			menuSelect = false;
 		}

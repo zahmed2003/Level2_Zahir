@@ -1,5 +1,9 @@
 package Game;
 
+import Game.tiles.ElectricTile;
+import Game.tiles.SafeTile;
+import Game.tiles.SolidTile;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
@@ -17,7 +21,7 @@ public class Level9State extends JPanel implements ActionListener, KeyListener{
 	
 	public static int twn = 16;
 	public static int thn = 3;
-	public static int tw = GameRunner.width/twn;
+	public static int tw = GameRunner.WINDOW_WIDTH /twn;
 	public static int th = tw;
 	
 Timer timer;
@@ -182,11 +186,11 @@ public void updateLevel9State() {
 	
 	if(player.isAlive == false)
 	{
-		gp.x = tw;
-		gp.y = th;
+		gp.setX(tw);
+		gp.setY(th);
 		
-		player.x = tw;
-		player.y = th;
+		player.setX(tw);
+		player.setY(th);
 		
 		manager.resetElectric();
 		player.isAlive = true;
@@ -198,31 +202,35 @@ public void updateLevel9State() {
 
 public void boundChecker()
 {
-	if(gp.x < 0) {gp.x = 0;}
-	if(gp.x >tw*16 - gp.width) {gp.x = tw*16 - gp.width;}
-	if(gp.y < 0) {gp.y = 0;}
-	if(gp.y > th*3 - gp.height) {gp.y = th*3 - gp.height;}
+	if(gp.getX() < 0) {
+		gp.setX(0);}
+	if(gp.getX() >tw*16 - gp.getWidth()) {
+		gp.setX(tw*16 - gp.getWidth());}
+	if(gp.getY() < 0) {
+		gp.setY(0);}
+	if(gp.getY() > th*3 - gp.getHeight()) {
+		gp.setY(th*3 - gp.getHeight());}
 
 }
 
 public void winChecker()
 {
-	if(player.x == t30.x && player.y == t30.y)
+	if(player.getX() == t30.getX() && player.getY() == t30.getY())
 	{
 		manager.reset();
 		timer.stop();
-		GameRunner.frame.remove(GameRunner.lv9);
-		GameRunner.frame.add(GameRunner.lv10);
-		GameRunner.frame.setSize(GameRunner.width, GameRunner.height);
-		GameRunner.frame.setVisible(true);
-		GameRunner.frame.addKeyListener(GameRunner.lv10);
+		GameRunner.getFrame().remove(GameRunner.lv9);
+		GameRunner.getFrame().add(GameRunner.lv10);
+		GameRunner.getFrame().setSize(GameRunner.WINDOW_WIDTH, GameRunner.WINDOW_HEIGHT);
+		GameRunner.getFrame().setVisible(true);
+		GameRunner.getFrame().addKeyListener(GameRunner.lv10);
 		GameRunner.lv10.startGame();
 	}
 }
 
 public void drawLevel9State(Graphics g) {
 	g.setColor(Color.BLACK);
-	g.fillRect(0, 0, GameRunner.width, GameRunner.height);
+	g.fillRect(0, 0, GameRunner.WINDOW_WIDTH, GameRunner.WINDOW_HEIGHT);
 	manager.draw(g);
 }
 
@@ -255,22 +263,22 @@ public void keyPressed(KeyEvent e) {
 	{
 	if(key == KeyEvent.VK_RIGHT)
 	{
-		gp.x += tw;
+		gp.setX(gp.getX() + tw);
 		InputManager.horizontal = true;
 	}
 	if(key == KeyEvent.VK_LEFT)
 	{
-		gp.x -= tw;
+		gp.setX(gp.getX() - tw);
 		InputManager.horizontal = true;
 	}
 	if(key == KeyEvent.VK_UP)
 	{
-		gp.y -= th;
+		gp.setY(gp.getY() - th);
 		InputManager.vertical = true;
 	}
 	if(key == KeyEvent.VK_DOWN)
 	{
-		gp.y += th;
+		gp.setY(gp.getY() + th);
 		InputManager.vertical = true;
 	}
 
@@ -282,12 +290,12 @@ public void keyPressed(KeyEvent e) {
 	{
 		if(key == KeyEvent.VK_RIGHT)
 		{
-			gp.x += tw;
+			gp.setX(gp.getX() + tw);
 			InputManager.horizontal = true;
 		}
 		if(key == KeyEvent.VK_LEFT)
 		{
-			gp.x -= tw;
+			gp.setX(gp.getX() - tw);
 			InputManager.horizontal = true;
 		}
 		
@@ -297,18 +305,18 @@ public void keyPressed(KeyEvent e) {
 	{
 		if(key == KeyEvent.VK_UP)
 		{
-			gp.y -= th;
+			gp.setY(gp.getY() - th);
 			InputManager.vertical = true;
 		}
 		if(key == KeyEvent.VK_DOWN)
 		{
-			gp.y += th;
+			gp.setY(gp.getY() + th);
 			InputManager.vertical = true;
 		}
 		
 		
 	}
-	if(gp.x == player.x && gp.y == player.y)
+	if(gp.getX() == player.getX() && gp.getY() == player.getY())
 	{
 		InputManager.horizontal = false;
 		InputManager.vertical = false;
@@ -317,8 +325,8 @@ public void keyPressed(KeyEvent e) {
 	{
 		manager.moveTile(tw, twn*tw, thn*th);
 		manager.switchState();
-		player.x = gp.x;
-		player.y = gp.y;
+		player.setX(gp.getX());
+		player.setY(gp.getY());
 		InputManager.horizontal = false;
 		InputManager.vertical = false;
 	}
